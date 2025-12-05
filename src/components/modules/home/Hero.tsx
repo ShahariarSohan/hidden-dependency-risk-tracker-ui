@@ -1,6 +1,7 @@
 "use client";
 import { ShieldAlert } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 export default function Hero({
   badge = {
@@ -39,8 +40,9 @@ export default function Hero({
         }}
       />
 
-      <div className="w-full px-4 py-12 md:px-8 lg:px-16 relative">
-        <div className="mx-auto max-w-[1200px]">
+      <div className="w-full py-12 relative">
+        {/* Align px with navbar/footer */}
+        <div className="container mx-auto px-4 md:0">
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-12">
             {/* Left Column */}
             <div className="flex flex-col justify-center space-y-6">
@@ -72,9 +74,11 @@ export default function Hero({
               {/* Buttons */}
               <div className="flex flex-col gap-4 sm:flex-row">
                 {buttons.primary && (
-                  <Button className="h-[63px] gap-3 rounded-xl bg-gray-500 px-8 text-[15px] hover:bg-gray-600">
-                    {buttons.primary.text}
-                  </Button>
+                  <Link href="/learn-more">
+                    <Button className="h-[63px] gap-3 rounded-xl bg-gray-500 px-8 text-[15px] hover:bg-gray-600">
+                      {buttons.primary.text}
+                    </Button>
+                  </Link>
                 )}
                 {buttons.secondary && (
                   <Button
@@ -101,10 +105,39 @@ export default function Hero({
               </div>
             </div>
 
-            {/* Right Column - Logo/Illustration */}
-            <div className="flex items-center justify-center lg:justify-end">
-              <div className="w-full max-w-[560px] flex items-center justify-center">
-                <ShieldAlert className="text-red-500 size-[200px]" />
+            {/* Right Column - Enhanced Illustration */}
+            <div className="flex items-center justify-center lg:justify-end relative">
+              <div className="w-full max-w-[560px] flex flex-col items-center justify-center relative">
+                {/* Background Gradient Circle */}
+                <div className="absolute w-[320px] h-[320px] rounded-full bg-red-100/20 dark:bg-red-900/30 -z-20 animate-pulse" />
+
+                {/* Floating Small Shields */}
+                <ShieldAlert className="absolute top-0 left-8 text-red-400 size-[40px] animate-bounce" />
+                <ShieldAlert className="absolute bottom-0 right-12 text-red-400 size-[50px] animate-bounce delay-200" />
+
+                {/* Main Shield Icon */}
+                <ShieldAlert className="text-red-500 size-[180px] relative z-10" />
+
+                {/* Mockup Card Behind */}
+                <div className="absolute bottom-0 w-[220px] h-[120px] bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 -z-10">
+                  <div className="flex flex-col justify-center items-center h-full">
+                    <p className="text-sm font-medium text-gray-600 dark:text-gray-300">
+                      Teams Monitored: 500+
+                    </p>
+                    <p className="text-sm font-medium text-gray-600 dark:text-gray-300">
+                      Employees Tracked: 2000+
+                    </p>
+                    <p className="text-sm font-medium text-gray-600 dark:text-gray-300">
+                      Risk Visibility: 100%
+                    </p>
+                  </div>
+                </div>
+
+                {/* Supporting Text */}
+                <p className="mt-6 text-center text-gray-700 dark:text-gray-300 text-lg font-medium max-w-[400px]">
+                  HDRT helps organizations identify hidden dependency risks and
+                  prevent operational failures before they happen.
+                </p>
               </div>
             </div>
           </div>

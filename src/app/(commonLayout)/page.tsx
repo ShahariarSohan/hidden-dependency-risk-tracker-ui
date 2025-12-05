@@ -1,5 +1,7 @@
 
 import Hero from "@/components/modules/home/Hero";
+import HowItWorks from "@/components/modules/home/HowItWorks";
+import UseCases from "@/components/modules/home/UseCases";
 import Head from "next/head";
 
 export default function Home() {
@@ -18,7 +20,8 @@ export default function Home() {
       <main className="min-h-screen bg-gray-50 dark:bg-gray-900">
         {/* Hero Section */}
         <Hero />
-
+        <HowItWorks></HowItWorks>
+        <UseCases></UseCases>
         {/* Future Sections */}
         {/* Example: 
             - Risk Dashboard Overview
