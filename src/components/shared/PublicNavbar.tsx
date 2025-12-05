@@ -20,7 +20,7 @@ const PublicNavbar = async () => {
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2">
-          <ShieldAlert className="h-6 w-6 text-primary" />
+          <ShieldAlert className="h-6 w-6 text-red-500" />
           <span className="text-lg font-bold tracking-tight">HDRT</span>
         </Link>
 

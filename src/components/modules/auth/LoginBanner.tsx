@@ -7,7 +7,7 @@ export default function LoginBanner() {
       <div className="text-center max-w-lg">
         {/* HDRT Logo */}
         <div className="flex justify-center items-center mb-6">
-          <ShieldAlert className="h-20 w-20 text-white" />
+          <ShieldAlert className="h-20 w-20 text-red-500" />
         </div>
 
         {/* HDRT Description */}
