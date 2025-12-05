@@ -1,7 +1,5 @@
 // app/learn-more/page.tsx
 
-import HowItWorks from "@/components/modules/home/HowItWorks";
-import UseCases from "@/components/modules/home/UseCases";
 
 
 export default function LearnMorePage() {
@@ -38,12 +36,6 @@ export default function LearnMorePage() {
           before they escalate.
         </p>
       </section>
-
-      {/* How It Works */}
-      <HowItWorks />
-
-      {/* Use Cases */}
-      <UseCases />
 
       {/* Features Section */}
       <section className="py-20 px-4 max-w-6xl mx-auto">

@@ -51,9 +51,9 @@
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.65 0 0); /* Medium gray, clear & professional */
-  --primary-hover: oklch(0.55 0 0); /* Slightly darker on hover */
-  --primary-active: oklch(0.45 0 0); /* Active/pressed state */
+  --primary: oklch(0.43 0.06 255.39); /* Base brand color (#002F5C) */
+  --primary-hover: oklch(0.38 0.06 255.39); /* Slightly darker */
+  --primary-active: oklch(0.33 0.06 255.39); /* More dark for pressed */
   --primary-foreground: oklch(0.985 0 0);
   --secondary: oklch(0.97 0 0);
   --secondary-foreground: oklch(0.205 0 0);
@@ -88,9 +88,9 @@
   --card-foreground: oklch(0.985 0 0);
   --popover: oklch(0.205 0 0);
   --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.75 0 0); /* Lighter gray for visibility */
-  --primary-hover: oklch(0.8 0 0);
-  --primary-active: oklch(0.7 0 0);
+  --primary: oklch(0.55 0.06 255.39); /* Slightly lighter for dark mode */
+  --primary-hover: oklch(0.6 0.06 255.39);
+  --primary-active: oklch(0.5 0.06 255.39);
   --primary-foreground: oklch(0.205 0 0);
   --secondary: oklch(0.269 0 0);
   --secondary-foreground: oklch(0.985 0 0);
@@ -125,8 +125,7 @@
     @apply bg-background text-foreground;
     font-family: var(--font-poppins), sans-serif;
   }
-
 }
-  html {
+html {
   scroll-behavior: smooth;
 }

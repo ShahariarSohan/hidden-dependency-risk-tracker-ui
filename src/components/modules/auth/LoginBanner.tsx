@@ -1,9 +1,11 @@
 import { ShieldAlert } from "lucide-react";
-import Image from "next/image";
 
 export default function LoginBanner() {
   return (
-    <div className="hidden md:flex flex-1 items-center justify-center bg-gradient-to-tr from-blue-600 to-indigo-700 text-white p-10">
+    <div
+      className="hidden md:flex flex-1 items-center justify-center text-white p-10"
+      style={{ backgroundColor: "#002F5C" }}
+    >
       <div className="text-center max-w-lg">
         {/* HDRT Logo */}
         <div className="flex justify-center items-center mb-6">
@@ -15,8 +17,8 @@ export default function LoginBanner() {
         <p className="text-lg mb-6">
           Hidden Dependency Risk Tracker (HDRT) helps organizations identify
           operational risks caused by over-dependence on employees, teams, or
-          critical systems. Make informed decisions with clear metrics and risk
-          dashboards.
+          critical systems. Make informed decisions with clear metrics and
+          actionable dashboards.
         </p>
 
         {/* Optional call to action */}
