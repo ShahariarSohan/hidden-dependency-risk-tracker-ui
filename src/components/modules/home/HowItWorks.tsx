@@ -10,7 +10,7 @@ export default function HowItWorks() {
       className="py-24 bg-gray-50 dark:bg-gray-900 scroll-mt-16"
     >
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-12">
+        <h2 className=" text-center text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-16">
           How HDRT Works
         </h2>
 

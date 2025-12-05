@@ -1,109 +1,58 @@
-import Link from "next/link";
-
-function PublicFooter() {
+export default function PublicFooter() {
   return (
     <footer className="border-t bg-background">
-      <div className="container mx-auto px-4 py-10">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-          {/* Brand Section */}
+      <div className="container mx-auto px-4 py-12">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 text-sm text-muted-foreground">
+          {/* 1. HDRT Summary */}
           <div>
-            <h3 className="font-bold text-lg mb-2">HDRT</h3>
-            <p className="text-sm text-muted-foreground">
-              Hidden Dependency Risk Tracker — enabling organizations to
-              identify and mitigate operational risks before they escalate.
+            <h3 className="font-bold text-lg text-foreground mb-3">HDRT</h3>
+            <p className="leading-relaxed">
+              Hidden Dependency Risk Tracker — a platform built to identify,
+              measure, and reduce operational risks caused by hidden team or
+              system dependencies.
             </p>
           </div>
 
-          {/* Navigation */}
+          {/* 2. What We Provide */}
           <div>
-            <h3 className="font-semibold mb-2">Product</h3>
-            <ul className="space-y-2 text-sm">
-              <li>
-                <Link
-                  href="/"
-                  className="text-muted-foreground hover:text-foreground"
-                >
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/#features"
-                  className="text-muted-foreground hover:text-foreground"
-                >
-                  Features
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/#how-it-works"
-                  className="text-muted-foreground hover:text-foreground"
-                >
-                  How It Works
-                </Link>
-              </li>
+            <h3 className="font-semibold text-foreground mb-3">
+              What We Provide
+            </h3>
+            <ul className="space-y-1 text-sm text-muted-foreground">
+              <li>Risk Scoring</li>
+              <li>Dependency Mapping</li>
+              <li>Team Visibility</li>
+              <li>System Insights</li>
+              <li>Reliability Tracking</li>
             </ul>
           </div>
 
-          {/* Resources */}
+          {/* 3. Why HDRT Matters */}
           <div>
-            <h3 className="font-semibold mb-2">Resources</h3>
-            <ul className="space-y-2 text-sm">
-              <li>
-                <Link
-                  href="/docs"
-                  className="text-muted-foreground hover:text-foreground"
-                >
-                  Documentation
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/api"
-                  className="text-muted-foreground hover:text-foreground"
-                >
-                  API Reference
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/guides"
-                  className="text-muted-foreground hover:text-foreground"
-                >
-                  Guides
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/support"
-                  className="text-muted-foreground hover:text-foreground"
-                >
-                  Support
-                </Link>
-              </li>
+            <h3 className="font-semibold text-foreground mb-3">Why It Matters</h3>
+            <ul className="space-y-1 text-sm text-muted-foreground">
+              <li>Identify Blind Spots</li>
+              <li>Prevent Failures</li>
+              <li>Improve Decision Making</li>
+              <li>Strengthen Operations</li>
+              <li>Enhance Transparency</li>
             </ul>
           </div>
 
-          {/* Contact */}
+          {/* 4. Contact Info */}
           <div>
-            <h3 className="font-semibold mb-2">Contact</h3>
-            <p className="text-sm text-muted-foreground">
-              Email: support@hdrt.com
-              <br />
-              Chattagram, Bangladesh
-              <br />
-              For enterprise inquiries, reach out anytime.
+            <h3 className="font-semibold text-foreground mb-3">Contact</h3>
+            <p className="leading-relaxed">
+              Email: support@hdrt.com Phone: +880 1234 567 890 Address:
+              Chattogram, Bangladesh Availability: 24/7 Enterprise Support
             </p>
           </div>
         </div>
 
-        {/* Footer Bottom */}
-        <div className="mt-10 border-t pt-4 text-center text-sm text-muted-foreground">
-          &copy; {new Date().getFullYear()} HDRT. All rights reserved.
+        <div className="mt-12 border-t pt-4 text-center text-sm text-muted-foreground">
+          © {new Date().getFullYear()} HDRT. All rights reserved.
         </div>
       </div>
     </footer>
   );
 }
-
-export default PublicFooter;

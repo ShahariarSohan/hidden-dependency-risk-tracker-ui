@@ -72,7 +72,7 @@ export default function Hero({
               </div>
 
               {/* Buttons */}
-              <div className="flex flex-col gap-4 sm:flex-row">
+              <div className="flex  gap-4">
                 {buttons.primary && (
                   <Link href="/learn-more">
                     <Button className="h-[63px] gap-3 rounded-xl bg-gray-500 px-8 text-[15px] hover:bg-gray-600">
@@ -135,8 +135,9 @@ export default function Hero({
 
                 {/* Supporting Text */}
                 <p className="mt-6 text-center text-gray-700 dark:text-gray-300 text-lg font-medium max-w-[400px]">
-                  HDRT helps organizations identify hidden dependency risks and
-                  prevent operational failures before they happen.
+                  <span className="font-extrabold">Hidden Dependency Risk Tracker</span> helps
+                  organizations identify hidden dependency risks and prevent
+                  operational failures before they happen.
                 </p>
               </div>
             </div>

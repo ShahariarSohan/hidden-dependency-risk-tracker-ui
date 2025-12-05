@@ -13,6 +13,7 @@ const PublicNavbar = async () => {
     { href: "/dashboard", label: "Dashboard" },
     { href: "#how-it-works", label: "How It Works" },
     { href: "#use-cases", label: "Use Cases" },
+    { href: "/learn-more", label: "About Us" },
   ];
 
   return (
