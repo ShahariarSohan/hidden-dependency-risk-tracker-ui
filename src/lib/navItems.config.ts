@@ -37,15 +37,66 @@ export const getCommonNavItems = (role: UserRole) => {
   ];
 };
 export const adminNavItems: INavSection[] = [
+  // --- RISK SECTION (TOP 4 ITEMS) ---
+  {
+    title: "Risk Analysis",
+    items: [
+      {
+        title: "Risk Dashboard",
+        href: "/admin/dashboard/risk",
+        icon: "Activity",
+        roles: [UserRole.ADMIN],
+      },
+      {
+        title: "Team Risks",
+        href: "/admin/dashboard/risk/team",
+        icon: "Users",
+        roles: [UserRole.ADMIN],
+      },
+      {
+        title: "Employee Risks",
+        href: "/admin/dashboard/risk/employee",
+        icon: "UserCheck",
+        roles: [UserRole.ADMIN],
+      },
+      {
+        title: "System Risks",
+        href: "/admin/dashboard/risk/system",
+        icon: "Server",
+        roles: [UserRole.ADMIN],
+      },
+    ],
+  },
+
+  // --- ORGANIZATION & TASKS ---
+  {
+    title: "Organization & Tasks",
+    items: [
+      {
+        title: "Tasks",
+        href: "/admin/dashboard/tasks",
+        icon: "ClipboardList",
+        roles: [UserRole.ADMIN],
+      },
+      {
+        title: "Teams",
+        href: "/admin/dashboard/teams",
+        icon: "Group",
+        roles: [UserRole.ADMIN],
+      },
+      {
+        title: "Systems",
+        href: "/admin/dashboard/systems",
+        icon: "ServerCog",
+        roles: [UserRole.ADMIN],
+      },
+    ],
+  },
+
+  // --- USER MANAGEMENT ---
   {
     title: "User Management",
     items: [
-      {
-        title: "Admins",
-        href: "/admin/dashboard/admins",
-        icon: "Shield",
-        roles: [UserRole.ADMIN],
-      },
       {
         title: "Managers",
         href: "/admin/dashboard/managers",
@@ -60,43 +111,8 @@ export const adminNavItems: INavSection[] = [
       },
     ],
   },
-
-  {
-    title: "Organization",
-    items: [
-      {
-        title: "Teams",
-        href: "/admin/dashboard/teams",
-        icon: "Group",
-        roles: [UserRole.ADMIN],
-      },
-      {
-        title: "Systems",
-        href: "/admin/dashboard/systems",
-        icon: "Server",
-        roles: [UserRole.ADMIN],
-      },
-    ],
-  },
-
-  {
-    title: "Tasks & Risks",
-    items: [
-      {
-        title: "All Tasks",
-        href: "/admin/dashboard/tasks",
-        icon: "ClipboardList",
-        roles: [UserRole.ADMIN],
-      },
-      {
-        title: "Risk Analysis",
-        href: "/admin/dashboard/risk-analysis",
-        icon: "AlertTriangle",
-        roles: [UserRole.ADMIN],
-      },
-    ],
-  },
 ];
+
 export const managerNavItems: INavSection[] = [
   {
     title: "Team Dashboard",

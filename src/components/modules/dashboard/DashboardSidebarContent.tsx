@@ -1,17 +1,16 @@
 "use client";
+
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 
-
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Bell } from "lucide-react";
+import { ShieldAlert } from "lucide-react";
+
 import { IDashboardContentProps } from "@/types/dashboard.interface";
 import { getIconComponent } from "@/lib/icon-mapper";
-
-
 
 export default function DashboardSidebarContent({
   userInfo,
@@ -19,17 +18,19 @@ export default function DashboardSidebarContent({
   dashboardHome,
 }: IDashboardContentProps) {
   const pathname = usePathname();
+
   return (
     <div className="hidden md:flex h-full w-64 flex-col border-r bg-card">
-      {/* Logo/Brand */}
-      <div className="flex h-16 items-center border-b px-6">
-        <Link href={dashboardHome} className="flex items-center space-x-2">
-          <span className="text-xl font-bold text-primary">PH Healthcare</span>
+      {/* FIXED HEADER */}
+      <div className="flex h-16 items-center border-b px-6 py-2 shrink-0">
+        <Link href="/" className="flex items-center space-x-2">
+          <ShieldAlert className="h-6 w-6 text-red-500" />
+          <span className="text-lg font-bold tracking-tight">HDRT</span>
         </Link>
       </div>
 
-      {/* Navigation */}
-      <ScrollArea className="flex-1 px-3 py-4">
+      {/* SCROLLABLE NAVIGATION */}
+      <ScrollArea className="flex-1 px-3 py-4 overflow-y-auto">
         <nav className="space-y-6">
           {navItems.map((section, sectionIdx) => (
             <div key={sectionIdx}>
@@ -38,11 +39,12 @@ export default function DashboardSidebarContent({
                   {section.title}
                 </h4>
               )}
+
               <div className="space-y-1">
                 {section.items.map((item) => {
                   const isActive = pathname === item.href;
-                    const Icon = getIconComponent(item.icon);
-                  
+                  const Icon = getIconComponent(item.icon);
+
                   return (
                     <Link
                       key={item.href}
@@ -55,8 +57,9 @@ export default function DashboardSidebarContent({
                       )}
                     >
                       <Icon className="h-4 w-4" />
-                     
+
                       <span className="flex-1">{item.title}</span>
+
                       {item.badge && (
                         <Badge
                           variant={isActive ? "secondary" : "default"}
@@ -69,6 +72,7 @@ export default function DashboardSidebarContent({
                   );
                 })}
               </div>
+
               {sectionIdx < navItems.length - 1 && (
                 <Separator className="my-4" />
               )}
@@ -77,14 +81,15 @@ export default function DashboardSidebarContent({
         </nav>
       </ScrollArea>
 
-      {/* User Info at Bottom */}
-      <div className="border-t p-4">
+      {/* FIXED USER INFO SECTION */}
+      <div className="border-t p-4 shrink-0">
         <div className="flex items-center gap-3">
           <div className="h-8 w-8 rounded-full bg-primary/10 flex items-center justify-center">
             <span className="text-sm font-semibold text-primary">
-              {/* {userInfo?.name.charAt(0).toUpperCase()} */}U
+              {userInfo.name.charAt(0).toUpperCase()}
             </span>
           </div>
+
           <div className="flex-1 overflow-hidden">
             <p className="text-sm font-medium truncate">{userInfo.name}</p>
             <p className="text-xs text-muted-foreground capitalize">
