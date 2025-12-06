@@ -58,14 +58,8 @@ export const adminNavItems: INavSection[] = [
 
   // --- ORGANIZATION & TASKS ---
   {
-    title: "Organization & Tasks",
+    title: "Organization",
     items: [
-      {
-        title: "Tasks",
-        href: "/admin/dashboard/tasks",
-        icon: "ClipboardList",
-        roles: [UserRole.ADMIN],
-      },
       {
         title: "Teams",
         href: "/admin/dashboard/teams",
@@ -76,6 +70,25 @@ export const adminNavItems: INavSection[] = [
         title: "Systems",
         href: "/admin/dashboard/systems",
         icon: "ServerCog",
+        roles: [UserRole.ADMIN],
+      },
+    ],
+  },
+  //--- TASK MANAGEMENT ---
+
+  {
+    title: "Tasks",
+    items: [
+      {
+        title: "All Tasks",
+        href: "/admin/dashboard/tasks",
+        icon: "ClipboardList",
+        roles: [UserRole.ADMIN],
+      },
+      {
+        title: "Assigned Tasks",
+        href: "/admin/dashboard/assigned-tasks",
+        icon: "ClipboardList",
         roles: [UserRole.ADMIN],
       },
     ],
@@ -99,41 +112,68 @@ export const adminNavItems: INavSection[] = [
       },
     ],
   },
+  {
+    title: "Profile",
+    items: [
+      {
+        title: "My Profile",
+        href: "/my-profile",
+        icon: "User",
+        roles: [UserRole.ADMIN,UserRole.MANAGER,UserRole.EMPLOYEE],
+      },
+    ],
+  },
 ];
 
 export const managerNavItems: INavSection[] = [
   {
-    title: "Team Dashboard",
+    title: "Risk Analysis",
     items: [
       {
-        title: "My Team",
-        href: "/manager/dashboard/team",
+        title: "Team Risks",
+        href: "/manager/dashboard/team-risk",
         icon: "Users",
         roles: [UserRole.MANAGER],
       },
       {
-        title: "Team Tasks",
-        href: "/manager/dashboard/tasks",
-        icon: "ClipboardCheck",
-        roles: [UserRole.MANAGER],
-      },
-      {
-        title: "Risk Report",
-        href: "/manager/dashboard/risk-analysis",
-        icon: "AlertTriangle",
+        title: "Employee Risks",
+        href: "/manager/dashboard/employee-risk",
+        icon: "UserCheck",
         roles: [UserRole.MANAGER],
       },
     ],
   },
-
   {
-    title: "Systems",
+    title: "Team Dashboard",
     items: [
       {
-        title: "All Systems",
-        href: "/manager/dashboard/systems",
-        icon: "Server",
+        title: "Assigned Tasks",
+        href: "/manager/dashboard/assigned-tasks",
+        icon: "ClipboardCheck",
         roles: [UserRole.MANAGER],
+      },
+      {
+        title: "Add Employee",
+        href: "/manager/dashboard/add-employee-to-team",
+        icon: "UserPlus",
+        roles: [UserRole.MANAGER],
+      },
+      {
+        title: "My Team",
+        href: "/manager/dashboard/teams",
+        icon: "Users",
+        roles: [UserRole.MANAGER],
+      },
+    ],
+  },
+  {
+    title: "Profile",
+    items: [
+      {
+        title: "My Profile",
+        href: "/my-profile",
+        icon: "User",
+        roles: [UserRole.ADMIN, UserRole.MANAGER, UserRole.EMPLOYEE],
       },
     ],
   },
@@ -145,13 +185,13 @@ export const employeeNavItems: INavSection[] = [
     items: [
       {
         title: "My Tasks",
-        href: "/dashboard/my-tasks",
+        href: "/employee/dashboard/my-tasks",
         icon: "ClipboardList",
         roles: [UserRole.EMPLOYEE],
       },
       {
-        title: "Assigned Systems",
-        href: "/dashboard/my-systems",
+        title: "My Teams",
+        href: "/employee/dashboard/my-teams",
         icon: "Server",
         roles: [UserRole.EMPLOYEE],
       },
@@ -163,9 +203,9 @@ export const employeeNavItems: INavSection[] = [
     items: [
       {
         title: "My Profile",
-        href: "/dashboard/profile",
+        href: "/my-profile",
         icon: "User",
-        roles: [UserRole.EMPLOYEE],
+        roles: [UserRole.ADMIN, UserRole.MANAGER, UserRole.EMPLOYEE],
       },
     ],
   },
