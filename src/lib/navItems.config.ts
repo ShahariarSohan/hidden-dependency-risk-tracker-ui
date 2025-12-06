@@ -10,15 +10,9 @@ export const getCommonNavItems = (role: UserRole) => {
     {
       items: [
         {
-          title: "Dashboard",
+          title: "Risk Dashboard",
           href: defaultDashboard,
-          icon: "LayoutDashboard",
-          roles: [UserRole.ADMIN, UserRole.EMPLOYEE, UserRole.MANAGER],
-        },
-        {
-          title: "My Profile",
-          href: "/my-profile",
-          icon: "User",
+          icon: "Activity",
           roles: [UserRole.ADMIN, UserRole.EMPLOYEE, UserRole.MANAGER],
         },
       ],
@@ -42,26 +36,20 @@ export const adminNavItems: INavSection[] = [
     title: "Risk Analysis",
     items: [
       {
-        title: "Risk Dashboard",
-        href: "/admin/dashboard/risk",
-        icon: "Activity",
-        roles: [UserRole.ADMIN],
-      },
-      {
         title: "Team Risks",
-        href: "/admin/dashboard/risk/team",
+        href: "/admin/dashboard/team-risk",
         icon: "Users",
         roles: [UserRole.ADMIN],
       },
       {
         title: "Employee Risks",
-        href: "/admin/dashboard/risk/employee",
+        href: "/admin/dashboard/employee-risk",
         icon: "UserCheck",
         roles: [UserRole.ADMIN],
       },
       {
         title: "System Risks",
-        href: "/admin/dashboard/risk/system",
+        href: "/admin/dashboard/system-risk",
         icon: "Server",
         roles: [UserRole.ADMIN],
       },
@@ -117,12 +105,6 @@ export const managerNavItems: INavSection[] = [
   {
     title: "Team Dashboard",
     items: [
-      {
-        title: "Overview",
-        href: "/manager/dashboard",
-        icon: "LayoutDashboard",
-        roles: [UserRole.MANAGER],
-      },
       {
         title: "My Team",
         href: "/manager/dashboard/team",
