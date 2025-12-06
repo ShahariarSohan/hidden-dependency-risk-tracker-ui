@@ -7,10 +7,12 @@ import zodValidator from "@/lib/zodValidator";
 
 import { loginValidationSchema } from "@/zod/auth.validation";
 import { JwtPayload } from "jsonwebtoken";
+import { redirect } from "next/navigation";
 
 const loginUser = async (_currentState: any, formData: any) => {
   try {
-    const redirectTo = formData.get("redirect") || null;
+    const redirectTo = formData.get("redirect") ||null;
+   
 
     const payload = {
       email: formData.get("email"),
@@ -64,16 +66,18 @@ const loginUser = async (_currentState: any, formData: any) => {
     if (!result.success) {
       throw new Error(result.message || "Login failed");
     }
-    //    if (redirectTo) {
-    //      const redirectPath = redirectTo.toString();
-    //      if (validRedirectForRole(redirectPath, userRole)) {
-    //        redirect(`${redirectPath}?loggedIn=true`);
-    //      } else {
-    //        redirect(`${getDefaultDashboardRoute(userRole)}?loggedIn=true`);
-    //      }
-    //    } else {
-    //      redirect(`${getDefaultDashboardRoute(UserRole)}?loggedIn=true`);
-    //    }
+    
+      
+      redirect("/?loggedIn=true");
+    
+      //    if (validRedirectForRole(redirectPath, userRole)) {
+      //      redirect(`${redirectPath}?loggedIn=true`);
+      //    } else {
+      //      redirect(`${getDefaultDashboardRoute(userRole)}?loggedIn=true`);
+      //    }
+      //  } else {
+      //    redirect(`${getDefaultDashboardRoute(UserRole)}?loggedIn=true`);
+      //  }
   } catch (err: any) {
     console.log(err);
     if (err?.digest?.startsWith("NEXT_REDIRECT")) {

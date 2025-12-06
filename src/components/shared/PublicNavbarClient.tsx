@@ -8,14 +8,17 @@ import LogoutButton from "../modules/auth/LogoutButton";
 
 
 const PublicNavbarClient = ({ accessToken }: { accessToken: string | null }) => {
-  console.log(accessToken)
+  
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const hash = searchParams?.get("hash") || ""; // hash from URL
-
+ 
   const navItems = [
     { href: "/", label: "Home" },
-    { href: "/dashboard", label: "Dashboard" },
+    {
+      href: `${accessToken ? "/dashboard" : ""}`,
+      label: `${accessToken ? "Dashboard" : ""}`,
+    },
     { href: "/#how-it-works", label: "How It Works" },
     { href: "/#use-cases", label: "Use Cases" },
     { href: "/learn-more", label: "About Us" },

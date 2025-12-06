@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono,Poppins } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "sonner";
+import LoginSuccessToast from "@/components/modules/auth/LoginSuccessToast";
+import LogoutSuccessToast from "@/components/modules/auth/LogoutSuccessToast";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,11 +32,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${poppins.variable}  antialiased`}
-      >
+      <body className={`${poppins.variable}  antialiased`}>
         {children}
         <Toaster richColors position="bottom-right"></Toaster>
+        <LoginSuccessToast />
+        <LogoutSuccessToast />
       </body>
     </html>
   );

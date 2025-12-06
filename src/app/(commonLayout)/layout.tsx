@@ -1,4 +1,4 @@
-import PublicNavbar from "@/components/shared/PublicNavbarClient";
+
 import PublicFooter from "@/components/shared/PublicFooter";
 import PublicNavbarServer from "@/components/shared/PublicNavbarServer";
 
