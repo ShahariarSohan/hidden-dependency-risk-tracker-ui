@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
+import { getDefaultDashboardRoute, validRedirectForRole } from "@/lib/auth.util";
 import verifiedAccessToken from "@/lib/jwtHandlers";
 import { serverFetch } from "@/lib/serverFetch";
 import { setCookie } from "@/lib/tokenHandlers";
@@ -56,28 +57,26 @@ const loginUser = async (_currentState: any, formData: any) => {
       sameSite: "none",
     });
 
-    const verifiedToken: JwtPayload | string = verifiedAccessToken(result.payload);
+    const verifiedToken: JwtPayload | string = verifiedAccessToken(accessToken);
 
-    if (typeof verifiedToken === "string") {
+    if ( !verifiedToken.success) {
       throw new Error("You are not verified");
     }
-    const userRole: any = verifiedToken.role;
+    const userRole: any = verifiedToken?.payload.role;
 
     if (!result.success) {
       throw new Error(result.message || "Login failed");
     }
-    
-      
-      redirect("/?loggedIn=true");
-    
-      //    if (validRedirectForRole(redirectPath, userRole)) {
-      //      redirect(`${redirectPath}?loggedIn=true`);
-      //    } else {
-      //      redirect(`${getDefaultDashboardRoute(userRole)}?loggedIn=true`);
-      //    }
-      //  } else {
-      //    redirect(`${getDefaultDashboardRoute(UserRole)}?loggedIn=true`);
-      //  }
+        if (redirectTo) {
+          const redirectPath = redirectTo.toString();
+          if (validRedirectForRole(redirectPath, userRole)) {
+            redirect(`${redirectPath}?loggedIn=true`);
+          } else {
+            redirect(`${getDefaultDashboardRoute(userRole)}?loggedIn=true`);
+          }
+        } else {
+          redirect(`${getDefaultDashboardRoute(userRole)}?loggedIn=true`);
+        }
   } catch (err: any) {
     console.log(err);
     if (err?.digest?.startsWith("NEXT_REDIRECT")) {

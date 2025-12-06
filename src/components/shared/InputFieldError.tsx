@@ -1,18 +1,20 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import getInputFieldError, { IInputErrorState } from "@/lib/getInputFieldError";
 import { FieldDescription } from "../ui/field";
 
-interface IInputFieldError {
+interface IInputFieldErrorProps {
   field: string;
-  state: IInputErrorState;
+  state?: IInputErrorState | null;
 }
-export default function InputFieldError({ field, state }: IInputFieldError) {
-  if (getInputFieldError(field, state)) {
-    return (
-      <FieldDescription className="text-red-600">
-        {getInputFieldError(field, state)}
-      </FieldDescription>
-    );
-  }
-  return null;
+
+export default function InputFieldError({
+  field,
+  state,
+}: IInputFieldErrorProps) {
+  const errorMessage = getInputFieldError(field, state);
+
+  if (!errorMessage) return null;
+
+  return (
+    <FieldDescription className="text-red-600">{errorMessage}</FieldDescription>
+  );
 }

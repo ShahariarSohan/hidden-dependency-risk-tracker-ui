@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+
 export interface IInputErrorState {
   success: boolean;
   errors: {
@@ -7,13 +8,14 @@ export interface IInputErrorState {
   }[];
 }
 
-const getInputFieldError = (fieldName: string, state: IInputErrorState) => {
-  if (state && state.errors) {
-    const error = state.errors.find((err: any) => err.field === fieldName);
-    return error ? error.message : null;
-  } else {
-    return null;
-  }
+export const getInputFieldError = (
+  fieldName: string,
+  state?: IInputErrorState | null
+): string | null => {
+  if (!state?.errors?.length) return null;
+
+  const error = state.errors.find((err) => err.field === fieldName);
+  return error?.message ?? null;
 };
 
 export default getInputFieldError;

@@ -9,7 +9,6 @@ export type RouteConfig = {
 };
 export const authRoutes = [
   "/login",
-  "/register",
   "/forget-password",
 ];
 export const commonProtectedRoute: RouteConfig = {
@@ -20,12 +19,12 @@ export const adminProtectedRoute: RouteConfig = {
   patterns: [/^\/admin/],
   exact: [],
 };
-export const doctorProtectedRoute: RouteConfig = {
-  patterns: [/^\/doctor/],
+export const managerProtectedRoute: RouteConfig = {
+  patterns: [/^\/manager/],
   exact: [],
 };
-export const patientProtectedRoute: RouteConfig = {
-  patterns: [/^\/dashboard/],
+export const employeeProtectedRoute: RouteConfig = {
+  patterns: [/^\/employee/],
   exact: [],
 };
 export const isAuthRoute = (pathname: string) => {
@@ -37,18 +36,18 @@ export const isRouteMatches = (pathname: string, routes: RouteConfig): boolean =
   }
   return routes.patterns.some((pattern: RegExp) => pattern.test(pathname));
 };
-export const getRouteOwner = (pathname: string): "ADMIN"|"DOCTOR"|"PATIENT"|"COMMON" | null => {
+export const getRouteOwner = (pathname: string): "ADMIN"|"MANAGER"|"EMPLOYEE"|"COMMON" | null => {
   if (isRouteMatches(pathname, commonProtectedRoute)) {
     return "COMMON";
   }
   if (isRouteMatches(pathname, adminProtectedRoute)) {
     return "ADMIN";
   }
-  if (isRouteMatches(pathname, doctorProtectedRoute)) {
-    return "DOCTOR";
+  if (isRouteMatches(pathname, managerProtectedRoute)) {
+    return "MANAGER";
   }
-  if (isRouteMatches(pathname, patientProtectedRoute)) {
-    return "PATIENT";
+  if (isRouteMatches(pathname, employeeProtectedRoute)) {
+    return "EMPLOYEE";
   }
   return null;
 };
@@ -60,7 +59,7 @@ export const getDefaultDashboardRoute = (role: UserRole): string => {
     return "/manager/dashboard";
   }
   if (role === UserRole.EMPLOYEE) {
-    return "/dashboard";
+    return "/employee/dashboard";
   }
   return "/";
 };
