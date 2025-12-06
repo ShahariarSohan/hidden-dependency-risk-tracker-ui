@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
-// import InputFieldError from "@/components/shared/InputFieldError";
+import InputFieldError from "@/components/shared/InputFieldError";
 import { Button } from "@/components/ui/button";
 import {
   Field,
@@ -10,6 +10,7 @@ import {
   FieldLabel,
 } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
+import loginUser from "@/services/auth/loginUser";
 
 
 // import loginUser from "@/services/auth/loginUser";
@@ -18,16 +19,16 @@ import { useActionState, useEffect } from "react";
 import { toast } from "sonner";
 
 export default function LoginForm({redirect}:{redirect?:string}) {
-  // const [state, formAction, isPending] = useActionState(loginUser, null);
+  const [state, formAction, isPending] = useActionState(loginUser, null);
   
-  // useEffect(() => {
-  //   if (state && !state.success) {
-  //     toast.error(state.message)
-  //   }
-  // },[state])
+  useEffect(() => {
+    if (state && !state.success) {
+      toast.error(state.message)
+    }
+  },[state])
   return (
     <div>
-      <form>
+      <form action={formAction}>
         {redirect && <Input type="hidden" name="redirect" value={redirect} />}
         <FieldGroup>
           <Field>
@@ -39,18 +40,18 @@ export default function LoginForm({redirect}:{redirect?:string}) {
               placeholder="m@example.com"
               required
             />
-            {/* <InputFieldError field="email" state={state}></InputFieldError> */}
+            <InputFieldError field="email" state={state}></InputFieldError>
           </Field>
 
           <Field>
             <FieldLabel htmlFor="password">Password</FieldLabel>
             <Input id="password" type="password" name="password" required />
-            {/* <InputFieldError field="password" state={state}></InputFieldError> */}
+            <InputFieldError field="password" state={state}></InputFieldError>
           </Field>
           <FieldGroup>
             <Field>
               <Button type="submit">
-                {/* {isPending ? "Logging in ...." : "Login"} */}Login
+                {isPending ? "Logging in ...." : "Login"}
               </Button>
               <FieldDescription className="px-6 text-center flex items-center justify-center gap-1">
                 Go back<Link href="/">Home</Link>

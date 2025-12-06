@@ -9,11 +9,12 @@ export default function LearnMorePage() {
       <section className="py-24 px-4 text-center">
         <h1 className="text-4xl md:text-5xl font-bold mb-6">About HDRT</h1>
         <p className="text-lg md:text-xl max-w-3xl mx-auto text-gray-700 dark:text-gray-300 leading-relaxed">
-          HDRT (Hidden Dependency Risk Tracker) is a **backend-focused risk
-          analysis platform** designed to help organizations visualize and
-          mitigate hidden operational risks. By detecting over-dependencies on
-          critical employees, teams, or systems, HDRT enables proactive
-          decision-making and ensures business continuity before problems arise.
+          HDRT (Hidden Dependency Risk Tracker) is a{" "}
+          <span className="font-bold">backend-focused risk analysis platform</span> designed to
+          help organizations visualize and mitigate hidden operational risks. By
+          detecting over-dependencies on critical employees, teams, or systems,
+          HDRT enables proactive decision-making and ensures business continuity
+          before problems arise.
         </p>
       </section>
 

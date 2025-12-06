@@ -1,0 +1,91 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
+import verifiedAccessToken from "@/lib/jwtHandlers";
+import { serverFetch } from "@/lib/serverFetch";
+import { setCookie } from "@/lib/tokenHandlers";
+import zodValidator from "@/lib/zodValidator";
+
+import { loginValidationSchema } from "@/zod/auth.validation";
+import { JwtPayload } from "jsonwebtoken";
+
+const loginUser = async (_currentState: any, formData: any) => {
+  try {
+    const redirectTo = formData.get("redirect") || null;
+
+    const payload = {
+      email: formData.get("email"),
+      password: formData.get("password"),
+    };
+    if (zodValidator(payload, loginValidationSchema).success === false) {
+      return zodValidator(payload, loginValidationSchema);
+    }
+    const validatedPayload = zodValidator(payload, loginValidationSchema).data;
+    const res = await serverFetch.post(`/auth/login`, {
+      body: JSON.stringify(validatedPayload),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const result = await res.json();
+    console.log(result);
+    const accessToken = result?.data?.accessToken;
+    const refreshToken = result?.data?.refreshToken;
+    if (!accessToken) {
+      throw new Error(result.message === "Requested resource not found"?"User is invalid or  email is invalid":result.message);
+    }
+    if (!refreshToken) {
+      throw new Error(
+        result.message === "Requested resource not found"
+          ? "Something went wrong"
+          : result.message
+      );
+    }
+    await setCookie("accessToken", accessToken, {
+      httpOnly: true,
+      secure: true,
+      maxAge: 1000 * 60 * 60,
+      sameSite: "none",
+    });
+    await setCookie("refreshToken", refreshToken, {
+      httpOnly: true,
+      secure: true,
+      maxAge: 1000 * 60 * 60 * 24 * 30,
+      path: "/",
+      sameSite: "none",
+    });
+
+    const verifiedToken: JwtPayload | string = verifiedAccessToken(result.payload);
+
+    if (typeof verifiedToken === "string") {
+      throw new Error("You are not verified");
+    }
+    const userRole: any = verifiedToken.role;
+
+    if (!result.success) {
+      throw new Error(result.message || "Login failed");
+    }
+    //    if (redirectTo) {
+    //      const redirectPath = redirectTo.toString();
+    //      if (validRedirectForRole(redirectPath, userRole)) {
+    //        redirect(`${redirectPath}?loggedIn=true`);
+    //      } else {
+    //        redirect(`${getDefaultDashboardRoute(userRole)}?loggedIn=true`);
+    //      }
+    //    } else {
+    //      redirect(`${getDefaultDashboardRoute(UserRole)}?loggedIn=true`);
+    //    }
+  } catch (err: any) {
+    console.log(err);
+    if (err?.digest?.startsWith("NEXT_REDIRECT")) {
+      throw err;
+    }
+    return {
+      success: false,
+      message: `${
+        process.env.NODE_ENV === "development" ? err.message : "Login failed"
+      }`,
+    };
+  }
+};
+
+export default loginUser;

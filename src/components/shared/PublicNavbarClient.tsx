@@ -4,8 +4,11 @@ import { usePathname, useSearchParams } from "next/navigation";
 import { Button } from "../ui/button";
 import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "../ui/sheet";
 import { Menu, ShieldAlert } from "lucide-react";
+import LogoutButton from "../modules/auth/LogoutButton";
 
-const PublicNavbar = () => {
+
+const PublicNavbarClient = ({ accessToken }: { accessToken: string | null }) => {
+  console.log(accessToken)
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const hash = searchParams?.get("hash") || ""; // hash from URL
@@ -25,7 +28,7 @@ const PublicNavbar = () => {
       return pathname === itemHref;
     }
   };
-
+  
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/90 backdrop-blur">
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
@@ -50,6 +53,15 @@ const PublicNavbar = () => {
               {item.label}
             </Link>
           ))}
+          <div className="hidden md:flex items-center space-x-2">
+            {accessToken ? (
+              <LogoutButton></LogoutButton>
+            ) : (
+              <Link href="/login" className="text-lg font-medium">
+                <Button>Login</Button>
+              </Link>
+            )}
+          </div>
         </nav>
 
         {/* Mobile Menu */}
@@ -78,6 +90,12 @@ const PublicNavbar = () => {
                     {item.label}
                   </Link>
                 ))}
+                <div className="border-t pt-4 flex flex-col space-y-4">
+                  <div className="flex justify-center"></div>
+                  <Link href="/login" className="text-lg font-medium">
+                    <Button>Login</Button>
+                  </Link>
+                </div>
               </nav>
             </SheetContent>
           </Sheet>
@@ -87,4 +105,4 @@ const PublicNavbar = () => {
   );
 };
 
-export default PublicNavbar;
+export default PublicNavbarClient;
