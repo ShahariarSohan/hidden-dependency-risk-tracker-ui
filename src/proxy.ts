@@ -19,15 +19,21 @@ export async function proxy(request: NextRequest) {
 
   // const accessToken = request.cookies.get("accessToken")?.value || null;
   const accessToken = (await getCookie("accessToken")) || null;
+  
+
   let userRole: UserRole | null = null;
   if (accessToken) {
-    const verifiedToken: JwtPayload | string = verifiedAccessToken(accessToken);
+    const verifiedToken: JwtPayload | string = await verifiedAccessToken(
+      accessToken
+    );
+    console.log("from proxy",verifiedToken)
     if (!verifiedToken.success) {
       await deleteCookie("accessToken");
       await deleteCookie("refreshToken");
       return NextResponse.redirect(new URL("/login", request.url));
     }
-    userRole = verifiedToken.role;
+    userRole = verifiedToken?.payload.role;
+    console.log("userRole from proxy",userRole);
   }
 
   const routeOwner = getRouteOwner(pathname);

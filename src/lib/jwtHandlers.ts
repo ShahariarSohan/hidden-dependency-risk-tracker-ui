@@ -1,9 +1,14 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+
+"use server"
+import { TokenResult } from "@/types/token.interface";
 import jwt, { JwtPayload } from "jsonwebtoken";
 
-const verifiedAccessToken = async (token: string) => {
+const verifiedAccessToken = async (token: string):Promise<TokenResult> => {
+  const secret = process.env.ACCESS_TOKEN_SECRET 
+  console.log("from jwtHandlers",secret,token)
   try {
-    const verifiedPayload = jwt.verify(
+    const verifiedPayload = await  jwt.verify(
       token,
       process.env.ACCESS_TOKEN_SECRET as string
     ) as JwtPayload;
