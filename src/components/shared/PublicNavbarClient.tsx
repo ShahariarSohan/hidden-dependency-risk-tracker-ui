@@ -7,7 +7,7 @@ import { Menu, ShieldAlert } from "lucide-react";
 import LogoutButton from "../modules/auth/LogoutButton";
 
 
-const PublicNavbarClient = ({ accessToken }: { accessToken: string | null }) => {
+const PublicNavbarClient = ({ accessToken,dashboardPath }: { accessToken: string | null,dashboardPath:string }) => {
   
   const pathname = usePathname();
   const searchParams = useSearchParams();
@@ -15,10 +15,7 @@ const PublicNavbarClient = ({ accessToken }: { accessToken: string | null }) => 
  
   const navItems = [
     { href: "/", label: "Home" },
-    {
-      href: `${accessToken ? "/dashboard" : ""}`,
-      label: `${accessToken ? "Dashboard" : ""}`,
-    },
+    { href: dashboardPath, label: accessToken ? "Dashboard" : "" },
     { href: "/#how-it-works", label: "How It Works" },
     { href: "/#use-cases", label: "Use Cases" },
     { href: "/learn-more", label: "About Us" },

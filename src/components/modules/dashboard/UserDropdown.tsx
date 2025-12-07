@@ -19,7 +19,7 @@ export default function UserDropdown({ userInfo }: IUserDropDownProps) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="outline" size="icon" className="rounded-full">
+        <Button variant="outline"  size="icon" className="bg-primary rounded-full text-white">
           <span className="text-sm font-semibold">
             {userInfo?userInfo?.name?.charAt(0).toUpperCase():"U"}
             

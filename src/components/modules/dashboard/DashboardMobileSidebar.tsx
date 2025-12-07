@@ -6,6 +6,7 @@ import { Separator } from "@/components/ui/separator";
 import { getIconComponent } from "@/lib/icon-mapper";
 import { cn } from "@/lib/utils";
 import { IDashboardContentProps } from "@/types/dashboard.interface";
+import { ShieldAlert } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -20,8 +21,9 @@ export default function DashboardMobileSidebar({
     <div className="md:hidden h-full w-64 flex flex-col border-r bg-card overflow-y-auto">
       {/* Logo/Brand */}
       <div className="flex h-16 items-center border-b px-6 shrink-0">
-        <Link href={dashboardHome} className="flex items-center space-x-2">
-          <span className="text-xl font-bold text-primary">PH Healthcare</span>
+        <Link href="/" className="flex items-center space-x-2">
+          <ShieldAlert className="h-6 w-6 text-red-500" />
+          <span className="text-lg font-bold tracking-tight">HDRT</span>
         </Link>
       </div>
 
