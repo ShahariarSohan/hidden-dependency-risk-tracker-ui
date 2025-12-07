@@ -5,6 +5,7 @@ import { useEffect, useState, useTransition } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import useDebounce from "@/hooks/useDebounce";
 
+
 interface ISearchFilterProps {
   placeholder?: string;
   paramName?: string;

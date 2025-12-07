@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-"use server"
+"use server";
 import {
   getDefaultDashboardRoute,
   validRedirectForRole,
@@ -15,7 +15,6 @@ import { JwtPayload } from "jsonwebtoken";
 
 import { redirect } from "next/navigation";
 
-
 const loginUser = async (_currentState: any, formData: any) => {
   try {
     const redirectTo = formData.get("redirect") || null;
@@ -24,7 +23,7 @@ const loginUser = async (_currentState: any, formData: any) => {
       email: formData.get("email"),
       password: formData.get("password"),
     };
-    console.log(payload)
+    console.log(payload);
     if (zodValidator(payload, loginValidationSchema).success === false) {
       return zodValidator(payload, loginValidationSchema);
     }
@@ -39,7 +38,7 @@ const loginUser = async (_currentState: any, formData: any) => {
     console.log(result);
     const accessToken = result?.data?.accessToken;
     const refreshToken = result?.data?.refreshToken;
-    console.log("from login user",accessToken,refreshToken)
+    console.log("from login user", accessToken, refreshToken);
     if (!accessToken) {
       throw new Error("Something went wrong");
     }
@@ -49,7 +48,7 @@ const loginUser = async (_currentState: any, formData: any) => {
     await setCookie("accessToken", accessToken, {
       httpOnly: true,
       secure: true,
-      maxAge: 1000 * 60 * 60,
+      maxAge: 1000 * 60 * 60 * 24,
       sameSite: "none",
     });
     await setCookie("refreshToken", refreshToken, {
@@ -59,13 +58,15 @@ const loginUser = async (_currentState: any, formData: any) => {
       sameSite: "none",
     });
 
-    const verifiedToken:JwtPayload|string =await verifiedAccessToken(accessToken);
-     console.log("verifiedToken from loginUser",verifiedToken)
+    const verifiedToken: JwtPayload | string = await verifiedAccessToken(
+      accessToken
+    );
+    console.log("verifiedToken from loginUser", verifiedToken);
     if (!verifiedToken.success) {
       throw new Error("You are not verified");
     }
     const userRole: any = verifiedToken?.payload.role;
-    console.log("userRole from login user",userRole)
+    console.log("userRole from login user", userRole);
 
     if (!result.success) {
       throw new Error(result.message || "Login failed");

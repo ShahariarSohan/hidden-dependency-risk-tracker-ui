@@ -10,7 +10,7 @@ const EmployeesFilter = () => {
     <div className="space-y-3">
       {/* Row 1: Search and Refresh */}
       <div className="flex items-center gap-3">
-        <SearchFilter paramName="searchTerm" placeholder="Search admins..." />
+        <SearchFilter paramName="searchTerm" placeholder="Search employees..." />
         <RefreshButton />
       </div>
 

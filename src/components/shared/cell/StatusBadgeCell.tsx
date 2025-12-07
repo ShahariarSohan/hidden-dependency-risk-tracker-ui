@@ -1,21 +1,25 @@
 "use client";
 
 import { Badge } from "@/components/ui/badge";
+import { ActiveStatus } from "@/types/status.interface";
 
 interface IStatusBadgeCellProps {
-  isDeleted?: boolean;
+  isActive?: ActiveStatus;
   activeText?: string;
-  deletedText?: string;
+  inActiveText?: string;
 }
 
 export default function StatusBadgeCell({
-  isDeleted,
+  isActive,
   activeText = "Active",
-  deletedText = "Deleted",
+  inActiveText = "Inactive",
 }: IStatusBadgeCellProps) {
   return (
-    <Badge variant={isDeleted ? "destructive" : "default"}>
-      {isDeleted ? deletedText : activeText}
+    <Badge
+      // variant={isActive === ActiveStatus.ACTIVE ? "default" : "destructive"}
+      className={isActive === ActiveStatus.ACTIVE ? "bg-green-600" : "bg-red-500"}
+    >
+      {isActive === ActiveStatus.ACTIVE ? activeText : inActiveText}
     </Badge>
   );
 }

@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Badge } from "@/components/ui/badge";
-import { ActiveStatus } from "@/types/activeStatus.interface";
-
+import { ActiveStatus } from "@/types/status.interface";
 
 const getStatusBadge = (status: ActiveStatus) => {
   const statusConfig: Record<
@@ -17,7 +16,7 @@ const getStatusBadge = (status: ActiveStatus) => {
       variant: "secondary",
       label: "In Progress",
     },
-  
+
     [ActiveStatus.DELETED]: {
       variant: "destructive",
       label: "Canceled",

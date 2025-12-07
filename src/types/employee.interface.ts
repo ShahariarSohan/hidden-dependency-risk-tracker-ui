@@ -1,9 +1,12 @@
+import { ActiveStatus, TaskStatus } from "./status.interface";
+
 export interface IEmployee {
   id: string;
   name: string;
   email: string;
   contactNumber: string;
   teamId?: string;
+  status?: ActiveStatus;
   isDeleted?: boolean;
   createdAt: Date;
   updatedAt: Date;
@@ -11,7 +14,7 @@ export interface IEmployee {
     id: string;
     title: string;
     priority: number;
-    status: "PENDING" | "IN_PROGRESS" | "COMPLETED" | "CANCELLED";
+    status: TaskStatus
     systemId: string;
   }[];
 }

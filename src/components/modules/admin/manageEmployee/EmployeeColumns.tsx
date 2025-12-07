@@ -30,7 +30,7 @@ export const employeeColumns: IColumn<IEmployee>[] = [
   },
   {
     header: "Status",
-    accessor: (employee) => <StatusBadgeCell isDeleted={employee.isDeleted} />,
+    accessor: (employee) => <StatusBadgeCell isActive={employee.status} />,
   },
   {
     header: "Joined",

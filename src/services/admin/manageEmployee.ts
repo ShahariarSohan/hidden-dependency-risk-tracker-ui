@@ -3,13 +3,11 @@
 
 import { serverFetch } from "@/lib/serverFetch";
 import zodValidator from "@/lib/zodValidator";
+import { ActiveStatus } from "@/types/status.interface";
+import { updateStatusZodSchema } from "@/zod/status.validation";
 
 import { createEmployeeZodSchema } from "@/zod/user.validation";
 
-/**
- * CREATE ADMIN
- * API: POST /user/create-admin
- */
 export async function createEmployee(_prevState: any, formData: FormData) {
   // Build validation payload
   const validationPayload = {
@@ -21,7 +19,7 @@ export async function createEmployee(_prevState: any, formData: FormData) {
 
   const validatedPayload = zodValidator(
     validationPayload,
-   createEmployeeZodSchema
+    createEmployeeZodSchema
   );
 
   if (!validatedPayload.success && validatedPayload.errors) {
@@ -46,7 +44,7 @@ export async function createEmployee(_prevState: any, formData: FormData) {
     email: validatedPayload.data.email,
     contactNumber: validatedPayload.data.contactNumber,
   };
-  
+  console.log(backendPayload);
   try {
     const response = await serverFetch.post("/user/employee", {
       body: JSON.stringify(backendPayload),
@@ -70,10 +68,6 @@ export async function createEmployee(_prevState: any, formData: FormData) {
   }
 }
 
-/**
- * GET ALL ADMINS
- * API: GET /admin?queryParams
- */
 export async function getEmployees(queryString?: string) {
   try {
     const response = await serverFetch.get(
@@ -94,10 +88,62 @@ export async function getEmployees(queryString?: string) {
   }
 }
 
-/**
- * GET ADMIN BY ID
- * API: GET /admin/:id
- */
+export async function updateEmployeeStatus(
+  id: string,
+  status: ActiveStatus.ACTIVE | ActiveStatus.INACTIVE
+) {
+  // Build validation payload
+  const validationPayload = {
+    status,
+  };
+
+  const validatedPayload = zodValidator(
+    validationPayload,
+    updateStatusZodSchema
+  );
+
+  if (!validatedPayload.success && validatedPayload.errors) {
+    return {
+      success: validatedPayload.success,
+      message: "Validation failed",
+      formData: validationPayload,
+      errors: validatedPayload.errors,
+    };
+  }
+
+  if (!validatedPayload.data) {
+    return {
+      success: false,
+      message: "Validation failed",
+      formData: validationPayload,
+    };
+  }
+  const backendPayload = {
+    status: validatedPayload.data.status,
+  };
+  console.log(backendPayload);
+  try {
+    const response = await serverFetch.patch(`/employee/status/${id}`, {
+      body: JSON.stringify(backendPayload),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    const result = await response.json();
+    return result;
+  } catch (error: any) {
+    console.error("Create Employee error:", error);
+    return {
+      success: false,
+      message:
+        process.env.NODE_ENV === "development"
+          ? error.message
+          : "Failed to update status",
+      formData: validationPayload,
+    };
+  }
+}
 export async function getEmployeeById(id: string) {
   try {
     const response = await serverFetch.get(`/employee/${id}`);
@@ -116,10 +162,6 @@ export async function getEmployeeById(id: string) {
   }
 }
 
-/**
- * UPDATE ADMIN
- * API: PATCH /admin/:id
- */
 // export async function updateEmployee(
 //   id: string,
 //   _prevState: any,
@@ -185,10 +227,6 @@ export async function getEmployeeById(id: string) {
 //   }
 // }
 
-/**
- * SOFT DELETE ADMIN
- * API: DELETE /admin/soft/:id
- */
 export async function softDeleteEmployee(id: string) {
   try {
     const response = await serverFetch.delete(`/employee/soft-delete/${id}`);
@@ -207,10 +245,6 @@ export async function softDeleteEmployee(id: string) {
   }
 }
 
-/**
- * HARD DELETE ADMIN
- * API: DELETE /admin/:id
- */
 // export async function deleteEmployee(id: string) {
 //   try {
 //     const response = await serverFetch.delete(`/employee/${id}`);
