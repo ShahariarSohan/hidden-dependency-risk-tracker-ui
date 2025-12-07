@@ -4,6 +4,7 @@ export interface IManager {
   email: string;
   contactNumber: string;
   assignedTasks?: string[];
+  isDeleted?: boolean;
   createdAt: Date;
   updatedAt: Date;
 }

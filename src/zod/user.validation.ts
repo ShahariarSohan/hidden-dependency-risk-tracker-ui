@@ -9,3 +9,21 @@ export const updateMyProfileZodSchema = z.object({
     .regex(/^\d{11}$/, "Contact number must be exactly 11 digits")
     .optional(),
 });
+
+export const createEmployeeZodSchema = z.object({
+  name: z.string().min(3, "Name must be minimum 3 characters"),
+  email: z.email("Invalid email format"),
+
+  contactNumber: z
+    .string({
+      error: "Contact number is required!",
+    })
+    .regex(/^\d{11}$/, "Contact number must be exactly 11 digits"),
+  password: z
+    .string({
+      error: "Password is required",
+    })
+    .min(6, "Password must be at least 6 characters")
+    .regex(/\d/, "Password must contain at least one number"),
+  teamId: z.string().optional(), // matches your Prisma model
+});

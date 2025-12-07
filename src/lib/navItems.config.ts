@@ -99,17 +99,17 @@ export const adminNavItems: INavSection[] = [
     title: "User Management",
     items: [
       {
-        title: "Managers",
-        href: "/admin/dashboard/managers",
-        icon: "UserCog",
-        roles: [UserRole.ADMIN],
-      },
-      {
         title: "Employees",
         href: "/admin/dashboard/employees",
         icon: "Users",
         roles: [UserRole.ADMIN],
       },
+      {
+        title: "Managers",
+        href: "/admin/dashboard/managers",
+        icon: "UserCog",
+        roles: [UserRole.ADMIN],
+      }
     ],
   },
   {
@@ -119,7 +119,7 @@ export const adminNavItems: INavSection[] = [
         title: "My Profile",
         href: "/my-profile",
         icon: "User",
-        roles: [UserRole.ADMIN,UserRole.MANAGER,UserRole.EMPLOYEE],
+        roles: [UserRole.ADMIN, UserRole.MANAGER, UserRole.EMPLOYEE],
       },
     ],
   },

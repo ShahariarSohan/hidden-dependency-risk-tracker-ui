@@ -4,6 +4,7 @@ export interface IEmployee {
   email: string;
   contactNumber: string;
   teamId?: string;
+  isDeleted?: boolean;
   createdAt: Date;
   updatedAt: Date;
   tasks?: {
