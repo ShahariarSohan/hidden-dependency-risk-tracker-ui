@@ -1,6 +1,7 @@
 import { IAdmin } from "./admin.interface";
 import { IEmployee } from "./employee.interface";
 import { IManager } from "./manager.interface";
+import { TaskStatus } from "./status.interface";
 import { ISystem } from "./system.interface";
 
 export interface ITask {
@@ -8,7 +9,7 @@ export interface ITask {
   title: string;
   description?: string | null;
 
-  status: "PENDING" | "IN_PROGRESS" | "COMPLETED";
+  status: TaskStatus;
   priority: number;
 
   // Foreign keys

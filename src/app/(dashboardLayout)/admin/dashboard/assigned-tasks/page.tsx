@@ -1,7 +1,22 @@
-export default function MyAssignedTasks() {
+import AdminAssignedTaskHeader from "@/components/modules/admin/adminAssignedTask/AdminAssignedTaskHeader";
+import AdminAssignedTaskTable from "@/components/modules/admin/adminAssignedTask/AdminAssignTaskTable";
+import { getMyAssignedTaskById } from "@/services/admin/manageTask";
+
+
+const AdminAssignedTaskPage = async () => {
+  // Fetch assigned tasks
+  const assignedTasksResult = await getMyAssignedTaskById();
+  console.log(assignedTasksResult)
+
   return (
-    <div>
-      <h1>This is MyAssignedTasks component</h1>
+    <div className="space-y-6">
+      {/* Header */}
+      <AdminAssignedTaskHeader />
+
+      {/* Assigned Tasks Table */}
+      <AdminAssignedTaskTable assignedTasks={assignedTasksResult?.data || []} />
     </div>
   );
-}
+};
+
+export default AdminAssignedTaskPage;
