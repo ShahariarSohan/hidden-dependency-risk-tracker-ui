@@ -1,9 +1,11 @@
-import AdminAssignedTaskHeader from "@/components/modules/admin/adminAssignedTask/AdminAssignedTaskHeader";
-import AdminAssignedTaskTable from "@/components/modules/admin/adminAssignedTask/AdminAssignTaskTable";
-import { getMyAssignedTaskById } from "@/services/admin/manageTask";
+
+import AssignedTaskHeader from "@/components/modules/assignedTask/AssignedTaskHeader";
+import AssignedTaskTable from "@/components/modules/assignedTask/AssignTaskTable";
+import { getMyAssignedTaskById } from "@/services/assignedTasks/assignedTask";
 
 
-const AdminAssignedTaskPage = async () => {
+
+const AssignedTaskPage = async () => {
   // Fetch assigned tasks
   const assignedTasksResult = await getMyAssignedTaskById();
   console.log(assignedTasksResult)
@@ -11,12 +13,12 @@ const AdminAssignedTaskPage = async () => {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <AdminAssignedTaskHeader />
+      <AssignedTaskHeader />
 
       {/* Assigned Tasks Table */}
-      <AdminAssignedTaskTable assignedTasks={assignedTasksResult?.data || []} />
+      <AssignedTaskTable assignedTasks={assignedTasksResult?.data || []} />
     </div>
   );
 };
 
-export default AdminAssignedTaskPage;
+export default AssignedTaskPage;

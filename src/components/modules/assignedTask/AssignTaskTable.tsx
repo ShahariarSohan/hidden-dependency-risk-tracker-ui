@@ -5,8 +5,9 @@ import ManagementTable from "@/components/shared/ManagementTable";
 
 
 
-import { adminAssignedTaskColumns } from "./AdminAssignedTaskColumns";
+
 import { ITask } from "@/types/task.interface";
+import { assignedTaskColumns } from "./AssignedTaskColumns";
 
 
 
@@ -15,12 +16,12 @@ interface TeamsTableProps {
   assignedTasks: ITask[];
 }
 
-const AdminAssignedTaskTable = ({ assignedTasks }: TeamsTableProps) => {
+const AssignedTaskTable = ({ assignedTasks }: TeamsTableProps) => {
   return (
     <>
       <ManagementTable
         data={assignedTasks}
-        columns={adminAssignedTaskColumns}
+        columns={assignedTaskColumns}
         getRowKey={(assignedTask) => assignedTask.id!}
         emptyMessage="No teams found"
       />
@@ -28,4 +29,4 @@ const AdminAssignedTaskTable = ({ assignedTasks }: TeamsTableProps) => {
   );
 };
 
-export default AdminAssignedTaskTable;
+export default AssignedTaskTable;

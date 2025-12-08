@@ -8,7 +8,7 @@ import { ITask } from "@/types/task.interface";
 
 import TaskStatusCell from "@/components/shared/cell/TaskStatusCell";
 
-export const adminAssignedTaskColumns: IColumn<ITask>[] = [
+export const assignedTaskColumns: IColumn<ITask>[] = [
   {
     header: "AssignedTask",
     accessor: (task) => <EntityInfoCell name={task.title} />,

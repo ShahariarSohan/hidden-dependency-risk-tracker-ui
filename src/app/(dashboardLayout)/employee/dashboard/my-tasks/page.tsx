@@ -1,7 +1,24 @@
-export default function MyTasksPage() {
+
+import AssignedTaskHeader from "@/components/modules/assignedTask/AssignedTaskHeader";
+import AssignedTaskTable from "@/components/modules/assignedTask/AssignTaskTable";
+import { getMyAssignedTaskById } from "@/services/assignedTasks/assignedTask";
+
+
+
+const MyTaskPage = async () => {
+  // Fetch assigned tasks
+  const assignedTasksResult = await getMyAssignedTaskById();
+  console.log(assignedTasksResult)
+
   return (
-    <div>
-      <h1>This is MyTasksPage component</h1>
+    <div className="space-y-6">
+      {/* Header */}
+      <AssignedTaskHeader />
+
+      {/* Assigned Tasks Table */}
+      <AssignedTaskTable assignedTasks={assignedTasksResult?.data || []} />
     </div>
   );
-}
+};
+
+export default MyTaskPage;
