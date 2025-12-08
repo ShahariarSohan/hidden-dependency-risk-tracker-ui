@@ -1,5 +1,5 @@
 import InfoRow from "@/components/shared/InfoRow";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Avatar, AvatarFallback} from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import {
   Dialog,
@@ -10,6 +10,7 @@ import {
 import { Separator } from "@/components/ui/separator";
 import { formatDateTime, getInitials } from "@/lib/formatters";
 import { IEmployee } from "@/types/employee.interface";
+import { ActiveStatus } from "@/types/status.interface";
 import { Calendar, Mail, Phone, Shield, User } from "lucide-react";
 
 interface IEmployeeViewDialogProps {
@@ -51,10 +52,16 @@ const EmployeeViewDetailDialog = ({
 
               <div className="flex flex-wrap gap-2 justify-center sm:justify-start">
                 <Badge
-                  variant={employee?.isDeleted ? "destructive" : "default"}
+                  variant={
+                    employee?.status === ActiveStatus.INACTIVE
+                      ? "destructive"
+                      : "default"
+                  }
                   className="text-sm"
                 >
-                  {employee?.isDeleted ? "Inactive" : "Active"}
+                  {employee?.status === ActiveStatus.INACTIVE
+                    ? "Inactive"
+                    : "Active"}
                 </Badge>
 
                 <Badge variant="secondary" className="text-sm">
@@ -128,7 +135,11 @@ const EmployeeViewDetailDialog = ({
                   <User className="h-4 w-4 mt-1 text-muted-foreground" />
                   <InfoRow
                     label="Account Status"
-                    value={employee?.isDeleted ? "Inactive" : "Active"}
+                    value={
+                      employee?.status === ActiveStatus.INACTIVE
+                        ? "Inactive"
+                        : "Active"
+                    }
                   />
                 </div>
               </div>

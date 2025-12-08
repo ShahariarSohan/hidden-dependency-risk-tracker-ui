@@ -1,8 +1,28 @@
-
-"use client"
-import { ArrowDown, ArrowUp, ArrowUpDown, Edit, Eye, Loader2, MoreHorizontal, Trash } from "lucide-react";
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "../ui/table";
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "../ui/dropdown-menu";
+"use client";
+import {
+  ArrowDown,
+  ArrowUp,
+  ArrowUpDown,
+  Edit,
+  Eye,
+  Loader2,
+  MoreHorizontal,
+  Trash,
+} from "lucide-react";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "../ui/table";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "../ui/dropdown-menu";
 import { Button } from "../ui/button";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useTransition } from "react";
@@ -38,38 +58,38 @@ export default function ManagementTable<T>({
 }: IManagementTableProps<T>) {
   const hasActions = onView || onEdit || onDelete;
   const router = useRouter();
-  const searchParams = useSearchParams()
-  const [, startTransition] = useTransition()
+  const searchParams = useSearchParams();
+  const [, startTransition] = useTransition();
   const currentSortBy = searchParams.get("sortBy") || "";
   const currentSortOrder = searchParams.get("sortOrder") || "desc";
-  
+
   const handleSort = (sortKey: string) => {
-    const params = new URLSearchParams(searchParams.toString())
+    const params = new URLSearchParams(searchParams.toString());
     if (currentSortBy === sortKey) {
       const newOrder = currentSortOrder === "asc" ? "desc" : "asc";
-      params.set("sortOrder",newOrder)
+      params.set("sortOrder", newOrder);
     } else {
-      params.set("sortBy", sortKey)
-      params.set("sortOrder","desc")
+      params.set("sortBy", sortKey);
+      params.set("sortOrder", "desc");
     }
     params.set("page", "1");
     startTransition(() => {
-      router.push(`?${params.toString()}`)
-    })
-  }
-const getSortIcon = (sortKey?: string) => {
-  if (!sortKey) return null;
+      router.push(`?${params.toString()}`);
+    });
+  };
+  const getSortIcon = (sortKey?: string) => {
+    if (!sortKey) return null;
 
-  if (currentSortBy !== sortKey) {
-    return <ArrowUpDown className="ml-2 h-4 w-4 text-muted-foreground" />;
-  }
+    if (currentSortBy !== sortKey) {
+      return <ArrowUpDown className="ml-2 h-4 w-4 text-muted-foreground" />;
+    }
 
-  return currentSortOrder === "asc" ? (
-    <ArrowUp className="ml-2 h-4 w-4" />
-  ) : (
-    <ArrowDown className="ml-2 h-4 w-4" />
-  );
-};
+    return currentSortOrder === "asc" ? (
+      <ArrowUp className="ml-2 h-4 w-4" />
+    ) : (
+      <ArrowDown className="ml-2 h-4 w-4" />
+    );
+  };
   return (
     <>
       <div className="rounded-lg border relative">
@@ -116,57 +136,57 @@ const getSortIcon = (sortKey?: string) => {
                 </TableCell>
               </TableRow>
             ) : (
-             data?.map((item) => (
-  <TableRow key={getRowKey(item)}>
-    {columns.map((col, idx) => (
-      <TableCell key={idx} className={col.className}>
-        {typeof col.accessor === "function"
-          ? col.accessor(item)
-          : String(item[col.accessor])}
-      </TableCell>
-    ))}
+              data?.map((item) => (
+                <TableRow key={getRowKey(item)}>
+                  {columns.map((col, idx) => (
+                    <TableCell key={idx} className={col.className}>
+                      {typeof col.accessor === "function"
+                        ? col.accessor(item)
+                        : String(item[col.accessor])}
+                    </TableCell>
+                  ))}
 
-    {(hasActions || customActions) && (
-      <TableCell className="flex items-center gap-2">
-        {/* NEW: Custom actions (ex: status toggle) */}
-        {customActions && customActions(item)}
+                  {(hasActions || customActions) && (
+                    <TableCell className="flex items-center gap-2">
+                      {/* NEW: Custom actions (ex: status toggle) */}
+                      {customActions && customActions(item)}
 
-        {/* Existing dropdown */}
-        {hasActions && (
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant="ghost" size="icon">
-                <MoreHorizontal className="h-4 w-4" />
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end">
-              {onView && (
-                <DropdownMenuItem onClick={() => onView(item)}>
-                  <Eye className="mr-2 h-4 w-4" />
-                  View
-                </DropdownMenuItem>
-              )}
-              {onEdit && (
-                <DropdownMenuItem onClick={() => onEdit(item)}>
-                  <Edit className="mr-2 h-4 w-4" />
-                  Edit
-                </DropdownMenuItem>
-              )}
-              {onDelete && (
-                <DropdownMenuItem
-                  onClick={() => onDelete(item)}
-                  className="text-destructive"
-                >
-                  <Trash className="mr-2 h-4 w-4" />
-                  Delete
-                </DropdownMenuItem>
-              )}
-            </DropdownMenuContent>
-          </DropdownMenu>
-        )}
-      </TableCell>
-    )}
-  </TableRow>
+                      {/* Existing dropdown */}
+                      {hasActions && (
+                        <DropdownMenu>
+                          <DropdownMenuTrigger asChild>
+                            <Button variant="ghost" size="icon">
+                              <MoreHorizontal className="h-4 w-4" />
+                            </Button>
+                          </DropdownMenuTrigger>
+                          <DropdownMenuContent align="end">
+                            {onView && (
+                              <DropdownMenuItem onClick={() => onView(item)}>
+                                <Eye className="mr-2 h-4 w-4" />
+                                View
+                              </DropdownMenuItem>
+                            )}
+                            {onEdit && (
+                              <DropdownMenuItem onClick={() => onEdit(item)}>
+                                <Edit className="mr-2 h-4 w-4" />
+                                Edit
+                              </DropdownMenuItem>
+                            )}
+                            {onDelete && (
+                              <DropdownMenuItem
+                                onClick={() => onDelete(item)}
+                                className="text-destructive"
+                              >
+                                <Trash className="mr-2 h-4 w-4" />
+                                Delete
+                              </DropdownMenuItem>
+                            )}
+                          </DropdownMenuContent>
+                        </DropdownMenu>
+                      )}
+                    </TableCell>
+                  )}
+                </TableRow>
               ))
             )}
           </TableBody>

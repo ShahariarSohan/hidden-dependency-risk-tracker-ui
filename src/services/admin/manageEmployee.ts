@@ -133,7 +133,7 @@ export async function updateEmployeeStatus(
     const result = await response.json();
     return result;
   } catch (error: any) {
-    console.error("Create Employee error:", error);
+    console.error("update employee status error:", error);
     return {
       success: false,
       message:
