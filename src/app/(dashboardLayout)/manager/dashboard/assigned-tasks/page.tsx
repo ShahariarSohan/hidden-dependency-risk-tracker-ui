@@ -1,5 +1,5 @@
-import AssignedTaskHeader from "@/components/modules/assignedTask/AssignedTaskHeader";
-import AssignedTaskTable from "@/components/modules/assignedTask/AssignTaskTable";
+import AssignedTaskHeader from "@/components/modules/assignedTasks/AssignedTaskHeader";
+import AssignedTaskTable from "@/components/modules/assignedTasks/AssignTaskTable";
 import { getMyAssignedTaskById } from "@/services/assignedTasks/assignedTask";
 
 export default async function MyAssignedTasks() {

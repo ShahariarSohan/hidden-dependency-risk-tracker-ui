@@ -1,12 +1,10 @@
-
-
 import ManagementPageHeader from "@/components/shared/ManagementPageHeader";
 import getUserInfo from "@/services/auth/getUserInfo";
 import { IUserInfo } from "@/types/user.interface";
 import { UserRole } from "@/types/userRole.interface";
 
-const AssignedTaskHeader =async () => {
-  const userInfo = await getUserInfo() as IUserInfo;
+const AssignedTaskHeader = async () => {
+  const userInfo = (await getUserInfo()) as IUserInfo;
   return (
     <ManagementPageHeader
       title={
