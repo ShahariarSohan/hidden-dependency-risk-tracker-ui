@@ -144,18 +144,12 @@ export const managerNavItems: INavSection[] = [
     ],
   },
   {
-    title: "Team Dashboard",
+    title: " Tasks & Team",
     items: [
       {
         title: "Assigned Tasks",
         href: "/manager/dashboard/assigned-tasks",
         icon: "ClipboardCheck",
-        roles: [UserRole.MANAGER],
-      },
-      {
-        title: "Add Employee",
-        href: "/manager/dashboard/add-employee-to-team",
-        icon: "UserPlus",
         roles: [UserRole.MANAGER],
       },
       {
