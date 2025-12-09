@@ -160,7 +160,7 @@ export const managerNavItems: INavSection[] = [
       },
       {
         title: "My Team",
-        href: "/manager/dashboard/teams",
+        href: "/manager/dashboard/my-team",
         icon: "Users",
         roles: [UserRole.MANAGER],
       },

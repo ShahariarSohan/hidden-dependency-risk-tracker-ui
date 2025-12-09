@@ -23,7 +23,7 @@ const AssignedTaskTable = ({ assignedTasks }: TeamsTableProps) => {
         data={assignedTasks}
         columns={assignedTaskColumns}
         getRowKey={(assignedTask) => assignedTask.id!}
-        emptyMessage="No teams found"
+        emptyMessage="No tasks found"
       />
     </>
   );
