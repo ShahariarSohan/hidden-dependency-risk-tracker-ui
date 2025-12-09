@@ -2,8 +2,10 @@
 
 import DeleteConfirmationDialog from "@/components/shared/DeleteConfirmationDialog";
 import ManagementTable from "@/components/shared/ManagementTable";
-import { softDeleteEmployee, updateEmployeeStatus } from "@/services/admin/manageEmployee";
-
+import {
+  softDeleteEmployee,
+  updateEmployeeStatus,
+} from "@/services/admin/manageEmployee";
 
 import { IEmployee } from "@/types/employee.interface";
 import { useRouter } from "next/navigation";
@@ -14,7 +16,6 @@ import EmployeeFormDialog from "./EmployeeFormDialog";
 import EmployeeViewDetailDialog from "./EmployeeViewDetailDialog";
 import StatusToggleCell from "@/components/shared/cell/StatusToggleCell";
 import { ActiveStatus } from "@/types/status.interface";
-
 
 interface EmployeesTableProps {
   employees: IEmployee[];
@@ -44,12 +45,10 @@ const EmployeesTable = ({ employees }: EmployeesTableProps) => {
     setViewingEmployee(employee);
   };
 
-  
-
   const handleDelete = (employee: IEmployee) => {
     setDeletingEmployee(employee);
   };
-
+  const handleEdit = (employee: IEmployee) => setEditingEmployee(employee);
   const confirmDelete = async () => {
     if (!deletingEmployee) return;
 
@@ -65,15 +64,19 @@ const EmployeesTable = ({ employees }: EmployeesTableProps) => {
       toast.error(result.message || "Failed to delete employee");
     }
   };
-  const handleStatusChange = async(id:string, status:ActiveStatus.ACTIVE|ActiveStatus.INACTIVE) => {
-    return await updateEmployeeStatus(id,status)
-  }
+  const handleStatusChange = async (
+    id: string,
+    status: ActiveStatus.ACTIVE | ActiveStatus.INACTIVE
+  ) => {
+    return await updateEmployeeStatus(id, status);
+  };
   return (
     <>
       <ManagementTable
         data={employees}
         columns={employeeColumns}
         onView={handleView}
+        onEdit={handleEdit}
         onDelete={handleDelete}
         customActions={(row) => (
           <StatusToggleCell
@@ -92,8 +95,10 @@ const EmployeesTable = ({ employees }: EmployeesTableProps) => {
         open={!!editingEmployee}
         onClose={() => setEditingEmployee(null)}
         onSuccess={() => {
+          setEditingEmployee(null);
           handleRefresh();
         }}
+        employee={editingEmployee!}
       />
 
       {/* View Employee Detail Dialog */}

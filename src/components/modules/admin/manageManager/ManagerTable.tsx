@@ -5,18 +5,17 @@ import ManagementTable from "@/components/shared/ManagementTable";
 import {
   softDeleteManager,
   updateManagerStatus,
-} from "@/services/admin/manageManager"; // <-- Manager service
+} from "@/services/admin/manageManager";
 
-import { IManager } from "@/types/manager.interface"; // <-- Manager type
+import { IManager } from "@/types/manager.interface";
 import { useRouter } from "next/navigation";
 import { useState, useTransition } from "react";
 import { toast } from "sonner";
-import { managerColumns } from "./ManagerColumns"; // <-- Manager columns
-import ManagerFormDialog from "./ManagerFormDialog"; // <-- Manager form
-// <-- Manager view
+import { managerColumns } from "./ManagerColumns";
+import ManagerFormDialog from "./ManagerFormDialog";
+import ManagerViewDetailDialog from "./ManagerViewDetailDialog";
 import StatusToggleCell from "@/components/shared/cell/StatusToggleCell";
 import { ActiveStatus } from "@/types/status.interface";
-import ManagerViewDetailDialog from "./ManagerViewDetailDialog";
 
 interface ManagersTableProps {
   managers: IManager[];
@@ -25,6 +24,7 @@ interface ManagersTableProps {
 const ManagersTable = ({ managers }: ManagersTableProps) => {
   const router = useRouter();
   const [, startTransition] = useTransition();
+
   const [deletingManager, setDeletingManager] = useState<IManager | null>(null);
   const [viewingManager, setViewingManager] = useState<IManager | null>(null);
   const [editingManager, setEditingManager] = useState<IManager | null>(null);
@@ -36,13 +36,9 @@ const ManagersTable = ({ managers }: ManagersTableProps) => {
     });
   };
 
-  const handleView = (manager: IManager) => {
-    setViewingManager(manager);
-  };
-
-  const handleDelete = (manager: IManager) => {
-    setDeletingManager(manager);
-  };
+  const handleView = (manager: IManager) => setViewingManager(manager);
+  const handleDelete = (manager: IManager) => setDeletingManager(manager);
+  const handleEdit = (manager: IManager) => setEditingManager(manager);
 
   const confirmDelete = async () => {
     if (!deletingManager) return;
@@ -73,6 +69,7 @@ const ManagersTable = ({ managers }: ManagersTableProps) => {
         data={managers}
         columns={managerColumns}
         onView={handleView}
+        onEdit={handleEdit} // <-- added edit
         onDelete={handleDelete}
         customActions={(row) => (
           <StatusToggleCell
@@ -90,7 +87,11 @@ const ManagersTable = ({ managers }: ManagersTableProps) => {
       <ManagerFormDialog
         open={!!editingManager}
         onClose={() => setEditingManager(null)}
-        onSuccess={handleRefresh}
+        onSuccess={() => {
+          setEditingManager(null);
+          handleRefresh();
+        }}
+        manager={editingManager!} // <-- pass manager for edit mode
       />
 
       {/* View Manager Detail Dialog */}

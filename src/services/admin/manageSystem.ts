@@ -171,7 +171,7 @@ export async function updateSystem(
        
 
   const validation = zodValidator(payload, updateSystemSchema);
-console.log(validation);
+
   if (!validation.success && validation.errors) {
     return {
       success: false,

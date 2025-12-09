@@ -5,6 +5,7 @@ import { serverFetch } from "@/lib/serverFetch";
 import zodValidator from "@/lib/zodValidator";
 import { ActiveStatus } from "@/types/status.interface";
 import { updateStatusZodSchema } from "@/zod/status.validation";
+import { addToTeamSchema } from "@/zod/team.validation";
 import { createManagerZodSchema } from "@/zod/user.validation";
 
 
@@ -173,6 +174,50 @@ export async function softDeleteManager(id: string) {
           ? error.message
           : "Something went wrong"
       }`,
+    };
+  }
+}
+
+export async function addManagerToTeam(
+  managerId: string,
+  _prevState: any,
+  formData: FormData
+) {
+   const payload = { teamId: formData.get("teamId") as string };
+   if (payload.teamId === "") {
+     return { message: "Must select at least a team" };
+   }
+  // Validate payload
+  const validation = zodValidator(payload, addToTeamSchema);
+
+  if (!validation.success || !validation.data) {
+    return {
+      success: false,
+      message: "Validation failed",
+      errors: validation.errors,
+      formData: payload,
+    };
+  }
+
+  try {
+    const response = await serverFetch.patch(
+      `/manager/add-to-team/${managerId}`,
+      {
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(validation.data),
+      }
+    );
+
+    return await response.json();
+  } catch (error: any) {
+    console.error("Add manager to team error:", error);
+    return {
+      success: false,
+      message:
+        process.env.NODE_ENV === "development"
+          ? error.message
+          : "Failed to add manager to team",
+      formData: payload,
     };
   }
 }

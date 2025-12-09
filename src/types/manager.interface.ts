@@ -4,6 +4,7 @@ export interface IManager {
   id: string;
   name: string;
   email: string;
+  teamId?: string;
   contactNumber: string;
   status?: ActiveStatus;
   assignedTasks?: string[];

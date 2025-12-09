@@ -5,6 +5,7 @@ import { serverFetch } from "@/lib/serverFetch";
 import zodValidator from "@/lib/zodValidator";
 import { ActiveStatus } from "@/types/status.interface";
 import { updateStatusZodSchema } from "@/zod/status.validation";
+import { addToTeamSchema } from "@/zod/team.validation";
 
 import { createEmployeeZodSchema } from "@/zod/user.validation";
 
@@ -245,20 +246,64 @@ export async function softDeleteEmployee(id: string) {
   }
 }
 
-// export async function deleteEmployee(id: string) {
-//   try {
-//     const response = await serverFetch.delete(`/employee/${id}`);
-//     const result = await response.json();
-//     return result;
-//   } catch (error: any) {
-//     console.log(error);
-//     return {
-//       success: false,
-//       message: `${
-//         process.env.NODE_ENV === "development"
-//           ? error.message
-//           : "Something went wrong"
-//       }`,
-//     };
-//   }
-// }
+export async function deleteEmployee(id: string) {
+  try {
+    const response = await serverFetch.delete(`/employee/${id}`);
+    const result = await response.json();
+    return result;
+  } catch (error: any) {
+    console.log(error);
+    return {
+      success: false,
+      message: `${
+        process.env.NODE_ENV === "development"
+          ? error.message
+          : "Something went wrong"
+      }`,
+    };
+  }
+}
+
+export async function addEmployeeToTeam(
+  employeeId: string,
+  _prevState: any,
+  formData: FormData
+) {
+  const payload = { teamId: formData.get("teamId") as string };
+  if (payload.teamId === "") {
+    return{message:"Must select at least a team"}
+  }
+  // Validate payload
+  const validation = zodValidator(payload, addToTeamSchema);
+
+  if (!validation.success || !validation.data) {
+    return {
+      success: false,
+      message: "Validation failed",
+      errors: validation.errors,
+      formData: payload,
+    };
+  }
+
+  try {
+    const response = await serverFetch.patch(
+      `/employee/add-to-team/${employeeId}`,
+      {
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(validation.data),
+      }
+    );
+
+    return await response.json();
+  } catch (error: any) {
+    console.error("Add employee to team error:", error);
+    return {
+      success: false,
+      message:
+        process.env.NODE_ENV === "development"
+          ? error.message
+          : "Failed to add employee to team",
+      formData: payload,
+    };
+  }
+}
