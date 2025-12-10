@@ -80,6 +80,21 @@ export async function getTasks(queryString?: string) {
     };
   }
 }
+export async function getMyTasks(queryString?: string) {
+  try {
+    const response = await serverFetch.get(`/task/my-tasks${queryString ? `?${queryString}` : ""}`);
+    return await response.json();
+  } catch (error: any) {
+    console.error("Get tasks error:", error);
+    return {
+      success: false,
+      message:
+        process.env.NODE_ENV === "development"
+          ? error.message
+          : "Something went wrong",
+    };
+  }
+}
 
 /**
  * GET TASK BY ID

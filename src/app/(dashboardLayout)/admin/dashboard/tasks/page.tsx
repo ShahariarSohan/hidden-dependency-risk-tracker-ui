@@ -1,11 +1,11 @@
-import TaskFilters from "@/components/modules/admin/manageTask/TaskFilters";
-import TaskManagementHeader from "@/components/modules/admin/manageTask/TaskManagementHeader";
-import TasksTable from "@/components/modules/admin/manageTask/TaskTable";
+import TaskFilters from "@/components/modules/manageTask/TaskFilters";
+import TaskManagementHeader from "@/components/modules/manageTask/TaskManagementHeader";
+import TasksTable from "@/components/modules/manageTask/TaskTable";
 import TablePagination from "@/components/shared/TablePagination";
 import { TableSkeleton } from "@/components/shared/TableSkeleton";
 import { queryStringFormatter } from "@/lib/formatters";
 
-import { getTasks } from "@/services/admin/manageTask";
+import { getTasks } from "@/services/manageTasks/manageTask";
 
 import { Suspense } from "react";
 

@@ -3,15 +3,15 @@
 import DeleteConfirmationDialog from "@/components/shared/DeleteConfirmationDialog";
 import ManagementTable from "@/components/shared/ManagementTable";
 
-import { softDeleteTask, updateTaskStatus } from "@/services/admin/manageTask"; // make sure to create these
+import {
+  softDeleteTask,
+  updateTaskStatus,
+} from "@/services/manageTasks/manageTask"; // make sure to create these
 
 import { ITask } from "@/types/task.interface";
 import { useRouter } from "next/navigation";
 import { useState, useTransition } from "react";
 import { toast } from "sonner";
-
-
-
 
 import TaskStatusButton from "@/components/shared/TaskStatusButton";
 import { TaskStatus } from "@/types/status.interface";
