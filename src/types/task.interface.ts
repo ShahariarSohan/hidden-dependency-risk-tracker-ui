@@ -23,7 +23,8 @@ export interface ITask {
   system?: ISystem;
   assignedByManager?: IManager | null;
   assignedByAdmin?: IAdmin | null;
-
+   
+  dueDate: string;
   completedAt?: string | null;
   createdAt: string;
   updatedAt: string;

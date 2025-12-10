@@ -9,5 +9,8 @@ interface IDateCellProps {
 }
 
 export default function DateCell({ date }: IDateCellProps) {
+  if (date === "N/A") {
+   return <span className="text-sm">{date}</span>;
+  }
   return <span className="text-sm">{formatDateTime(date!)}</span>;
 }

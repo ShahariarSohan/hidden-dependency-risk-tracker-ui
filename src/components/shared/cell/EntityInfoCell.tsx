@@ -8,6 +8,9 @@ interface IEntityInfoCellProps {
 }
 
 export default function EntityInfoCell({ name }: IEntityInfoCellProps) {
+  if (name === "N/A") {
+    return <p className="font-medium">{name}</p>
+  }
   return (
     <div className="flex items-center gap-3">
       <Avatar>

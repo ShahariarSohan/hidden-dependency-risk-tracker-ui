@@ -65,7 +65,7 @@ export default function Hero({
               <div className="flex gap-4">
                 {buttons.primary && (
                   <Link href="/learn-more">
-                    <Button className="h-[63px] gap-3 rounded-xl bg-[#002F5C] px-8 text-[15px] text-white hover:bg-[#001F3B]">
+                    <Button className=" gap-3 py-5  bg-[#002F5C]  text-[15px] text-white hover:bg-[#001F3B]">
                       {buttons.primary.text}
                     </Button>
                   </Link>

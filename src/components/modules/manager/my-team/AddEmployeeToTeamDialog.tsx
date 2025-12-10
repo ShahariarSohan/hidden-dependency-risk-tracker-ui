@@ -1,7 +1,8 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import { useActionState, useEffect, useRef, useState } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+
 import { toast } from "sonner";
 import { Loader2, User, X } from "lucide-react";
 
@@ -39,9 +40,8 @@ const AddEmployeeToTeamDialog = ({
   employeeId,
 }: IAddEmployeeToTeamDialogProps) => {
   const formRef = useRef<HTMLFormElement>(null);
-  const debounceTimer = useRef<NodeJS.Timeout>();
-  const router = useRouter();
-  const searchParams = useSearchParams();
+  const debounceTimer = useRef<NodeJS.Timeout>(null);
+  
 
   const [employees, setEmployees] = useState<IEmployee[]>([]);
   const [selectedEmployee, setSelectedEmployee] = useState<IEmployee | null>(
@@ -90,7 +90,7 @@ const AddEmployeeToTeamDialog = ({
         } else {
           setEmployees([]);
         }
-      } catch (error) {
+      } catch (error:any) {
         toast.error("Failed to load employees");
         setEmployees([]);
       } finally {
