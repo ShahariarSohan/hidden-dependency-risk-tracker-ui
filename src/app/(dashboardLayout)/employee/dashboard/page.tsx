@@ -2,13 +2,13 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { AlertTriangle, ShieldCheck, ShieldHalf, ListTodo } from "lucide-react";
-import { getEmployeeRisk } from "@/services/riskAnalysis/riskAnalysis";
+import { getEmployeeOwnRisk } from "@/services/riskAnalysis/riskAnalysis";
 import RiskTaskTable from "@/components/shared/RiskTaskTable";
 import { RiskLevel } from "@/types/risk.interface";
 
 
 export default async function EmployeeRiskPage() {
-  const result = await getEmployeeRisk();
+  const result = await getEmployeeOwnRisk();
 
   if (!result?.success) {
     return <div className="p-10 text-red-500">{result.message}</div>;

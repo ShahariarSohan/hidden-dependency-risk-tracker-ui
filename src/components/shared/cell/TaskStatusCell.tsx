@@ -15,7 +15,6 @@ export default function TaskStatusCell({
   pendingText = "Pending",
   inProgressText = "In Progress",
   completedText = "Completed",
-  cancelledText = "Cancelled",
 }: ITaskStatusCellProps) {
   // Map each status to a color & label
   const statusConfig: Record<TaskStatus, { label: string; className: string }> =
@@ -31,10 +30,6 @@ export default function TaskStatusCell({
       [TaskStatus.COMPLETED]: {
         label: completedText,
         className: "bg-green-600 text-white",
-      },
-      [TaskStatus.CANCELLED]: {
-        label: cancelledText,
-        className: "bg-red-600 text-white",
       },
     };
 
