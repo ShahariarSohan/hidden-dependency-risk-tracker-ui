@@ -30,7 +30,7 @@ export async function getRiskDashboard() {
     const data = await response.json()
     return data;
   } catch (error: any) {
-    console.error("Error fetching employee risk:", error);
+    console.error("Error fetching  risk dashboard:", error);
 
     return {
       success: false,
@@ -41,15 +41,15 @@ export async function getRiskDashboard() {
     };
   }
 }
-export async function getTeamRisk() {
+export async function getManagerTeamRisk() {
   try {
-    const response = await serverFetch.get(`/riskAnalysis/my-team`);
+    const response = await serverFetch.get(`/riskAnalysis/my-team-risk`);
 
     // Backend returns JSON
     const data = await response.json()
     return data;
   } catch (error: any) {
-    console.error("Error fetching employee risk:", error);
+    console.error("Error fetching manager team risk:", error);
 
     return {
       success: false,

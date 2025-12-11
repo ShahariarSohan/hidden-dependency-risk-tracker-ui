@@ -129,15 +129,15 @@ export const managerNavItems: INavSection[] = [
   {
     title: "Risk Analysis",
     items: [
-      {
-        title: "Team Risks",
-        href: "/manager/dashboard/team-risk",
-        icon: "Users",
-        roles: [UserRole.MANAGER],
-      },
+      // {
+      //   title: "Team Risks",
+      //   href: "/manager/dashboard/team-risk",
+      //   icon: "Users",
+      //   roles: [UserRole.MANAGER],
+      // },
       {
         title: "Employee Risks",
-        href: "/manager/dashboard/employee-risk",
+        href: "/manager/dashboard/team-employee-risk",
         icon: "UserCheck",
         roles: [UserRole.MANAGER],
       },

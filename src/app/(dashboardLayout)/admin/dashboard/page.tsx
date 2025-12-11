@@ -1,10 +1,10 @@
 import React from "react";
 import { Users, Shield, Server, AlertTriangle, Activity } from "lucide-react";
 import { getRiskDashboard } from "@/services/riskAnalysis/riskAnalysis";
-import RiskStatCard from "@/components/modules/riskAnalysis/RiskStatCard";
-import RiskBarChart from "@/components/modules/riskAnalysis/RiskBarChart";
-import RiskTable from "@/components/modules/riskAnalysis/RiskTable";
-import SummaryFooter from "@/components/modules/riskAnalysis/SummaryFooter";
+import RiskStatCard from "@/components/modules/adminRiskAnalysis/RiskStatCard";
+import RiskBarChart from "@/components/modules/adminRiskAnalysis/RiskBarChart";
+import RiskTable from "@/components/modules/adminRiskAnalysis/RiskTable";
+import SummaryFooter from "@/components/modules/adminRiskAnalysis/SummaryFooter";
 
 
 export default async function AdminRiskDashboardPage() {
@@ -31,7 +31,7 @@ export default async function AdminRiskDashboardPage() {
       </div>
 
       {/* Stats Overview Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <RiskStatCard
           title="High-Risk Employees"
           value={data.summary.highRiskEmployeeCount}
