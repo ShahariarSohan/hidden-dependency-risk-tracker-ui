@@ -22,6 +22,25 @@ export async function getEmployeeOwnRisk() {
     };
   }
 }
+export async function getRiskDashboard() {
+  try {
+    const response = await serverFetch.get(`/riskAnalysis`);
+
+    // Backend returns JSON
+    const data = await response.json()
+    return data;
+  } catch (error: any) {
+    console.error("Error fetching employee risk:", error);
+
+    return {
+      success: false,
+      message:
+        process.env.NODE_ENV === "development"
+          ? error.message
+          : "Something went wrong",
+    };
+  }
+}
 export async function getTeamRisk() {
   try {
     const response = await serverFetch.get(`/riskAnalysis/my-team`);
