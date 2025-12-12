@@ -4,7 +4,7 @@ import { FieldDescription } from "../ui/field";
 
 interface IInputFieldErrorProps {
   field: string;
-  state?: any;
+  state?: IInputErrorState|null;
 }
 
 export default function InputFieldError({

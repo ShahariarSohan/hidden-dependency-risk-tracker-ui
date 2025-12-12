@@ -4,6 +4,8 @@ import {
   getDefaultDashboardRoute,
   validRedirectForRole,
 } from "@/lib/auth.util";
+import { IInputErrorState } from "@/lib/getInputFieldError";
+
 
 import verifiedAccessToken from "@/lib/jwtHandlers";
 
@@ -16,7 +18,7 @@ import { JwtPayload } from "jsonwebtoken";
 
 import { redirect } from "next/navigation";
 
-const loginUser = async (_currentState: any, formData: FormData) => {
+const loginUser = async (_currentState: any, formData: FormData):Promise<IInputErrorState|any> => {
   try {
     const redirectTo = formData.get("redirect") || null;
 
