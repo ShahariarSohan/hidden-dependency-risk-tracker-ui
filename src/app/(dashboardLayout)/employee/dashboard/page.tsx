@@ -5,14 +5,15 @@ import { AlertTriangle, ShieldCheck, ShieldHalf, ListTodo } from "lucide-react";
 import { getEmployeeOwnRisk } from "@/services/riskAnalysis/riskAnalysis";
 import RiskTaskTable from "@/components/shared/RiskTaskTable";
 import { RiskLevel } from "@/types/risk.interface";
+import NoDataFound from "@/components/shared/NoDataFound";
 
 
 export default async function EmployeeRiskPage() {
   const result = await getEmployeeOwnRisk();
-
-  if (!result?.success) {
-    return <div className="p-10 text-red-500">{result.message}</div>;
-  }
+ console.log(result)
+ if(!result?.data){
+       return <NoDataFound></NoDataFound>
+      }
 
   const data = result.data;
 

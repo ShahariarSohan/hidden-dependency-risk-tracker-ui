@@ -2,6 +2,7 @@
 import EmployeeRiskFilters from "@/components/modules/admin/empolyeesRisk/EmployeeRiskFilter";
 import EmployeeRiskHeader from "@/components/modules/admin/empolyeesRisk/EmployeeRiskHeader";
 import EmployeeRiskTable from "@/components/modules/admin/empolyeesRisk/EmployeeRiskTable";
+import NoDataFound from "@/components/shared/NoDataFound";
 import TablePagination from "@/components/shared/TablePagination";
 import { TableSkeleton } from "@/components/shared/TableSkeleton";
 import { queryStringFormatter } from "@/lib/formatters";
@@ -19,7 +20,9 @@ const AdminEmployeeRiskPage = async ({
   const queryString = queryStringFormatter(searchParamsObj);
 
   const result = await getEmployeesRisk(queryString);
-
+   if(!result?.data){
+      return <NoDataFound></NoDataFound>
+     }
   const totalPages = Math.ceil(
     (result?.meta?.total || 1) / (result?.meta?.limit || 1)
   );

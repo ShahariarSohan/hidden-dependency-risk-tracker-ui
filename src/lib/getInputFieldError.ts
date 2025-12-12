@@ -1,12 +1,32 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
+
+
+export interface IInputErrorItem  {
+  field: string;
+  message: string;
+};
+
 export interface IInputErrorState {
-  success: boolean;
-  errors: {
-    field: string;
-    message: string;
-  }[];
-}
+      success: boolean;
+      errors: IInputErrorItem[];
+      message?: string;
+    }
+  // | {
+  //     success: true;
+  //     data: Record<string, unknown>;
+  //     message?: string;
+  //   };
+
+
+
+// export interface IInputErrorState {
+//   success: boolean;
+//   errors: {
+//     field: string;
+//     message: string;
+//   }[];
+// }
 
 export const getInputFieldError = (
   fieldName: string,

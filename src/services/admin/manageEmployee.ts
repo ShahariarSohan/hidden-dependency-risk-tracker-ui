@@ -26,7 +26,7 @@ export async function createEmployee(_prevState: any, formData: FormData) {
   if (!validatedPayload.success && validatedPayload.errors) {
     return {
       success: validatedPayload.success,
-      message: "Validation failed",
+      message: "Provide required or valid input",
       formData: validationPayload,
       errors: validatedPayload.errors,
     };
@@ -35,7 +35,7 @@ export async function createEmployee(_prevState: any, formData: FormData) {
   if (!validatedPayload.data) {
     return {
       success: false,
-      message: "Validation failed",
+      message: "Provide required or valid input",
       formData: validationPayload,
     };
   }
@@ -106,7 +106,7 @@ export async function updateEmployeeStatus(
   if (!validatedPayload.success && validatedPayload.errors) {
     return {
       success: validatedPayload.success,
-      message: "Validation failed",
+      message: "Provide required or valid input",
       formData: validationPayload,
       errors: validatedPayload.errors,
     };
@@ -115,7 +115,7 @@ export async function updateEmployeeStatus(
   if (!validatedPayload.data) {
     return {
       success: false,
-      message: "Validation failed",
+      message: "Provide required or valid input",
       formData: validationPayload,
     };
   }
@@ -183,7 +183,7 @@ export async function getEmployeeById(id: string) {
 //             }));
 //             return {
 //                 success: false,
-//                 message: "Validation failed",
+//                 message: "Provide required or valid input",
 //                 formData: validationPayload,
 //                 errors,
 //             };
@@ -194,7 +194,7 @@ export async function getEmployeeById(id: string) {
 //   if (!validation.success && validation.errors) {
 //     return {
 //       success: validation.success,
-//       message: "Validation failed",
+//       message: "Provide required or valid input",
 //       formData: validationPayload,
 //       errors: validation.errors,
 //     };
@@ -202,7 +202,7 @@ export async function getEmployeeById(id: string) {
 //   if (!validation.data) {
 //     return {
 //       success: false,
-//       message: "Validation failed",
+//       message: "Provide required or valid input",
 //       formData: validationPayload,
 //     };
 //   }
@@ -270,16 +270,16 @@ export async function addEmployeeToTeam(
   formData: FormData
 ) {
   const payload = { teamId: formData.get("teamId") as string };
-  if (payload.teamId === "") {
-    return{message:"Must select at least a team"}
-  }
+  // if (payload.teamId === "") {
+  //   return { message: "Must select at least a team" };
+  // }
   // Validate payload
   const validation = zodValidator(payload, addToTeamSchema);
 
   if (!validation.success || !validation.data) {
     return {
       success: false,
-      message: "Validation failed",
+      message: "Provide required or valid input",
       errors: validation.errors,
       formData: payload,
     };

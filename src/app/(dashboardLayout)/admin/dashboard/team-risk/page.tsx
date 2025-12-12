@@ -1,13 +1,11 @@
-
-
 import TeamRiskFilters from "@/components/modules/admin/teamsRisk/TeamRiskFilter";
 import TeamRiskHeader from "@/components/modules/admin/teamsRisk/TeamRiskHeader";
 import TeamRiskTable from "@/components/modules/admin/teamsRisk/TeamRiskTable";
+import NoDataFound from "@/components/shared/NoDataFound";
 import TablePagination from "@/components/shared/TablePagination";
 import { TableSkeleton } from "@/components/shared/TableSkeleton";
 import { queryStringFormatter } from "@/lib/formatters";
 import { getTeamsRisk } from "@/services/riskAnalysis/riskAnalysis";
-
 
 import { Suspense } from "react";
 
@@ -20,7 +18,9 @@ const AdminTeamRiskPage = async ({
   const queryString = queryStringFormatter(searchParamsObj);
 
   const result = await getTeamsRisk(queryString);
-
+  if (!result?.data) {
+    return <NoDataFound></NoDataFound>;
+  }
   const totalPages = Math.ceil(
     (result?.meta?.total || 1) / (result?.meta?.limit || 1)
   );

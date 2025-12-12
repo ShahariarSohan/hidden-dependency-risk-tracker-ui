@@ -127,7 +127,7 @@ export const adminNavItems: INavSection[] = [
 
 export const managerNavItems: INavSection[] = [
   {
-    title: "Risk Analysis",
+    title: "Team Risk Analysis",
     items: [
       // {
       //   title: "Team Risks",

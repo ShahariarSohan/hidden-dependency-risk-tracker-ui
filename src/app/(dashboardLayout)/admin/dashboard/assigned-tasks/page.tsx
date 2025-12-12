@@ -5,7 +5,6 @@ import { getMyAssignedTaskById } from "@/services/assignedTasks/assignedTask";
 const AssignedTaskPage = async () => {
   // Fetch assigned tasks
   const assignedTasksResult = await getMyAssignedTaskById();
-  console.log(assignedTasksResult);
 
   return (
     <div className="space-y-6">

@@ -4,6 +4,7 @@ import {
   getDefaultDashboardRoute,
   validRedirectForRole,
 } from "@/lib/auth.util";
+
 import verifiedAccessToken from "@/lib/jwtHandlers";
 
 import { serverFetch } from "@/lib/serverFetch";
@@ -15,7 +16,7 @@ import { JwtPayload } from "jsonwebtoken";
 
 import { redirect } from "next/navigation";
 
-const loginUser = async (_currentState: any, formData: any) => {
+const loginUser = async (_currentState: any, formData: FormData) => {
   try {
     const redirectTo = formData.get("redirect") || null;
 
@@ -40,10 +41,26 @@ const loginUser = async (_currentState: any, formData: any) => {
     const refreshToken = result?.data?.refreshToken;
     console.log("from login user", accessToken, refreshToken);
     if (!accessToken) {
-      throw new Error("Something went wrong");
+      throw new Error(
+        `${
+          result.message === "Incorrect Password!"
+            ? "Incorrect Password!"
+            : result.message === "Invalid user or email"
+            ? "Invalid user or email"
+            : "Something went wrong"
+        }`
+      );
     }
     if (!refreshToken) {
-      throw new Error("Something went wrong");
+      throw new Error(
+        `${
+          result.message === "Incorrect Password!"
+            ? "Incorrect Password!"
+            : result.message === "Invalid user or email"
+            ? "Invalid user or email"
+            : "Something went wrong"
+        }`
+      );
     }
     await setCookie("accessToken", accessToken, {
       httpOnly: true,

@@ -20,7 +20,7 @@ export const createTaskZodSchema = z.object({
     .optional(),
 
   // Assigned to Employee
-  employeeId: z.string(),
+  employeeId: z.string("You must have to select an employee"),
 
   // Assigned by Manager (optional)
   assignedByManagerId: z.string().optional(),
@@ -29,7 +29,7 @@ export const createTaskZodSchema = z.object({
   assignedByAdminId: z.string().optional(),
 
   // Related system
-  systemId: z.string(),
+  systemId: z.string("You must have to select an system"),
 });
 
 export const updateTaskStatusZodSchema = z.object({

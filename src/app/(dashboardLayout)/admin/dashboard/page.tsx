@@ -5,12 +5,15 @@ import RiskStatCard from "@/components/modules/adminRiskAnalysis/RiskStatCard";
 import RiskBarChart from "@/components/modules/adminRiskAnalysis/RiskBarChart";
 import RiskTable from "@/components/modules/adminRiskAnalysis/RiskTable";
 import SummaryFooter from "@/components/modules/adminRiskAnalysis/SummaryFooter";
+import NoDataFound from "@/components/shared/NoDataFound";
 
 
 export default async function AdminRiskDashboardPage() {
   const result = await getRiskDashboard();
   const data=result.data
-
+   if(!data){
+    return <NoDataFound></NoDataFound>
+   }
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 p-6 space-y-8">
       {/* Header Section */}

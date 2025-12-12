@@ -7,7 +7,6 @@ import { ActiveStatus } from "@/types/status.interface";
 import { updateStatusZodSchema } from "@/zod/status.validation";
 import { teamZodSchema } from "@/zod/team.validation";
 
-
 /**
  * CREATE TEAM
  * API: POST /team
@@ -23,7 +22,7 @@ export async function createTeam(_prevState: any, formData: FormData) {
   if (!validatedPayload.success && validatedPayload.errors) {
     return {
       success: validatedPayload.success,
-      message: "Validation failed",
+      message: "Provide required or valid input",
       formData: validationPayload,
       errors: validatedPayload.errors,
     };
@@ -32,7 +31,7 @@ export async function createTeam(_prevState: any, formData: FormData) {
   if (!validatedPayload.data) {
     return {
       success: false,
-      message: "Validation failed",
+      message: "Provide required or valid input",
       formData: validationPayload,
     };
   }
@@ -97,7 +96,7 @@ export async function updateTeamStatus(
   if (!validatedPayload.success && validatedPayload.errors) {
     return {
       success: validatedPayload.success,
-      message: "Validation failed",
+      message: "Provide required or valid input",
       formData: validationPayload,
       errors: validatedPayload.errors,
     };
@@ -106,7 +105,7 @@ export async function updateTeamStatus(
   if (!validatedPayload.data) {
     return {
       success: false,
-      message: "Validation failed",
+      message: "Provide required or valid input",
       formData: validationPayload,
     };
   }
@@ -144,7 +143,7 @@ export async function getTeamById(id: string) {
   try {
     const response = await serverFetch.get(`/team/${id}`);
     const result = await response.json();
-    
+
     return result;
   } catch (error: any) {
     console.log(error);
@@ -171,14 +170,14 @@ export async function updateTeamByName(
   const validationPayload: any = {
     name: formData.get("name") as string,
   };
-  console.log(validationPayload)
+  console.log(validationPayload);
 
   const validation = zodValidator(validationPayload, teamZodSchema);
-  console.log("validation data",validation.data)
+  console.log("validation data", validation.data);
   if (!validation.success && validation.errors) {
     return {
       success: validation.success,
-      message: "Validation failed",
+      message: "Provide required or valid input",
       formData: validationPayload,
       errors: validation.errors,
     };
@@ -187,11 +186,10 @@ export async function updateTeamByName(
   if (!validation.data) {
     return {
       success: false,
-      message: "Validation failed",
+      message: "Provide required or valid input",
       formData: validationPayload,
     };
   }
- 
 
   try {
     const response = await serverFetch.patch(`/team/name/${id}`, {

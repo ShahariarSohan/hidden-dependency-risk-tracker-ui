@@ -3,6 +3,7 @@
 import SystemRiskFilters from "@/components/modules/admin/systemsRisk/SystemRiskFilter";
 import SystemRiskHeader from "@/components/modules/admin/systemsRisk/SystemRiskHeader";
 import SystemRiskTable from "@/components/modules/admin/systemsRisk/SystemRiskTable";
+import NoDataFound from "@/components/shared/NoDataFound";
 import TablePagination from "@/components/shared/TablePagination";
 import { TableSkeleton } from "@/components/shared/TableSkeleton";
 import { queryStringFormatter } from "@/lib/formatters";
@@ -20,7 +21,9 @@ const AdminSystemRiskPage = async ({
   const queryString = queryStringFormatter(searchParamsObj);
 
   const result = await getSystemsRisk(queryString);
-
+  if(!result?.data){
+        return <NoDataFound></NoDataFound>
+       }
   const totalPages = Math.ceil(
     (result?.meta?.total || 1) / (result?.meta?.limit || 1)
   );

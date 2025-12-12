@@ -5,10 +5,11 @@ import { serverFetch } from "@/lib/serverFetch";
 import zodValidator from "@/lib/zodValidator";
 import { ActiveStatus } from "@/types/status.interface";
 
-
-
 import { updateStatusZodSchema } from "@/zod/status.validation";
-import { createSystemZodSchema, updateSystemSchema } from "@/zod/system.validation";
+import {
+  createSystemZodSchema,
+  updateSystemSchema,
+} from "@/zod/system.validation";
 
 /**
  * CREATE SYSTEM
@@ -29,16 +30,16 @@ export async function createSystem(_prevState: any, formData: FormData) {
   if (!validation.success && validation.errors) {
     return {
       success: false,
-      message: "Validation failed",
+      message: "Provide required or valid input",
       errors: validation.errors,
       formData: payload,
     };
   }
-  
+
   if (!validation.data) {
     return {
       success: false,
-      message: "Validation failed",
+      message: "Provide required or valid input",
       formData: payload,
     };
   }
@@ -100,7 +101,7 @@ export async function updateSystemStatus(
   if (!validation.success && validation.errors) {
     return {
       success: false,
-      message: "Validation failed",
+      message: "Provide required or valid input",
       errors: validation.errors,
       formData: payload,
     };
@@ -154,39 +155,38 @@ export async function updateSystem(
   id: string,
   _prevState: any,
   formData: FormData
-) {    
-    let payload;
-    if (formData.get("teamId") === "") {
-         payload = {
-          name: formData.get("name") as string,
-          description: formData.get("description") as string,
-        };
-    } else {
-        payload = {
-          name: formData.get("name") as string,
-          description: formData.get("description") as string,
-          teamId: formData.get("teamId") as string
-        };
-    }
-       
+) {
+  let payload;
+  if (formData.get("teamId") === "") {
+    payload = {
+      name: formData.get("name") as string,
+      description: formData.get("description") as string,
+    };
+  } else {
+    payload = {
+      name: formData.get("name") as string,
+      description: formData.get("description") as string,
+      teamId: formData.get("teamId") as string,
+    };
+  }
 
   const validation = zodValidator(payload, updateSystemSchema);
 
   if (!validation.success && validation.errors) {
     return {
       success: false,
-      message: "Validation failed",
+      message: "Provide required or valid input",
       errors: validation.errors,
       formData: payload,
     };
   }
-if (!validation.data) {
-  return {
-    success: false,
-    message: "Validation failed",
-    formData: payload,
-  };
-}
+  if (!validation.data) {
+    return {
+      success: false,
+      message: "Provide required or valid input",
+      formData: payload,
+    };
+  }
 
   try {
     const response = await serverFetch.patch(`/system/${id}`, {

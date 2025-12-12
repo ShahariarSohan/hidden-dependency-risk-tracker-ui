@@ -8,8 +8,6 @@ import { updateStatusZodSchema } from "@/zod/status.validation";
 import { addToTeamSchema } from "@/zod/team.validation";
 import { createManagerZodSchema } from "@/zod/user.validation";
 
-
-
 // CREATE MANAGER
 export async function createManager(_prevState: any, formData: FormData) {
   const validationPayload = {
@@ -27,7 +25,7 @@ export async function createManager(_prevState: any, formData: FormData) {
   if (!validatedPayload.success && validatedPayload.errors) {
     return {
       success: validatedPayload.success,
-      message: "Validation failed",
+      message: "Provide required or valid input",
       formData: validationPayload,
       errors: validatedPayload.errors,
     };
@@ -36,7 +34,7 @@ export async function createManager(_prevState: any, formData: FormData) {
   if (!validatedPayload.data) {
     return {
       success: false,
-      message: "Validation failed",
+      message: "Provide required or valid input",
       formData: validationPayload,
     };
   }
@@ -102,7 +100,7 @@ export async function updateManagerStatus(id: string, status: ActiveStatus) {
   if (!validatedPayload.success && validatedPayload.errors) {
     return {
       success: validatedPayload.success,
-      message: "Validation failed",
+      message: "Provide required or valid input",
       formData: validationPayload,
       errors: validatedPayload.errors,
     };
@@ -111,7 +109,7 @@ export async function updateManagerStatus(id: string, status: ActiveStatus) {
   if (!validatedPayload.data) {
     return {
       success: false,
-      message: "Validation failed",
+      message: "Provide required or valid input",
       formData: validationPayload,
     };
   }
@@ -183,17 +181,17 @@ export async function addManagerToTeam(
   _prevState: any,
   formData: FormData
 ) {
-   const payload = { teamId: formData.get("teamId") as string };
-   if (payload.teamId === "") {
-     return { message: "Must select at least a team" };
-   }
+  const payload = { teamId: formData.get("teamId") as string };
+  // if (payload.teamId === "") {
+  //   return { message: "Must select at least a team" };
+  // }
   // Validate payload
   const validation = zodValidator(payload, addToTeamSchema);
 
   if (!validation.success || !validation.data) {
     return {
       success: false,
-      message: "Validation failed",
+      message: "Provide required or valid input",
       errors: validation.errors,
       formData: payload,
     };

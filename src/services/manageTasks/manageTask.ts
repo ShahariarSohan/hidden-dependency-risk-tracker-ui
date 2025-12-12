@@ -1,11 +1,14 @@
-
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use server";
 
 import { serverFetch } from "@/lib/serverFetch";
 import zodValidator from "@/lib/zodValidator";
 import { TaskStatus } from "@/types/status.interface";
-import { createTaskZodSchema, updateTaskStatusZodSchema, updateTaskZodSchema } from "@/zod/task.validation";
+import {
+  createTaskZodSchema,
+  updateTaskStatusZodSchema,
+  updateTaskZodSchema,
+} from "@/zod/task.validation";
 
 /**
  * CREATE TASK
@@ -19,7 +22,9 @@ export async function createTask(_prevState: any, formData: FormData) {
     priority: formData.get("priority") ? Number(formData.get("priority")) : 1,
     employeeId: formData.get("employeeId") as string,
     systemId: formData.get("systemId") as string,
-    dueDate: formData.get("dueDate") ? String(formData.get("dueDate")) : undefined,
+    dueDate: formData.get("dueDate")
+      ? String(formData.get("dueDate"))
+      : undefined,
   };
 
   const validation = zodValidator(payload, createTaskZodSchema);
@@ -27,7 +32,7 @@ export async function createTask(_prevState: any, formData: FormData) {
   if (!validation.success && validation.errors) {
     return {
       success: false,
-      message: "Validation failed",
+      message: "Provide required or valid input",
       errors: validation.errors,
       formData: payload,
     };
@@ -36,7 +41,7 @@ export async function createTask(_prevState: any, formData: FormData) {
   if (!validation.data) {
     return {
       success: false,
-      message: "Validation failed",
+      message: "Provide required or valid input",
       formData: payload,
     };
   }
@@ -67,7 +72,9 @@ export async function createTask(_prevState: any, formData: FormData) {
  */
 export async function getTasks(queryString?: string) {
   try {
-    const response = await serverFetch.get(`/task${queryString ? `?${queryString}` : ""}`);
+    const response = await serverFetch.get(
+      `/task${queryString ? `?${queryString}` : ""}`
+    );
     return await response.json();
   } catch (error: any) {
     console.error("Get tasks error:", error);
@@ -82,7 +89,9 @@ export async function getTasks(queryString?: string) {
 }
 export async function getMyTasks(queryString?: string) {
   try {
-    const response = await serverFetch.get(`/task/my-tasks${queryString ? `?${queryString}` : ""}`);
+    const response = await serverFetch.get(
+      `/task/my-tasks${queryString ? `?${queryString}` : ""}`
+    );
     return await response.json();
   } catch (error: any) {
     console.error("Get tasks error:", error);
@@ -121,11 +130,17 @@ export async function getTaskById(id: string) {
  * API: PATCH /task/:id
  * Editable fields: title, description, priority, employeeId, systemId, dueDate
  */
-export async function updateTask(id: string, _prevState: any, formData: FormData) {
+export async function updateTask(
+  id: string,
+  _prevState: any,
+  formData: FormData
+) {
   const payload: any = {
     title: formData.get("title") as string,
     description: formData.get("description") as string,
-    dueDate: formData.get("dueDate") ? String(formData.get("dueDate")) : undefined,
+    dueDate: formData.get("dueDate")
+      ? String(formData.get("dueDate"))
+      : undefined,
   };
 
   const validation = zodValidator(payload, updateTaskZodSchema);
@@ -133,7 +148,7 @@ export async function updateTask(id: string, _prevState: any, formData: FormData
   if (!validation.success && validation.errors) {
     return {
       success: false,
-      message: "Validation failed",
+      message: "Provide required or valid input",
       errors: validation.errors,
       formData: payload,
     };
@@ -142,7 +157,7 @@ export async function updateTask(id: string, _prevState: any, formData: FormData
   if (!validation.data) {
     return {
       success: false,
-      message: "Validation failed",
+      message: "Provide required or valid input",
       formData: payload,
     };
   }
@@ -179,7 +194,7 @@ export async function updateTaskStatus(id: string, status: TaskStatus) {
   if (!validation.success && validation.errors) {
     return {
       success: false,
-      message: "Validation failed",
+      message: "Provide required or valid input",
       errors: validation.errors,
       formData: payload,
     };
