@@ -5,8 +5,8 @@ import { TokenResult } from "@/types/token.interface";
 import jwt, { JwtPayload } from "jsonwebtoken";
 
 const verifiedAccessToken = async (token: string):Promise<TokenResult> => {
-  const secret = process.env.ACCESS_TOKEN_SECRET 
-  console.log("from jwtHandlers",secret,token)
+  
+  
   try {
     const verifiedPayload = await  jwt.verify(
       token,

@@ -26,7 +26,7 @@ const loginUser = async (_currentState: any, formData: FormData):Promise<IInputE
       email: formData.get("email"),
       password: formData.get("password"),
     };
-    console.log(payload);
+    
     if (zodValidator(payload, loginValidationSchema).success === false) {
       return zodValidator(payload, loginValidationSchema);
     }
@@ -38,10 +38,10 @@ const loginUser = async (_currentState: any, formData: FormData):Promise<IInputE
       },
     });
     const result = await res.json();
-    console.log(result);
+    
     const accessToken = result?.data?.accessToken;
     const refreshToken = result?.data?.refreshToken;
-    console.log("from login user", accessToken, refreshToken);
+    
     if (!accessToken) {
       throw new Error(
         `${
@@ -80,12 +80,12 @@ const loginUser = async (_currentState: any, formData: FormData):Promise<IInputE
     const verifiedToken: JwtPayload | string = await verifiedAccessToken(
       accessToken
     );
-    console.log("verifiedToken from loginUser", verifiedToken);
+    
     if (!verifiedToken.success) {
       throw new Error("You are not verified");
     }
     const userRole: any = verifiedToken?.payload.role;
-    console.log("userRole from login user", userRole);
+    
 
     if (!result.success) {
       throw new Error(result.message || "Login failed");

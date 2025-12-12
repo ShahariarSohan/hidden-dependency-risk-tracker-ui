@@ -24,7 +24,7 @@ interface ITaskViewDialogProps {
 
 const TaskViewDialog = ({ open, onClose, task }: ITaskViewDialogProps) => {
   if (!task) return null;
- console.log(task)
+ 
   const statusLabels: Record<TaskStatus, string> = {
     PENDING: "Pending",
     IN_PROGRESS: "In Progress",

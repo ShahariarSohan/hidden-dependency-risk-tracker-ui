@@ -112,7 +112,7 @@ export async function updateTeamStatus(
   const backendPayload = {
     status: validatedPayload.data.status,
   };
-  console.log(backendPayload);
+  
   try {
     const response = await serverFetch.patch(`/team/status/${id}`, {
       body: JSON.stringify(backendPayload),
@@ -170,10 +170,10 @@ export async function updateTeamByName(
   const validationPayload: any = {
     name: formData.get("name") as string,
   };
-  console.log(validationPayload);
+  
 
   const validation = zodValidator(validationPayload, teamZodSchema);
-  console.log("validation data", validation.data);
+ 
   if (!validation.success && validation.errors) {
     return {
       success: validation.success,

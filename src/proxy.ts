@@ -26,14 +26,14 @@ export async function proxy(request: NextRequest) {
     const verifiedToken: JwtPayload | string = await verifiedAccessToken(
       accessToken
     );
-    console.log("from proxy",verifiedToken)
+  
     if (!verifiedToken.success) {
       await deleteCookie("accessToken");
       await deleteCookie("refreshToken");
       return NextResponse.redirect(new URL("/login", request.url));
     }
     userRole = verifiedToken?.payload.role;
-    console.log("userRole from proxy",userRole);
+    
   }
 
   const routeOwner = getRouteOwner(pathname);

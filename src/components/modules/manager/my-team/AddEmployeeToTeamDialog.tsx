@@ -81,9 +81,9 @@ const AddEmployeeToTeamDialog = ({
 
         // Use your queryStringFormatter
         const queryString = queryStringFormatter(searchParamsObj);
-         console.log(queryString)
+        
           const res = await getEmployees(queryString);
-          console.log(res)
+         
 
         if (res?.success && res?.data) {
           setEmployees(res.data);

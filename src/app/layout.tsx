@@ -4,7 +4,7 @@ import "./globals.css";
 import { Toaster } from "sonner";
 import LoginSuccessToast from "@/components/modules/auth/LoginSuccessToast";
 import LogoutSuccessToast from "@/components/modules/auth/LogoutSuccessToast";
-
+export const dynamic = "force-dynamic"; 
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],

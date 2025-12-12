@@ -10,7 +10,7 @@ import NoDataFound from "@/components/shared/NoDataFound";
 
 export default async function EmployeeRiskPage() {
   const result = await getEmployeeOwnRisk();
- console.log(result)
+ 
  if(!result?.data){
        return <NoDataFound></NoDataFound>
       }

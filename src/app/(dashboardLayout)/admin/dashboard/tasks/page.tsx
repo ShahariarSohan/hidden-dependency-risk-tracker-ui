@@ -6,14 +6,16 @@ import { TableSkeleton } from "@/components/shared/TableSkeleton";
 import { queryStringFormatter } from "@/lib/formatters";
 
 import { getTasks } from "@/services/manageTasks/manageTask";
-
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
 import { Suspense } from "react";
 
 const AdminTaskManagementPage = async ({
   searchParams,
 }: {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
-}) => {
+  }) => {
+  
   const searchParamsObj = await searchParams;
   const queryString = queryStringFormatter(searchParamsObj);
 

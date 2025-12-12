@@ -12,7 +12,7 @@ import { BarChart3, Users } from "lucide-react";
 
 export default async function  ManagerTeamRiskDashboardPage  ()  {
   const result = await getManagerTeamRisk()
-  console.log(result)
+  
   const teamData = result.data
    if (!teamData) {
       return <NoTeamAssigned></NoTeamAssigned>

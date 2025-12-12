@@ -34,7 +34,7 @@ const TeamFormDialog = ({
   const formRef = useRef<HTMLFormElement>(null);
 
   const isEdit = !!team?.id;
-  console.log(isEdit)
+  
 
   const [state, formAction, isPending] = useActionState(
     isEdit ? updateTeamByName.bind(null, team?.id as string) : createTeam,

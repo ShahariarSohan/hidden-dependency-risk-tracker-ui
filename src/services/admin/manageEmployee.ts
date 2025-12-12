@@ -45,7 +45,7 @@ export async function createEmployee(_prevState: any, formData: FormData) {
     email: validatedPayload.data.email,
     contactNumber: validatedPayload.data.contactNumber,
   };
-  console.log(backendPayload);
+  
   try {
     const response = await serverFetch.post("/user/employee", {
       body: JSON.stringify(backendPayload),
@@ -122,7 +122,7 @@ export async function updateEmployeeStatus(
   const backendPayload = {
     status: validatedPayload.data.status,
   };
-  console.log(backendPayload);
+  
   try {
     const response = await serverFetch.patch(`/employee/status/${id}`, {
       body: JSON.stringify(backendPayload),
