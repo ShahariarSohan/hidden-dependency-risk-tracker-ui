@@ -3,8 +3,8 @@ import { ShieldAlert } from "lucide-react";
 export default function LoginBanner() {
   return (
     <div
-      className="hidden md:flex flex-1 items-center justify-center text-white p-10"
-      style={{ backgroundColor: "#002F5C" }}
+      className="hidden md:flex flex-1 items-center justify-center text-(--hero-foreground) p-10"
+      style={{ background: "var(--hero-gradient)" }}
     >
       <div className="text-center max-w-lg">
         {/* HDRT Logo */}

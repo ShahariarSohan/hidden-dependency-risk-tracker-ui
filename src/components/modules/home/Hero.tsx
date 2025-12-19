@@ -29,9 +29,9 @@ export default function Hero({
       <div className="container mx-auto flex items-center min-h-[90vh] px-4 pt-10 pb-24">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 w-full">
           {/* ================= LEFT ================= */}
-          <div className="flex flex-col justify-center space-y-6">
+          <div className=" text-center lg:text-start order-2 lg:order-1 flex flex-col justify-center space-y-6">
             {/* Badge */}
-            <div className="inline-flex items-center gap-3 self-start rounded-full bg-white/20 dark:bg-white/10 px-4 py-2 backdrop-blur-sm shadow-lg animate-fade-in">
+            <div className=" hidden lg:inline-flex items-center gap-3 self-start rounded-full bg-white/20 dark:bg-white/10 px-4 py-2 backdrop-blur-sm shadow-lg animate-fade-in">
               <ShieldAlert className="text-red-500 dark:text-red-400" />
               <span className="text-xs font-semibold text-[var(--hero-foreground)]">
                 {badge.text}
@@ -55,7 +55,7 @@ export default function Hero({
             {/* CTA */}
             <div className="animate-slide-up delay-300">
               <Link href="/learn-more">
-                <Button className="bg-primary px-6 py-6 text-primary-foreground hover:bg-primary-hover shadow-lg">
+                <Button className="bg-primary px-6 py-6 text-white hover:bg-primary-hover shadow-lg">
                   {buttons.primary.text}
                 </Button>
               </Link>
@@ -79,7 +79,9 @@ export default function Hero({
           {/* ================= RIGHT ================= */}
 
           {/* Pulsing background orb */}
-          <HeroRightSection></HeroRightSection>
+          <div className="order-1 lg:order-2">
+            <HeroRightSection></HeroRightSection>
+          </div>
         </div>
       </div>
     </section>

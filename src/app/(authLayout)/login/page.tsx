@@ -19,17 +19,17 @@ export default async function LoginPage({
   const params = (await searchParams) || {};
 
   return (
-    <div className="min-h-screen flex flex-col md:flex-row bg-gray-50 dark:bg-gray-900">
+    <div className="min-h-screen flex flex-col md:flex-row bg-gray-50">
       {/* Left Side: HDRT Logo & Info */}
       <LoginBanner></LoginBanner>
       {/* Right Side: Login Form */}
       <div className="flex-1 flex items-center justify-center p-6 md:p-12">
-        <Card className="w-full max-w-md shadow-lg">
+        <Card className="w-full max-w-md shadow-lg text-white">
           <CardHeader>
             <CardTitle className="text-2xl font-bold text-primary">
               Login
             </CardTitle>
-            <CardDescription>
+            <CardDescription className="text-(--hero-foreground)">
               Enter your email and password to access your HDRT dashboard
             </CardDescription>
           </CardHeader>

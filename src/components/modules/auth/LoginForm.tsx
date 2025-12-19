@@ -27,7 +27,7 @@ export default function LoginForm({redirect}:{redirect?:string}) {
     }
   },[state])
   return (
-    <div>
+    <div className="text-(--hero-foreground)">
       <form action={formAction}>
         {redirect && <Input type="hidden" name="redirect" value={redirect} />}
         <FieldGroup>
@@ -50,10 +50,10 @@ export default function LoginForm({redirect}:{redirect?:string}) {
           </Field>
           <FieldGroup>
             <Field>
-              <Button type="submit">
+              <Button type="submit" className="text-white">
                 {isPending ? "Logging in ...." : "Login"}
               </Button>
-              <FieldDescription className="px-6 text-center flex items-center justify-center gap-1">
+              <FieldDescription className="px-6 text-center flex items-center justify-center gap-1 text-(--hero-foreground)">
                 Go back<Link href="/">Home</Link>
               </FieldDescription>
             </Field>

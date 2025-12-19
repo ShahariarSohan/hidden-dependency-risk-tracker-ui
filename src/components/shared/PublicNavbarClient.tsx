@@ -84,7 +84,7 @@ const PublicNavbarClient = ({
               <LogoutButton />
             ) : (
               <Link href="/login">
-                <Button className="bg-primary text-primary-foreground hover:bg-primary-hover shadow-md">
+                <Button className="bg-primary text-white hover:bg-primary-hover shadow-md">
                   Login
                 </Button>
               </Link>
@@ -119,7 +119,7 @@ const PublicNavbarClient = ({
 
                 {!accessToken && (
                   <Link href="/login">
-                    <Button className="w-full">Login</Button>
+                    <Button>Login</Button>
                   </Link>
                 )}
               </nav>
