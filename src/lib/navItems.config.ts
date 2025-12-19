@@ -10,6 +10,12 @@ export const getCommonNavItems = (role: UserRole) => {
     {
       items: [
         {
+          title: "Home",
+          href: "/",
+          icon: "Home",
+          roles: [UserRole.ADMIN, UserRole.EMPLOYEE, UserRole.MANAGER],
+        },
+        {
           title: "Risk Dashboard",
           href: defaultDashboard,
           icon: "Activity",

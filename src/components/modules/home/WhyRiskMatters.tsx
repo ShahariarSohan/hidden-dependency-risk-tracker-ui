@@ -1,12 +1,12 @@
 /* eslint-disable react/no-unescaped-entities */
 "use client";
 
-import {  Brain, Zap, Eye } from "lucide-react";
+import {  Brain, Zap, Eye, TrendingDown } from "lucide-react";
 
 export default function WhyRiskMatters() {
   return (
     <section className="w-full py-24 px-4 md:px-8 lg:px-16 bg-gray-50 dark:bg-gray-900">
-      <div className="max-w-5xl mx-auto text-center space-y-10">
+      <div className="container mx-auto text-center space-y-10">
         {/* Title */}
         <h2 className="text-4xl font-bold text-gray-900 dark:text-white">
           Why Hidden Risks Matter
@@ -19,7 +19,7 @@ export default function WhyRiskMatters() {
         </p>
 
         {/* 3 Emotional Cards */}
-        <div className="grid md:grid-cols-3 gap-6 mt-12">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
           {/* Card 1 */}
           <div className="p-8 rounded-2xl bg-white dark:bg-gray-800 shadow-sm border border-gray-200 dark:border-gray-700 hover:shadow-lg transition">
             <Eye className="mx-auto text-red-500 size-10 mb-4" />
@@ -53,6 +53,16 @@ export default function WhyRiskMatters() {
             <p className="mt-3 text-gray-600 dark:text-gray-300 text-sm">
               A single point of failure can halt entire operations— costing
               time, trust, and revenue.
+            </p>
+          </div>
+          <div className="p-8 rounded-2xl bg-white dark:bg-gray-800 shadow-sm border border-gray-200 dark:border-gray-700 hover:shadow-lg transition">
+            <TrendingDown className="mx-auto text-red-500 size-10 mb-4" />
+            <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
+              False Sense of Safety
+            </h3>
+            <p className="mt-3 text-gray-600 dark:text-gray-300 text-sm">
+              When leadership decisions rely on surface-level metrics, hidden
+              risks stay buried— until they explode into crises.
             </p>
           </div>
         </div>
