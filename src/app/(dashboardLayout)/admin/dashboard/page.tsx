@@ -15,7 +15,7 @@ export default async function AdminRiskDashboardPage() {
     return <NoDataFound></NoDataFound>
    }
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 p-6 space-y-8">
+    <div className="min-h-screen p-6 space-y-8">
       {/* Header Section */}
       <div className="space-y-3">
         <div className="flex items-center gap-3">
@@ -23,7 +23,7 @@ export default async function AdminRiskDashboardPage() {
             <Activity className="h-8 w-8 text-white" />
           </div>
           <div>
-            <h1 className="text-4xl font-bold tracking-tight bg-gradient-to-r from-gray-900 to-gray-600 bg-clip-text text-transparent">
+            <h1 className="text-4xl font-bold dark:text-(--hero-foreground) tracking-tight bg-gradient-to-r from-gray-900 to-gray-600 bg-clip-text text-transparent">
               Risk Management Dashboard
             </h1>
             <p className="text-muted-foreground mt-1">
@@ -66,7 +66,7 @@ export default async function AdminRiskDashboardPage() {
         data.summary.highRiskSystemCount > 0 ||
         data.summary.highRiskTeamCount > 0) && (
         <div className="bg-red-50 border-l-4 border-red-500 p-4 rounded-lg shadow-sm">
-          <div className="flex items-start gap-3">
+          <div className="flex items-start gap-3 ">
             <AlertTriangle className="h-5 w-5 text-red-600 mt-0.5" />
             <div>
               <h3 className="font-semibold text-red-900">Action Required</h3>

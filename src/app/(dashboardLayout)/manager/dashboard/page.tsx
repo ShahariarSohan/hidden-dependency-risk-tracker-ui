@@ -28,7 +28,7 @@ export default async function  ManagerTeamRiskDashboardPage  ()  {
   const riskCounts = getRiskCounts(employeeRisks);
 
   return (
-    <div className="min-h-screen bg-slate-50 p-6">
+    <div className="min-h-screen p-6">
       <div className="max-w-7xl mx-auto">
         <PageHeader
           icon={BarChart3}
@@ -36,7 +36,7 @@ export default async function  ManagerTeamRiskDashboardPage  ()  {
           subtitle="Comprehensive team risk analysis"
         />
 
-        <div className="bg-white border rounded-2xl p-8 mb-6 shadow-lg">
+        <div className="bg-card border rounded-2xl p-8 mb-6 shadow-lg">
           <div className="flex items-center justify-between mb-6">
             <div>
               <h2 className="text-3xl font-bold">{teamName}</h2>
@@ -55,20 +55,22 @@ export default async function  ManagerTeamRiskDashboardPage  ()  {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
-          <div className="bg-red-50 p-6 rounded-xl shadow">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6 ">
+          <div className="bg-red-50  p-6 rounded-xl shadow">
             <p className="text-4xl font-bold text-red-600">{riskCounts.high}</p>
             <p className="text-sm">High Risk Employees</p>
           </div>
 
-          <div className="bg-orange-50 p-6 rounded-xl shadow">
+          <div className="bg-orange-50  p-6 rounded-xl shadow">
             <p className="text-4xl font-bold text-orange-600">
               {riskCounts.medium}
             </p>
-            <p className="text-sm">Medium Risk Employees</p>
+            <p className="text-sm">
+              Medium Risk Employees
+            </p>
           </div>
 
-          <div className="bg-green-50 p-6 rounded-xl shadow">
+          <div className="bg-green-50  p-6 rounded-xl shadow">
             <p className="text-4xl font-bold text-green-600">
               {riskCounts.low}
             </p>

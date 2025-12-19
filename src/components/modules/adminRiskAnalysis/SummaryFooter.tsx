@@ -14,7 +14,7 @@ export default function SummaryFooter({
   totalTeams,
 }: SummaryFooterProps) {
   return (
-    <Card className="bg-white border rounded-lg p-6 shadow-sm">
+    <Card className="bg-card border rounded-lg p-6 shadow-sm">
       <h3 className="font-semibold text-lg mb-4 flex items-center gap-2">
         📊 Risk Assessment Summary
       </h3>

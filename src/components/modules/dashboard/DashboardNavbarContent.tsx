@@ -29,7 +29,7 @@ export default function DashboardNavbarContent({
     };
   }, []);
   return (
-    <header className="sticky top-0 z-40 w-full border-b bg-background/95 backdrop-blur">
+    <header className="sticky top-0 z-40 w-full border-b bg-card backdrop-blur">
       <div className="flex  items-center justify-between gap-4 px-4 md:px-6 py-[13.5px]">
         {/* Mobile Menu Toggle */}
         <Sheet open={isMobile && isOpen} onOpenChange={setIsOpen}>
