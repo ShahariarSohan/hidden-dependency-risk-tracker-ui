@@ -46,14 +46,14 @@
 :root {
   --radius: 0.625rem;
   --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
+  --foreground: oklch(0.15 0 0);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.43 0.06 255.39); /* Base brand color (#002F5C) */
-  --primary-hover: oklch(0.38 0.06 255.39); /* Slightly darker */
-  --primary-active: oklch(0.33 0.06 255.39); /* More dark for pressed */
+  --primary: oklch(0.43 0.06 255.39);
+  --primary-hover: oklch(0.38 0.06 255.39);
+  --primary-active: oklch(0.33 0.06 255.39);
   --primary-foreground: oklch(0.985 0 0);
   --secondary: oklch(0.97 0 0);
   --secondary-foreground: oklch(0.205 0 0);
@@ -78,19 +78,30 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
-  font-family: var(--font-poppins), sans-serif;
+
+  /* ===== LIGHT MODE - Professional Light Blue/Purple (Similar to Dark but Lighter) ===== */
+  --hero-gradient: linear-gradient(
+    135deg,
+    oklch(0.88 0.04 260) 0%,
+    oklch(0.92 0.045 250) 25%,
+    oklch(0.90 0.05 255) 50%,
+    oklch(0.86 0.04 265) 100%
+  );
+  
+  /* Text color for light mode - Dark for excellent contrast */
+  --hero-foreground: oklch(0.20 0.02 250);
 }
 
 .dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
   --card: oklch(0.205 0 0);
   --card-foreground: oklch(0.985 0 0);
   --popover: oklch(0.205 0 0);
   --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.55 0.06 255.39); /* Slightly lighter for dark mode */
-  --primary-hover: oklch(0.6 0.06 255.39);
-  --primary-active: oklch(0.5 0.06 255.39);
+  --primary: oklch(0.48 0.05 255.39);
+  --primary-hover: oklch(0.52 0.05 255.39);
+  --primary-active: oklch(0.44 0.055 255.39);
+  --background: oklch(0.1 0 0);
+  --foreground: oklch(0.95 0 0);
   --primary-foreground: oklch(0.205 0 0);
   --secondary: oklch(0.269 0 0);
   --secondary-foreground: oklch(0.985 0 0);
@@ -115,6 +126,18 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
+
+  /* ===== DARK MODE - Professional Deep Blue/Purple Gradient ===== */
+  --hero-gradient: linear-gradient(
+    135deg,
+    oklch(0.18 0.04 260) 0%,
+    oklch(0.22 0.045 250) 25%,
+    oklch(0.20 0.05 255) 50%,
+    oklch(0.16 0.04 265) 100%
+  );
+  
+  /* Text color for dark mode - Light with slight blue tint */
+  --hero-foreground: oklch(0.96 0.01 250);
 }
 
 @layer base {
@@ -126,6 +149,7 @@
     font-family: var(--font-poppins), sans-serif;
   }
 }
+
 html {
   scroll-behavior: smooth;
 }

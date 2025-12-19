@@ -27,52 +27,66 @@ const PublicNavbarClient = ({
     { href: "/learn-more", label: "About Us" },
   ].filter(Boolean) as { href: string; label: string }[];
 
-  const isActive = (itemHref: string) => {
-    if (itemHref.startsWith("#")) {
-      return pathname === "/" && hash === itemHref.replace("#", "");
-    }
-    return pathname === itemHref;
-  };
+  const isActive = (href: string) =>
+    href.startsWith("#")
+      ? pathname === "/" && hash === href.slice(1)
+      : pathname === href;
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background/90 backdrop-blur">
+    <header className="sticky top-0 z-50 w-full">
+      {/* ===== SHARED GRADIENT (Same as Hero) ===== */}
+      <div
+        className="absolute inset-0 -z-10"
+        style={{ background: "var(--hero-gradient)" }}
+      />
+
+      {/* Subtle border at bottom */}
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-[var(--hero-foreground)]/10" />
+
       <div className="container mx-auto flex h-16 items-center px-4">
-        {/* Logo (LEFT) */}
-        <Link href="/" className="flex items-center gap-2">
-          <ShieldAlert className="h-6 w-6 text-red-500" />
-          <span className="text-lg font-bold tracking-tight">HDRT</span>
+        {/* Logo */}
+        <Link
+          href="/"
+          className="flex items-center gap-2 hover:opacity-80 transition-opacity"
+        >
+          <ShieldAlert className="h-6 w-6 text-red-500 dark:text-red-400" />
+          <span className="text-lg font-bold text-[var(--hero-foreground)]">
+            HDRT
+          </span>
         </Link>
 
         {/* ================= DESKTOP ================= */}
-        <div className="hidden lg:flex items-center w-full">
-          {/* Spacer */}
+        <div className="hidden w-full lg:flex">
           <div className="flex-1" />
 
-          {/* Center navigation */}
-          <nav className="flex items-center space-x-5 text-sm font-medium">
+          <nav className="flex items-center gap-6 text-sm font-medium">
             {navItems.map((item) => (
               <Link
                 key={item.label}
                 href={item.href}
-                className={`relative after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-0 after:bg-primary after:transition-all after:duration-300 ${
-                  isActive(item.href)
-                    ? "text-primary font-semibold after:w-full"
-                    : "text-muted-foreground hover:text-primary hover:after:w-full"
-                }`}
+                className={`relative text-[var(--hero-foreground)]/75 hover:text-[var(--hero-foreground)] transition-colors
+                  after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-0
+                  after:bg-[var(--hero-foreground)] after:transition-all after:duration-300
+                  ${
+                    isActive(item.href)
+                      ? "text-[var(--hero-foreground)] after:w-full"
+                      : "hover:after:w-full"
+                  }`}
               >
                 {item.label}
               </Link>
             ))}
           </nav>
 
-          {/* Right actions */}
-          <div className="flex-1 flex justify-end items-center gap-4">
+          <div className="flex flex-1 items-center justify-end gap-4">
             <AnimatedThemeToggler />
             {accessToken ? (
               <LogoutButton />
             ) : (
               <Link href="/login">
-                <Button>Login</Button>
+                <Button className="bg-primary text-primary-foreground hover:bg-primary-hover shadow-md">
+                  Login
+                </Button>
               </Link>
             )}
           </div>
@@ -84,38 +98,30 @@ const PublicNavbarClient = ({
 
           <Sheet>
             <SheetTrigger asChild>
-              <button aria-label="Open menu">
-                <Menu className="h-5 w-5" />
+              <button className="p-2 hover:bg-white/10 dark:hover:bg-white/5 rounded-lg transition-colors">
+                <Menu className="h-5 w-5 text-[var(--hero-foreground)]" />
               </button>
             </SheetTrigger>
 
-            <SheetContent side="right" className="w-[320px] p-6">
-              <SheetTitle className="sr-only">HDRT Navigation</SheetTitle>
+            <SheetContent side="right">
+              <SheetTitle className="sr-only">Navigation</SheetTitle>
 
-              <nav className="mt-6 flex flex-col gap-6">
+              <nav className="mt-6 flex p-4 flex-col gap-6">
                 {navItems.map((item) => (
                   <Link
                     key={item.label}
                     href={item.href}
-                    className={`text-sm transition-colors ${
-                      isActive(item.href)
-                        ? "text-primary font-semibold"
-                        : "text-muted-foreground"
-                    }`}
+                    className="text-sm text-foreground hover:text-primary transition-colors"
                   >
                     {item.label}
                   </Link>
                 ))}
 
-                <div className="border-t pt-4">
-                  {accessToken ? (
-                    <LogoutButton />
-                  ) : (
-                    <Link href="/login">
-                      <Button className="w-full">Login</Button>
-                    </Link>
-                  )}
-                </div>
+                {!accessToken && (
+                  <Link href="/login">
+                    <Button className="w-full">Login</Button>
+                  </Link>
+                )}
               </nav>
             </SheetContent>
           </Sheet>

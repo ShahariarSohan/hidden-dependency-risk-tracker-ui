@@ -15,7 +15,6 @@ import { getIconComponent } from "@/lib/icon-mapper";
 export default function DashboardSidebarContent({
   userInfo,
   navItems,
-  dashboardHome,
 }: IDashboardContentProps) {
   const pathname = usePathname();
 
@@ -23,7 +22,7 @@ export default function DashboardSidebarContent({
     <div className="hidden md:flex h-full w-64 flex-col border-r bg-card">
       {/* FIXED HEADER */}
       <div className="flex h-16 items-center border-b px-6 py-2 shrink-0">
-        <Link href="/" className="flex items-center space-x-2">
+        <Link href="" className="flex items-center space-x-2">
           <ShieldAlert className="h-6 w-6 text-red-500" />
           <span className="text-lg font-bold tracking-tight">HDRT</span>
         </Link>

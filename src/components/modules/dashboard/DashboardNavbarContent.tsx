@@ -1,15 +1,14 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 
-import { Bell, Menu, Search } from "lucide-react";
+import {  Menu} from "lucide-react";
 import UserDropdown from "./UserDropdown";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
 import DashboardMobileSidebar from "./DashboardMobileSidebar";
 import { IDashboardContentProps } from "@/types/dashboard.interface";
 import { useEffect, useState } from "react";
+import { AnimatedThemeToggler } from "@/components/shared/AnimatedThemeToggler";
 
 export default function DashboardNavbarContent({
   userInfo,
@@ -35,9 +34,9 @@ export default function DashboardNavbarContent({
         {/* Mobile Menu Toggle */}
         <Sheet open={isMobile && isOpen} onOpenChange={setIsOpen}>
           <SheetTrigger asChild className="md:hidden">
-            <Button variant="outline" size="icon">
+            <div>
               <Menu className="h-5 w-5" />
-            </Button>
+            </div>
           </SheetTrigger>
           {/* Hide the overlay on medium and larger screens */}
           <SheetContent side="left" className="w-64 p-0">
@@ -58,9 +57,10 @@ export default function DashboardNavbarContent({
         </div> */}
 
         {/* Right Side Actions */}
-        <div className="w-full flex justify-end items-center gap-2">
+        <div className="w-full flex justify-end items-center gap-4">
           {/* Notifications */}
           {/* User Dropdown */}
+          <AnimatedThemeToggler></AnimatedThemeToggler>
           <UserDropdown userInfo={userInfo} />
         </div>
       </div>

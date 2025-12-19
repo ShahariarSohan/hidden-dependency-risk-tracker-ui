@@ -13,7 +13,6 @@ import { usePathname } from "next/navigation";
 export default function DashboardMobileSidebar({
   userInfo,
   navItems,
-  dashboardHome,
 }: IDashboardContentProps) {
   const pathname = usePathname();
 
@@ -21,7 +20,7 @@ export default function DashboardMobileSidebar({
     <div className="md:hidden h-full w-64 flex flex-col border-r bg-card overflow-y-auto">
       {/* Logo/Brand */}
       <div className="flex h-16 items-center border-b px-6 shrink-0">
-        <Link href="/" className="flex items-center space-x-2">
+        <Link href="" className="flex items-center space-x-2">
           <ShieldAlert className="h-6 w-6 text-red-500" />
           <span className="text-lg font-bold tracking-tight">HDRT</span>
         </Link>
