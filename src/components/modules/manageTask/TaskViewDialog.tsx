@@ -41,7 +41,7 @@ const TaskViewDialog = ({ open, onClose, task }: ITaskViewDialogProps) => {
 
         <div className="flex-1 overflow-y-auto px-6 pb-6 space-y-6">
           {/* Task Info */}
-          <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6 p-6 bg-purple-50 dark:bg-purple-950 rounded-lg">
+          <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6 p-6 bg-purple-50 dark:bg-card rounded-lg">
             <Avatar className="h-24 w-24 border-4 border-white shadow-lg">
               <AvatarFallback className="text-2xl">
                 {getInitials(task.title)}

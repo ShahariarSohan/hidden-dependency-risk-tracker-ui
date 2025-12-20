@@ -206,7 +206,7 @@ const TaskFormDialog = ({
   };
 
   return (
-    <Dialog  open={open} onOpenChange={handleClose}>
+    <Dialog open={open} onOpenChange={handleClose}>
       <DialogContent className="bg-card max-w-3xl max-h-[90vh] flex flex-col p-0">
         <DialogHeader className="px-6 pt-6 pb-4">
           <DialogTitle>{isEdit ? "Edit Task" : "Create New Task"}</DialogTitle>
@@ -285,24 +285,24 @@ const TaskFormDialog = ({
                   color="blue"
                   renderItem={(emp: IEmployee) => (
                     <>
-                      <p className="font-medium text-sm text-gray-900 truncate">
+                      <p className="font-medium text-sm text-(--hero-foreground) truncate">
                         {emp.name}
                       </p>
-                      <p className="text-xs text-gray-500 truncate">
+                      <p className="text-xs text-(--hero-foreground) truncate">
                         {emp.email}
                       </p>
                     </>
                   )}
                   renderSelected={(emp: IEmployee) => (
                     <>
-                      <p className="font-semibold text-sm text-gray-900">
+                      <p className="font-semibold text-sm text-(--hero-foreground)">
                         {emp.name}
                       </p>
-                      <p className="text-xs text-gray-600 mt-0.5">
+                      <p className="text-xs text-(--hero-foreground) mt-0.5">
                         {emp.email}
                       </p>
                       {emp.id && (
-                        <p className="text-xs text-gray-500 mt-1">
+                        <p className="text-xs text-(--hero-foreground) mt-1">
                           ID: {emp.id}
                         </p>
                       )}
@@ -329,17 +329,17 @@ const TaskFormDialog = ({
                   disabled={isPending}
                   color="green"
                   renderItem={(sys: ISystem) => (
-                    <p className="font-medium text-sm text-gray-900 truncate">
+                    <p className="font-medium text-sm text-(--hero-foreground) truncate ">
                       {sys.name}
                     </p>
                   )}
                   renderSelected={(sys: ISystem) => (
                     <>
-                      <p className="font-semibold text-sm text-gray-900">
+                      <p className="font-semibold text-sm text-(--hero-foreground)">
                         {sys.name}
                       </p>
                       {sys.description && (
-                        <p className="text-xs text-gray-600 mt-0.5">
+                        <p className="text-xs text-(--hero-foreground) mt-0.5">
                           {sys.description}
                         </p>
                       )}

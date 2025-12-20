@@ -21,15 +21,15 @@ export default function TaskStatusCell({
     {
       [TaskStatus.PENDING]: {
         label: pendingText,
-        className: "bg-yellow-500 text-white",
+        className: "bg-yellow-500 text-gray-900",
       },
       [TaskStatus.IN_PROGRESS]: {
         label: inProgressText,
-        className: "bg-blue-600 text-white",
+        className: "bg-blue-600 text-gray-900",
       },
       [TaskStatus.COMPLETED]: {
         label: completedText,
-        className: "bg-green-600 text-white",
+        className: "bg-green-600 text-gray-900",
       },
     };
 

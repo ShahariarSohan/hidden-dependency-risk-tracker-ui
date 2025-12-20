@@ -118,7 +118,7 @@ export default function TaskSearchableSelect<T extends { id: string }>({
               key={item.id}
               type="button"
               onClick={() => onSelect(item)}
-              className="w-full p-3 hover:bg-gray-50 transition-colors text-left flex items-center gap-3"
+              className="w-full p-3 hover:bg-primary transition-colors text-left flex items-center gap-3"
               disabled={disabled}
             >
               <div className="h-10 w-10 rounded-full bg-gray-100 flex items-center justify-center flex-shrink-0">

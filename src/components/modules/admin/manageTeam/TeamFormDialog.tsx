@@ -61,7 +61,7 @@ const TeamFormDialog = ({
 
   return (
     <Dialog open={open} onOpenChange={handleClose}>
-      <DialogContent className="max-h-[90vh] flex flex-col p-0">
+      <DialogContent className="max-h-[90vh] flex flex-col p-0 bg-card">
         <DialogHeader className="px-6 pt-6 pb-4">
           <DialogTitle>{isEdit ? "Edit Team" : "Add New Team"}</DialogTitle>
         </DialogHeader>
@@ -86,7 +86,7 @@ const TeamFormDialog = ({
           </div>
 
           {/* Actions */}
-          <div className="flex justify-end gap-2 px-6 py-4 border-t bg-gray-50">
+          <div className="flex justify-end gap-2 px-6 py-4 border-t bg-card">
             <Button
               type="button"
               variant="outline"

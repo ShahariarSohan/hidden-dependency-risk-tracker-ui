@@ -77,7 +77,7 @@ const SystemFormDialog = ({
 
   return (
     <Dialog open={open} onOpenChange={handleClose}>
-      <DialogContent className="max-h-[90vh] flex flex-col p-0">
+      <DialogContent className="max-h-[90vh] flex flex-col p-0 bg-card">
         <DialogHeader className="px-6 pt-6 pb-4">
           <DialogTitle>{isEdit ? "Edit System" : "Add New System"}</DialogTitle>
         </DialogHeader>
@@ -121,7 +121,7 @@ const SystemFormDialog = ({
                 <select
                   id="criticality"
                   name="criticality"
-                  className="border rounded-md p-2 w-full bg-white"
+                  className="border rounded-md p-2 w-full bg-card"
                   defaultValue={state?.formData?.criticality || "1"}
                 >
                   {[1, 2, 3, 4, 5].map((lvl) => (
@@ -157,7 +157,7 @@ const SystemFormDialog = ({
           </div>
 
           {/* Actions */}
-          <div className="flex justify-end gap-2 px-6 py-4 border-t bg-gray-50">
+          <div className="flex justify-end gap-2 px-6 py-4 border-t bg-card">
             <Button
               type="button"
               variant="outline"

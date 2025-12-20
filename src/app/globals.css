@@ -84,12 +84,12 @@
     135deg,
     oklch(0.88 0.04 260) 0%,
     oklch(0.92 0.045 250) 25%,
-    oklch(0.90 0.05 255) 50%,
+    oklch(0.9 0.05 255) 50%,
     oklch(0.86 0.04 265) 100%
   );
-  
+
   /* Text color for light mode - Dark for excellent contrast */
-  --hero-foreground: oklch(0.20 0.02 250);
+  --hero-foreground: oklch(0.2 0.02 250);
 }
 
 .dark {
@@ -132,10 +132,10 @@
     135deg,
     oklch(0.18 0.04 260) 0%,
     oklch(0.22 0.045 250) 25%,
-    oklch(0.20 0.05 255) 50%,
+    oklch(0.2 0.05 255) 50%,
     oklch(0.16 0.04 265) 100%
   );
-  
+
   /* Text color for dark mode - Light with slight blue tint */
   --hero-foreground: oklch(0.96 0.01 250);
 }
@@ -148,6 +148,21 @@
     @apply bg-background text-foreground;
     font-family: var(--font-poppins), sans-serif;
   }
+  /* Fix date/time picker calendar icon visibility in light and dark modes */
+/* Light mode - Force black icon */
+input[type="date"]::-webkit-calendar-picker-indicator,
+input[type="time"]::-webkit-calendar-picker-indicator,
+input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+  filter: brightness(0) saturate(100%) invert(0);
+  cursor: pointer;
+  opacity: 1;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator:hover,
+input[type="time"]::-webkit-calendar-picker-indicator:hover,
+input[type="datetime-local"]::-webkit-calendar-picker-indicator:hover {
+  opacity: 0.7;
+}
 }
 
 html {
