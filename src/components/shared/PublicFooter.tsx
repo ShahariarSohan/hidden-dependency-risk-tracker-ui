@@ -1,6 +1,6 @@
 export default function PublicFooter() {
   return (
-    <footer className="border-t bg-background">
+    <footer className="border-t" style={{ background: "var(--hero-gradient)" }}>
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10 text-sm text-muted-foreground">
           {/* 1. HDRT Summary */}
