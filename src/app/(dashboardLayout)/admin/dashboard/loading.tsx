@@ -1,7 +1,8 @@
-import RiskTrackerLoader from "@/components/shared/RiskTrackerLoader";
+import RiskDashboardSkeleton from "@/components/shared/RiskDashboardSkeleton";
+
 
 export default function AdminDashboardLoading() {
   return (
-    <RiskTrackerLoader></RiskTrackerLoader>
+    <RiskDashboardSkeleton/>
   );
 }
