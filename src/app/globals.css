@@ -140,6 +140,21 @@
   --hero-foreground: oklch(0.96 0.01 250);
 }
 
+
+@keyframes riskTracker {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.15);
+  }
+}
+
+@layer utilities {
+  .animate-riskTracker {
+    animation: riskTracker 1.5s ease-in-out infinite;
+  }
+}
 @layer base {
   * {
     @apply border-border outline-ring/50;
@@ -164,6 +179,8 @@ input[type="datetime-local"]::-webkit-calendar-picker-indicator:hover {
   opacity: 0.7;
 }
 }
+
+
 
 html {
   scroll-behavior: smooth;

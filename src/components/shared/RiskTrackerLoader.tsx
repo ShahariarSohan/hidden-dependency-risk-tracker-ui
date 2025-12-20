@@ -1,4 +1,3 @@
-"use client";
 import { ShieldAlert } from "lucide-react";
 
 interface RiskTrackerLoaderProps {
@@ -27,34 +26,15 @@ export default function RiskTrackerLoader({
     <div
       className={`flex min-h-screen flex-col items-center justify-center gap-4 ${className}`}
     >
-      <style jsx>{`
-        @keyframes riskTracker {
-          0%,
-          100% {
-            transform: scale(1);
-          }
-          50% {
-            transform: scale(1.15);
-          }
-        }
-
-        .riskTracker {
-          animation: riskTracker 1.5s ease-in-out infinite;
-        }
-
-        .no-animation .riskTracker {
-          animation: none;
-        }
-      `}</style>
 
       {/* Centered ShieldAlert Icon */}
-      <div className={`${animated ? "riskTracker" : ""}`}>
+      <div className={`${animated ? "animate-riskTracker" : ""}`}>
         <ShieldAlert size={icon} className="text-red-500" strokeWidth={2.5} />
       </div>
 
       {/* Loader Text */}
       {text && (
-        <p className={`text-center font-medium text-slate-700 ${textSize}`}>
+        <p className={`text-center font-medium text-(hero-foreground) ${textSize}`}>
           {text}
         </p>
       )}
