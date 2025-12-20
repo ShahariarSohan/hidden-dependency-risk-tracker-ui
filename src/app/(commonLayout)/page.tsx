@@ -1,5 +1,7 @@
+import BeforeAfterTransformation from "@/components/modules/home/BeforeAfterTransformation";
 import Hero from "@/components/modules/home/Hero";
 import HowItWorks from "@/components/modules/home/HowItWorks";
+import RiskVisualizer from "@/components/modules/home/RiskVisualizer";
 import UseCases from "@/components/modules/home/UseCases";
 import WhyRiskMatters from "@/components/modules/home/WhyRiskMatters";
 import Head from "next/head";
@@ -39,8 +41,9 @@ export default function Home() {
         {/* Hero Section */}
         <Hero />
         <WhyRiskMatters></WhyRiskMatters>
+        <BeforeAfterTransformation></BeforeAfterTransformation>
+        <RiskVisualizer></RiskVisualizer>
         <HowItWorks></HowItWorks>
-        <UseCases></UseCases>
       </main>
     </>
   );
