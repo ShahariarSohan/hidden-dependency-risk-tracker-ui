@@ -40,7 +40,7 @@ export default async function  ManagerTeamRiskDashboardPage  ()  {
           <div className="flex items-center justify-between mb-6">
             <div>
               <h2 className="text-3xl font-bold">{teamName}</h2>
-              <p className="text-slate-600">
+              <p className="text-muted-foreground">
                 <Users className="inline w-5 h-5 mr-2" />
                 {totalEmployees} Members • ID: {teamId}
               </p>
@@ -56,21 +56,19 @@ export default async function  ManagerTeamRiskDashboardPage  ()  {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6 ">
-          <div className="bg-red-50  p-6 rounded-xl shadow">
+          <div className="bg-red-50 dark:bg-card  p-6 rounded-xl shadow-xl">
             <p className="text-4xl font-bold text-red-600">{riskCounts.high}</p>
             <p className="text-sm">High Risk Employees</p>
           </div>
 
-          <div className="bg-orange-50  p-6 rounded-xl shadow">
+          <div className="bg-orange-50 dark:bg-card  p-6 rounded-xl shadow-xl">
             <p className="text-4xl font-bold text-orange-600">
               {riskCounts.medium}
             </p>
-            <p className="text-sm">
-              Medium Risk Employees
-            </p>
+            <p className="text-sm">Medium Risk Employees</p>
           </div>
 
-          <div className="bg-green-50  p-6 rounded-xl shadow">
+          <div className="bg-green-50 dark:bg-card  p-6 rounded-xl shadow-xl">
             <p className="text-4xl font-bold text-green-600">
               {riskCounts.low}
             </p>

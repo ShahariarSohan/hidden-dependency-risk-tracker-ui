@@ -206,8 +206,8 @@ const TaskFormDialog = ({
   };
 
   return (
-    <Dialog open={open} onOpenChange={handleClose}>
-      <DialogContent className="max-w-3xl max-h-[90vh] flex flex-col p-0">
+    <Dialog  open={open} onOpenChange={handleClose}>
+      <DialogContent className="bg-card max-w-3xl max-h-[90vh] flex flex-col p-0">
         <DialogHeader className="px-6 pt-6 pb-4">
           <DialogTitle>{isEdit ? "Edit Task" : "Create New Task"}</DialogTitle>
         </DialogHeader>
@@ -255,7 +255,7 @@ const TaskFormDialog = ({
                 <select
                   id="priority"
                   name="priority"
-                  className="border rounded-md p-2 w-full bg-white disabled:bg-gray-100 disabled:cursor-not-allowed"
+                  className="border rounded-md p-2 w-full bg-card disabled:bg-gray-100 disabled:cursor-not-allowed"
                   defaultValue={state?.formData?.priority || "3"}
                   disabled={isPending}
                 >
@@ -375,7 +375,7 @@ const TaskFormDialog = ({
           </div>
 
           {/* Actions */}
-          <div className="flex justify-end gap-3 px-6 py-4 border-t bg-gray-50">
+          <div className="flex justify-end gap-3 px-6 py-4 border-t bg-card">
             <Button
               type="button"
               variant="outline"

@@ -19,7 +19,7 @@ export default function PageHeader({
         </div>
         <h1 className="text-3xl font-bold ">{title}</h1>
       </div>
-      <p className="ml-12">{subtitle}</p>
+      <p className="ml-12 text-muted-foreground">{subtitle}</p>
     </div>
   );
 }

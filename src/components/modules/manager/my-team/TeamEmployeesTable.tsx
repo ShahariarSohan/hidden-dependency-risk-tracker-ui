@@ -3,15 +3,15 @@ import { IEmployee } from "@/types/employee.interface";
 // src/components/manager/TeamEmployeesTable.tsx
 export default function TeamEmployeesTable({ employees }:{ employees:IEmployee[]}) {
   return (
-    <section className="rounded-2xl border bg-white p-6 shadow-sm">
+    <section className="rounded-2xl border  p-6 shadow-sm">
       <div className="flex items-center justify-between gap-3">
         <h2 className="text-lg font-semibold">Team Employees</h2>
-        <p className="text-sm text-gray-600">Total: {employees.length}</p>
+        <p className="text-sm ">Total: {employees.length}</p>
       </div>
 
       <div className="mt-4 overflow-x-auto">
         <table className="min-w-full text-sm">
-          <thead className="text-left text-gray-600">
+          <thead className="text-left ">
             <tr>
               <th className="py-2 pr-4 font-medium">Name</th>
               <th className="py-2 pr-4 font-medium">Email</th>

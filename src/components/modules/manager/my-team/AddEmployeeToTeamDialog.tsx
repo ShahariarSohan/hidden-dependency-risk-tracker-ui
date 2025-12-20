@@ -144,7 +144,7 @@ const AddEmployeeToTeamDialog = ({
 
   return (
     <Dialog open={open} onOpenChange={handleClose}>
-      <DialogContent className="max-w-2xl max-h-[90vh] flex flex-col p-0">
+      <DialogContent className="max-w-2xl max-h-[90vh] flex flex-col p-0 bg-card">
         <DialogHeader className="px-6 pt-6 pb-4">
           <DialogTitle>Add Employee to {teamName}</DialogTitle>
         </DialogHeader>
@@ -196,25 +196,24 @@ const AddEmployeeToTeamDialog = ({
 
                 {/* Selected Employee Display */}
                 {selectedEmployee && (
-                  <div className="p-4 bg-blue-50 border-2 border-blue-200 rounded-lg">
+                  <div className="p-4 bg-card border-2 border-blue-200 rounded-lg">
                     <div className="flex items-start justify-between">
                       <div className="flex items-start gap-3 flex-1">
                         <div className="h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0">
                           <User className="h-5 w-5 text-blue-600" />
                         </div>
                         <div className="flex-1 min-w-0">
-                          <p className="font-semibold text-sm text-gray-900">
+                          <p className="font-semibold text-sm text-(--hero-foreground)">
                             {selectedEmployee.name}
                           </p>
-                          <p className="text-xs text-gray-600 mt-0.5">
+                          <p className="text-xs text-(--hero-foreground) mt-0.5">
                             {selectedEmployee.email}
                           </p>
                           {selectedEmployee.id && (
-                            <p className="text-xs text-gray-500 mt-1">
+                            <p className="text-xs text-(--hero-foreground) mt-1">
                               ID: {selectedEmployee.id}
                             </p>
                           )}
-                         
                         </div>
                       </div>
                       <Button
@@ -241,20 +240,19 @@ const AddEmployeeToTeamDialog = ({
                           key={employee.id}
                           type="button"
                           onClick={() => setSelectedEmployee(employee)}
-                          className="w-full p-3 hover:bg-gray-50 transition-colors text-left flex items-center gap-3"
+                          className="w-full p-3 hover:bg-primary transition-colors text-left flex items-center gap-3"
                           disabled={isPending}
                         >
                           <div className="h-10 w-10 rounded-full bg-gray-100 flex items-center justify-center flex-shrink-0">
                             <User className="h-5 w-5 text-gray-600" />
                           </div>
                           <div className="flex-1 min-w-0">
-                            <p className="font-medium text-sm text-gray-900 truncate">
+                            <p className="font-medium text-sm text-(--hero-foreground) truncate">
                               {employee.name}
                             </p>
-                            <p className="text-xs text-gray-500 truncate">
+                            <p className="text-xs text-(--hero-foreground) truncate">
                               {employee.email}
                             </p>
-                           
                           </div>
                         </button>
                       ))}
@@ -281,7 +279,7 @@ const AddEmployeeToTeamDialog = ({
           </div>
 
           {/* Actions */}
-          <div className="flex justify-end gap-2 px-6 py-4 border-t bg-gray-50">
+          <div className="flex justify-end gap-2 px-6 py-4 border-t bg-card">
             <Button
               type="button"
               variant="outline"

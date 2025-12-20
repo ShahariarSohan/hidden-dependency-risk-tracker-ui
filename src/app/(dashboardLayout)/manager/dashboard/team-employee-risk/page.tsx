@@ -20,7 +20,7 @@ export default async function ManagerTeamEmployeeRiskPage() {
   const riskCounts = getRiskCounts(employeeRisks);
 
   return (
-    <div className="min-h-screen bg-slate-50 p-6">
+    <div className="min-h-screen  p-6">
       <div className="max-w-7xl mx-auto">
         
 
@@ -30,8 +30,8 @@ export default async function ManagerTeamEmployeeRiskPage() {
           subtitle={`${teamName} • ${totalEmployees} Members`}
         />
 
-        <div className="bg-white p-6 rounded-xl shadow mb-6">
-          <p className="font-semibold text-slate-700 mb-2">Risk Summary</p>
+        <div className="bg-card p-6 rounded-xl shadow-lg mb-6">
+          <p className="font-semibold  mb-2">Risk Summary</p>
           <div className="flex gap-8">
             <div>
               <p className="text-red-600 text-3xl font-bold">

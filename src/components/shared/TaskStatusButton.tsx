@@ -66,14 +66,16 @@ export default function TaskStatusButton({
       </Button>
 
       {open && (
-        <div className="absolute z-10 mt-1 w-max rounded-md border bg-white shadow-lg">
+        <div className="absolute z-10 mt-1 w-max rounded-md border bg-card shadow-lg">
           {Object.values(TaskStatus).map((s) => (
             <button
               key={s}
               type="button"
               onClick={() => handleSelect(s)}
-              className={`block px-4 py-2 text-left w-full hover:bg-gray-100 ${
-                s === status ? "font-semibold underline" : "text-gray-800"
+              className={`block px-4 py-2 text-left w-full hover:bg-primary ${
+                s === status
+                  ? "font-semibold underline"
+                  : "text-(--hero-foreground)"
               }`}
               disabled={isPending}
             >

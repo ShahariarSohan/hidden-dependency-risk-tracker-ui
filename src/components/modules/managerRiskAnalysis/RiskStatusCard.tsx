@@ -7,11 +7,11 @@ export const RiskStatusCard = ({ level }: { level: RiskLevel }) => {
   const c = getRiskColor(level);
 
   return (
-    <div className="bg-white rounded-xl p-6 shadow-lg">
+    <div className="bg-card rounded-xl p-6 shadow-xl">
       <div className="flex items-center gap-3 mb-4">
         <Activity className={`w-7 h-7 ${c.icon}`} />
         <div>
-          <p className="text-sm text-slate-600">Risk Status</p>
+          <p className="text-sm text-(--hero-foreground)">Risk Status</p>
           <p className={`text-4xl font-bold ${c.text}`}>{level}</p>
         </div>
       </div>

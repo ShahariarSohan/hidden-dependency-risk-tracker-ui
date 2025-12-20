@@ -26,7 +26,7 @@ export default async function ManagerTeamPage() {
       <div className="flex justify-between items-center">
         <div>
           <h1 className="text-2xl font-bold">My Team</h1>
-          <p className="text-gray-600 mt-1">
+          <p className=" mt-1">
             Manage your team members and systems
           </p>
         </div>

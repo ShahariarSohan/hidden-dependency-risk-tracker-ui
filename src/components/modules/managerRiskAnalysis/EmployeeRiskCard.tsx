@@ -18,9 +18,9 @@ export const EmployeeRiskCard = ({
 
   return (
     <div
-      className={`bg-white rounded-xl shadow-lg hover:shadow-2xl border-2 ${c.border}`}
+      className={`bg-card rounded-xl shadow-lg hover:shadow-2xl border-2 ${c.border}`}
     >
-      <div className={`${c.bg} p-5 border-b-2 ${c.border}`}>
+      <div className={`${c.bg} dark:bg-card p-5 border-b-2 ${c.border}`}>
         <div className="flex items-center gap-3">
           <div className={`${c.badge} p-2.5 rounded-xl`}>
             <User className="w-5 h-5" />
@@ -36,7 +36,7 @@ export const EmployeeRiskCard = ({
         <div className="mb-5">
           <div className="flex items-end justify-between mb-3">
             <div>
-              <p className="text-sm text-slate-600">Risk Score</p>
+              <p className="text-sm ">Risk Score</p>
               <p className={`text-4xl font-bold ${c.text}`}>
                 {employee.riskScore}
               </p>
@@ -53,7 +53,9 @@ export const EmployeeRiskCard = ({
 
         <RiskBadge level={employee.employeeRiskLevel} />
 
-        <div className={`${c.bg} ${c.border} border rounded-lg p-3 mt-4`}>
+        <div
+          className={`${c.bg} dark:bg-card ${c.border} border rounded-lg p-3 mt-4`}
+        >
           <p className={`text-xs text-center ${c.text}`}>
             {getEmployeeStatusMessage(employee.employeeRiskLevel)}
           </p>

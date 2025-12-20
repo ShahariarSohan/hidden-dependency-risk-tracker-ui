@@ -3,15 +3,15 @@ import { ISystem } from "@/types/system.interface";
 // src/components/manager/TeamSystemsTable.tsx
 export default function TeamSystemsTable({ systems }: {systems:ISystem[]}) {
   return (
-    <section className="rounded-2xl border bg-white p-6 shadow-sm">
+    <section className="rounded-2xl border  p-6 shadow-lg">
       <div className="flex items-center justify-between gap-3">
         <h2 className="text-lg font-semibold">Team Systems</h2>
-        <p className="text-sm text-gray-600">Total: {systems.length}</p>
+        <p className="text-sm ">Total: {systems.length}</p>
       </div>
 
       <div className="mt-4 overflow-x-auto">
         <table className="min-w-full text-sm">
-          <thead className="text-left text-gray-600">
+          <thead className="text-left ">
             <tr>
               <th className="py-2 pr-4 font-medium">Name</th>
               <th className="py-2 pr-4 font-medium">Criticality</th>
@@ -26,7 +26,7 @@ export default function TeamSystemsTable({ systems }: {systems:ISystem[]}) {
             ))}
             {systems.length === 0 && (
               <tr className="border-t">
-                <td className="py-4 text-gray-500" colSpan={2}>
+                <td className="py-4 " colSpan={2}>
                   No systems found.
                 </td>
               </tr>

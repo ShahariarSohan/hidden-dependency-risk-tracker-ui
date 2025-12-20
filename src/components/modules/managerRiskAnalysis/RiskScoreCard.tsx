@@ -15,19 +15,21 @@ export default function RiskScoreCard ({
   const c = getRiskColor(level);
 
   return (
-    <div className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl">
+    <div className="bg-card rounded-xl p-6 shadow-lg hover:shadow-xl">
       <div className="flex items-start justify-between mb-4">
         <div className="flex items-center gap-3">
           <div
-            className={`bg-gradient-to-br ${c.gradient} p-3 rounded-xl shadow-md`}
+            className={`bg-gradient-to-br ${c.gradient} p-3 rounded-xl shadow-xl`}
           >
-            <Target className="w-7 h-7 text-white" />
+            <Target className="w-7 h-7 " />
           </div>
           <div>
-            <p className="text-sm font-medium text-slate-600">
+            <p className="text-sm font-medium text-(--hero-foreground)">
               Total Risk Score
             </p>
-            <p className="text-4xl font-bold text-slate-800">{score}</p>
+            <p className="text-4xl font-bold text-(--hero-foreground)">
+              {score}
+            </p>
           </div>
         </div>
       </div>
