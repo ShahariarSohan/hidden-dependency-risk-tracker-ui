@@ -23,9 +23,9 @@ const statusLabels: Record<TaskStatus, string> = {
 };
 
 const statusColors: Record<TaskStatus, string> = {
-  PENDING: "bg-yellow-400 text-gray-800 hover:bg-yellow-500",
-  IN_PROGRESS: "bg-blue-500 text-gray-800 hover:bg-blue-600",
-  COMPLETED: "bg-green-500 text-gray-800 hover:bg-green-600",
+  PENDING: "bg-yellow-400 text-gray-900 hover:bg-yellow-500",
+  IN_PROGRESS: "bg-blue-500 text-gray-900 hover:bg-blue-600",
+  COMPLETED: "bg-green-500 text-gray-900 hover:bg-green-600",
 };
 
 export default function TaskStatusButton({

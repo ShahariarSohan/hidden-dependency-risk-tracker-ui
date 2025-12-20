@@ -141,7 +141,7 @@ const SystemFormDialog = ({
                 <select
                   id="teamId"
                   name="teamId"
-                  className="border rounded-md p-2 w-full bg-white"
+                  className="border rounded-md p-2 w-full bg-card"
                   defaultValue={system?.teamId || ""}
                 >
                   <option value="">No Team</option>
