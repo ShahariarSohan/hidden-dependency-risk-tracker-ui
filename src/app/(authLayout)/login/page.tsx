@@ -1,7 +1,6 @@
 
 
 import LoginForm from "@/components/modules/auth/LoginForm";
-import Image from "next/image";
 import {
   Card,
   CardContent,

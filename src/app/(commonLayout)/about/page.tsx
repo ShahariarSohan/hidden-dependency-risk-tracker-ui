@@ -2,7 +2,7 @@
 
 
 
-export default function LearnMorePage() {
+export default function AboutPage() {
   return (
     <main className="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
       {/* Hero Section */}

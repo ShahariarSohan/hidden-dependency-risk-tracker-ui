@@ -23,8 +23,8 @@ const PublicNavbarClient = ({
     { href: "/", label: "Home" },
     accessToken && { href: dashboardPath, label: "Dashboard" },
     { href: "/#how-it-works", label: "How It Works" },
-    { href: "/#use-cases", label: "Use Cases" },
-    { href: "/learn-more", label: "About Us" },
+    { href: "/about", label: "About" },
+    { href: "/contact", label: "Contact" },
   ].filter(Boolean) as { href: string; label: string }[];
 
   const isActive = (href: string) =>
