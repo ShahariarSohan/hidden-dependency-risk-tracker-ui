@@ -5,12 +5,10 @@ import {  Brain, Zap, Eye, TrendingDown } from "lucide-react";
 
 export default function WhyRiskMatters() {
   return (
-    <section
-      className="w-full py-24 px-4 md:px-8 lg:px-16"
-    >
+    <section className="w-full py-20 px-4 md:px-8 lg:px-12 dark:bg-slate-950">
       <div className="container mx-auto text-center space-y-10">
         {/* Title */}
-        <h2 className="text-4xl font-bold text-gray-900 dark:text-white">
+        <h2 className="text-4xl font-bold text-gray-900  dark:text-white">
           Why Hidden Risks Matter
         </h2>
 

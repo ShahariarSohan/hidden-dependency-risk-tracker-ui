@@ -35,7 +35,10 @@ export default function HowItWorks() {
   ];
 
   return (
-    <section id="how-it-works" className="py-24 scroll-mt-16 bg-zinc-100">
+    <section
+      id="how-it-works"
+      className="py-20 scroll-mt-16 bg-zinc-100 dark:bg-slate-950"
+    >
       <div className="container mx-auto px-4">
         {/* Header Section */}
         <div className="text-center mb-16 space-y-4">

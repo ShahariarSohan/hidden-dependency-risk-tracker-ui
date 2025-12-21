@@ -64,36 +64,41 @@ export default function RiskVisualizer() {
       },
     },
   ];
-
-  const getColorClasses = (color:any, type = "bg") => {
-    const colors = {
-      red: {
-        bg: "bg-red-500",
-        light: "bg-red-100 dark:bg-red-950/30",
-        text: "text-red-500 dark:text-red-400",
-        border: "border-red-500",
-        glow: "shadow-red-500/50",
-      },
-      orange: {
-        bg: "bg-orange-500",
-        light: "bg-orange-100 dark:bg-orange-950/30",
-        text: "text-orange-500 dark:text-orange-400",
-        border: "border-orange-500",
-        glow: "shadow-orange-500/50",
-      },
-      yellow: {
-        bg: "bg-yellow-500",
-        light: "bg-yellow-100 dark:bg-yellow-950/30",
-        text: "text-yellow-600 dark:text-yellow-400",
-        border: "border-yellow-500",
-        glow: "shadow-yellow-500/50",
-      },
+ 
+    const getColorClasses = (
+      color: string,
+      type: "bg" | "light" | "text" | "border" | "glow" = "bg"
+    ): string => {
+      const colors: Record<string, Record<string, string>> = {
+        red: {
+          bg: "bg-red-500",
+          light: "bg-red-100 dark:bg-red-950/30",
+          text: "text-red-500 dark:text-red-400",
+          border: "border-red-500",
+          glow: "shadow-red-500/50",
+        },
+        orange: {
+          bg: "bg-orange-500",
+          light: "bg-orange-100 dark:bg-orange-950/30",
+          text: "text-orange-500 dark:text-orange-400",
+          border: "border-orange-500",
+          glow: "shadow-orange-500/50",
+        },
+        yellow: {
+          bg: "bg-yellow-500",
+          light: "bg-yellow-100 dark:bg-yellow-950/30",
+          text: "text-yellow-600 dark:text-yellow-400",
+          border: "border-yellow-500",
+          glow: "shadow-yellow-500/50",
+        },
+      };
+      // fallback to 'red' if an unknown color key is provided
+      const resolved = colors[color] ?? colors["red"];
+      return resolved[type] ?? resolved["bg"];
     };
-    return colors[color][type];
-  };
 
   return (
-    <section className="py-24 px-4 md:px-8 lg:px-16">
+    <section className="py-20 px-4 md:px-8 lg:px-12 dark:bg-slate-950">
       <div className="container mx-auto">
         {/* Header */}
         <div className="text-center mb-16 space-y-4">

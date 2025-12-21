@@ -131,11 +131,10 @@ export default function BeforeAfterTransformation() {
   ];
 
   return (
-    <section
-      className="py-24 px-4 md:px-8 lg:px-16 bg-zinc-100" >
+    <section className="py-20 px-4 md:px-8 lg:px-12  bg-zinc-100 dark:bg-slate-950">
       <div className="container mx-auto">
         {/* Header */}
-        <div className="text-center mb-16 space-y-4">
+        <div className="text-center mb-16  space-y-4">
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-red-50 to-green-50 dark:from-red-950/30 dark:to-green-950/30 rounded-full mb-4">
             <TrendingDown className="w-4 h-4 text-red-500 dark:text-red-400" />
             <span className="text-sm font-semibold text-gray-700 dark:text-gray-300">

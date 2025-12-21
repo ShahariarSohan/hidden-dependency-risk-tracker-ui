@@ -41,7 +41,7 @@ const PublicNavbarClient = ({
       />
 
       {/* Subtle border at bottom */}
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-[var(--hero-foreground)]/10" />
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-(--hero-foreground)/10" />
 
       <div className="container mx-auto flex h-16 items-center px-4">
         {/* Logo */}
@@ -50,7 +50,7 @@ const PublicNavbarClient = ({
           className="flex items-center gap-2 hover:opacity-80 transition-opacity"
         >
           <ShieldAlert className="h-6 w-6 text-red-500 dark:text-red-400" />
-          <span className="text-lg font-bold text-[var(--hero-foreground)]">
+          <span className="text-lg font-bold text-(--hero-foreground)">
             HDRT
           </span>
         </Link>
@@ -64,12 +64,12 @@ const PublicNavbarClient = ({
               <Link
                 key={item.label}
                 href={item.href}
-                className={`relative text-[var(--hero-foreground)]/75 hover:text-[var(--hero-foreground)] transition-colors
+                className={`relative text-(--hero-foreground)/75 hover:text-(--hero-foreground) transition-colors
                   after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-0
                   after:bg-[var(--hero-foreground)] after:transition-all after:duration-300
                   ${
                     isActive(item.href)
-                      ? "text-[var(--hero-foreground)] after:w-full"
+                      ? "text-(--hero-foreground) after:w-full"
                       : "hover:after:w-full"
                   }`}
               >
@@ -98,7 +98,7 @@ const PublicNavbarClient = ({
           <Sheet>
             <SheetTrigger asChild>
               <button className="p-2 hover:bg-white/10 dark:hover:bg-white/5 rounded-lg transition-colors">
-                <Menu className="h-5 w-5 text-[var(--hero-foreground)]" />
+                <Menu className="h-5 w-5 text-(--hero-foreground)" />
               </button>
             </SheetTrigger>
 

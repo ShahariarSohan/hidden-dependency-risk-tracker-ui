@@ -2,7 +2,7 @@ import BeforeAfterTransformation from "@/components/modules/home/BeforeAfterTran
 import Hero from "@/components/modules/home/Hero";
 import HowItWorks from "@/components/modules/home/HowItWorks";
 import RiskVisualizer from "@/components/modules/home/RiskVisualizer";
-import UseCases from "@/components/modules/home/UseCases";
+
 import WhyRiskMatters from "@/components/modules/home/WhyRiskMatters";
 import Head from "next/head";
 
@@ -37,7 +37,7 @@ export default function Home() {
         />
       </Head>
 
-      <main className="min-h-screen  dark:bg-gray-900">
+      <main className="min-h-screen  dark:bg-slate-950">
         {/* Hero Section */}
         <Hero />
         <WhyRiskMatters></WhyRiskMatters>
