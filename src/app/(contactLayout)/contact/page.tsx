@@ -4,7 +4,7 @@ import ContactForm from "@/components/modules/contact/ContactForm";
 
 export default function ContactPage() {
   return (
-    <div className="min-h-screen flex flex-col lg:flex-row bg-gray-50">
+    <div className="min-h-screen flex flex-col lg:flex-row bg-gray-50 dark:bg-slate-950">
       {/* Left Side: Contact Banner */}
       <ContactBanner />
 

@@ -18,7 +18,7 @@ export default async function LoginPage({
   const params = (await searchParams) || {};
 
   return (
-    <div className="min-h-screen flex flex-col lg:flex-row bg-gray-50 ">
+    <div className="min-h-screen flex flex-col lg:flex-row bg-gray-50 dark:bg-slate-950 ">
       {/* Left Side: HDRT Logo & Info */}
       <LoginBanner></LoginBanner>
       {/* Right Side: Login Form */}
