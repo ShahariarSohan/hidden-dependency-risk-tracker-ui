@@ -95,7 +95,6 @@ const PublicNavbarClient = ({
         {/* ================= MOBILE ================= */}
         <div className="ml-auto flex items-center gap-4 lg:hidden">
           <AnimatedThemeToggler />
-
           <Sheet>
             <SheetTrigger asChild>
               <button className="p-2 hover:bg-white/10 dark:hover:bg-white/5 rounded-lg transition-colors">
@@ -103,7 +102,10 @@ const PublicNavbarClient = ({
               </button>
             </SheetTrigger>
 
-            <SheetContent side="right">
+            <SheetContent
+              side="right"
+              style={{ background: "var(--hero-gradient)" }}
+            >
               <SheetTitle className="sr-only">Navigation</SheetTitle>
 
               <nav className="mt-6 flex p-4 flex-col gap-6">
@@ -119,7 +121,7 @@ const PublicNavbarClient = ({
 
                 {!accessToken && (
                   <Link href="/login">
-                    <Button>Login</Button>
+                    <Button className="text-white">Login</Button>
                   </Link>
                 )}
               </nav>

@@ -19,14 +19,16 @@ export default async function LoginPage({
   const params = (await searchParams) || {};
 
   return (
-    <div className="min-h-screen flex flex-col md:flex-row bg-gray-50">
+    <div
+      className="min-h-screen flex flex-col lg:flex-row bg-gray-50"
+    >
       {/* Left Side: HDRT Logo & Info */}
       <LoginBanner></LoginBanner>
       {/* Right Side: Login Form */}
       <div className="flex-1 flex items-center justify-center p-6 md:p-12">
-        <Card className="w-full max-w-md shadow-lg text-white">
+        <Card className="w-full max-w-md shadow-lg text-white dark:bg-gray-900">
           <CardHeader>
-            <CardTitle className="text-2xl font-bold text-primary">
+            <CardTitle className="text-2xl font-bold text-primary dark:text-(--hero-foreground)">
               Login
             </CardTitle>
             <CardDescription className="text-(--hero-foreground)">

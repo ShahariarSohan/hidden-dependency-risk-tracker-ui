@@ -21,7 +21,7 @@ import {
 } from "recharts";
 
 export default function RiskVisualizer() {
-  const [activeRisk, setActiveRisk] = useState(null);
+  const [activeRisk, setActiveRisk] = useState<string|null>(null);
 
   const riskData = [
     {
@@ -93,7 +93,7 @@ export default function RiskVisualizer() {
   };
 
   return (
-    <section className="py-24 px-4 md:px-8 lg:px-16 bg-white dark:bg-[oklch(0.1_0_0)]">
+    <section className="py-24 px-4 md:px-8 lg:px-16">
       <div className="container mx-auto">
         {/* Header */}
         <div className="text-center mb-16 space-y-4">
@@ -143,13 +143,11 @@ export default function RiskVisualizer() {
                             "border"
                           )} bg-gradient-to-r from-white to-${
                             risk.color
-                          }-50 dark:from-[oklch(0.205_0_0)] dark:to-${
-                            risk.color
-                          }-950/20 shadow-xl ${getColorClasses(
+                          }-50 dark:bg-gray-900 dark:bg-none shadow-xl ${getColorClasses(
                             risk.color,
                             "glow"
                           )}`
-                        : "border-gray-200 dark:border-[oklch(1_0_0_/_10%)] bg-white dark:bg-[oklch(0.205_0_0)] hover:shadow-lg"
+                        : "border-gray-200 dark:border-[oklch(1_0_0_/_10%)] bg-white dark:bg-gray-900 hover:shadow-lg"
                     }
                   `}
                 >
@@ -245,7 +243,7 @@ export default function RiskVisualizer() {
           </div>
 
           {/* Right: Visual Representation */}
-          <div className="bg-zinc-50 dark:bg-[oklch(0.15_0_0)] rounded-2xl p-8 border border-gray-200 dark:border-[oklch(1_0_0_/_10%)]">
+          <div className="bg-zinc-50 dark:bg-gray-900 rounded-2xl p-8 border border-gray-200 dark:border-[oklch(1_0_0_/_10%)]">
             <div className="space-y-6">
               <div className="flex items-center justify-between">
                 <h3 className="text-xl font-semibold text-gray-900 dark:text-white">

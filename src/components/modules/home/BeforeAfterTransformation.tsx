@@ -131,7 +131,8 @@ export default function BeforeAfterTransformation() {
   ];
 
   return (
-    <section className="py-24 px-4 md:px-8 lg:px-16 bg-zinc-50 dark:bg-[oklch(0.12_0_0)]">
+    <section
+      className="py-24 px-4 md:px-8 lg:px-16 bg-zinc-100" >
       <div className="container mx-auto">
         {/* Header */}
         <div className="text-center mb-16 space-y-4">
@@ -183,7 +184,7 @@ export default function BeforeAfterTransformation() {
                 {/* Before/After Cards */}
                 <div className="grid lg:grid-cols-2 gap-6">
                   {/* BEFORE Card */}
-                  <div className="group relative bg-white dark:bg-[oklch(0.205_0_0)] rounded-3xl border-2 border-red-200 dark:border-red-900/50 overflow-hidden transition-all duration-300 hover:shadow-2xl hover:shadow-red-500/20">
+                  <div className="group relative bg-white dark:bg-gray-900 rounded-3xl border-2 border-red-200 dark:border-red-900/50 overflow-hidden transition-all duration-300 hover:shadow-2xl hover:shadow-red-500/20">
                     {/* Danger stripe */}
                     <div className="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-red-500 via-red-600 to-red-500 animate-pulse" />
 
@@ -246,7 +247,7 @@ export default function BeforeAfterTransformation() {
                   </div>
 
                   {/* AFTER Card */}
-                  <div className="group relative bg-white dark:bg-[oklch(0.205_0_0)] rounded-3xl border-2 border-green-200 dark:border-green-900/50 overflow-hidden transition-all duration-300 hover:shadow-2xl hover:shadow-green-500/20">
+                  <div className="group relative bg-white dark:bg-gray-900 rounded-3xl border-2 border-green-200 dark:border-green-900/50 overflow-hidden transition-all duration-300 hover:shadow-2xl hover:shadow-green-500/20">
                     {/* Success stripe */}
                     <div className="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-green-500 via-emerald-500 to-green-500" />
 
@@ -330,7 +331,7 @@ export default function BeforeAfterTransformation() {
           </div>
 
           <div className="grid md:grid-cols-4 gap-6">
-            <div className="text-center p-6 bg-white dark:bg-[oklch(0.205_0_0)] rounded-2xl">
+            <div className="text-center p-6 bg-white dark:bg-gray-900 rounded-2xl">
               <div className="text-4xl font-bold bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent mb-2">
                 $750K+
               </div>
@@ -338,7 +339,7 @@ export default function BeforeAfterTransformation() {
                 Prevented Losses Per Year
               </div>
             </div>
-            <div className="text-center p-6 bg-white dark:bg-[oklch(0.205_0_0)] rounded-2xl">
+            <div className="text-center p-6 bg-white dark:bg-gray-900 rounded-2xl">
               <div className="text-4xl font-bold bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent mb-2">
                 85%
               </div>
@@ -346,7 +347,7 @@ export default function BeforeAfterTransformation() {
                 Reduction in Crisis Events
               </div>
             </div>
-            <div className="text-center p-6 bg-white dark:bg-[oklch(0.205_0_0)] rounded-2xl">
+            <div className="text-center p-6 bg-white dark:bg-gray-900 rounded-2xl">
               <div className="text-4xl font-bold bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent mb-2">
                 6 weeks
               </div>
@@ -354,7 +355,7 @@ export default function BeforeAfterTransformation() {
                 Average Early Warning Time
               </div>
             </div>
-            <div className="text-center p-6 bg-white dark:bg-[oklch(0.205_0_0)] rounded-2xl">
+            <div className="text-center p-6 bg-white dark:bg-gray-900 rounded-2xl">
               <div className="text-4xl font-bold bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent mb-2">
                 100%
               </div>

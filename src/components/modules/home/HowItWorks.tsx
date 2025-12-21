@@ -35,10 +35,7 @@ export default function HowItWorks() {
   ];
 
   return (
-    <section
-      id="how-it-works"
-      className="py-24 scroll-mt-16 bg-zinc-100 dark:bg-primary"
-    >
+    <section id="how-it-works" className="py-24 scroll-mt-16 bg-zinc-100">
       <div className="container mx-auto px-4">
         {/* Header Section */}
         <div className="text-center mb-16 space-y-4">
@@ -58,7 +55,7 @@ export default function HowItWorks() {
             return (
               <div
                 key={index}
-                className="group relative flex flex-col gap-6 p-8 bg-white dark:bg-[oklch(0.205_0_0)] rounded-2xl border border-gray-200 dark:border-[oklch(1_0_0_/_10%)] hover:shadow-2xl hover:-translate-y-2 transition-all duration-300"
+                className="group relative flex flex-col gap-6 p-8 bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-[oklch(1_0_0_/_10%)] hover:shadow-2xl hover:-translate-y-2 transition-all duration-300"
               >
                 {/* Badge */}
                 <div className="absolute -top-3 left-6">
@@ -101,7 +98,6 @@ export default function HowItWorks() {
         </div>
 
         {/* Bottom Stats Section */}
-       
       </div>
     </section>
   );
