@@ -25,7 +25,7 @@ const PublicNavbarClient = ({
    { href: "/about", label: "About" },
    { href: "/contact", label: "Contact" },
    { href: "/faq", label: "FAQ" },
-   { href: "/policy", label: "Policies" },
+   { href: "/policies", label: "Policies" },
  ];
 
   const isActive = (href: string) =>
@@ -124,7 +124,14 @@ const PublicNavbarClient = ({
                   <Link
                     key={item.label}
                     href={item.href}
-                    className="text-sm text-foreground hover:text-primary transition-colors"
+                    className={`relative text-(--hero-foreground)/75 hover:text-(--hero-foreground) transition-colors
+                  after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-0
+                  after:bg-[var(--hero-foreground)] after:transition-all after:duration-300
+                  ${
+                    isActive(item.href)
+                      ? "text-(--hero-foreground) after:w-1/2"
+                      : "hover:after:w-1/2"
+                  }`}
                   >
                     {item.label}
                   </Link>

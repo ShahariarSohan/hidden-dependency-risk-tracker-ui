@@ -7,7 +7,7 @@ import { colorClasses } from "@/lib/colorClasses";
 import { policies } from "@/lib/policies";
 import Link from "next/link";
 
-export default function Policy() {
+export default function Policies() {
   return (
     <main className="bg-gray-50 dark:bg-slate-950 min-h-screen">
       {/* Hero Section */}
@@ -75,7 +75,7 @@ export default function Policy() {
               >
                 {/* Policy Header */}
                 <div
-                  className={`relative ${colors.bg} rounded-2xl border ${colors.border} p-8 mb-8`}
+                  className={`mb-8`}
                 >
                   <div className="flex items-start justify-between gap-4 flex-wrap">
                     <div className="flex items-center gap-4">

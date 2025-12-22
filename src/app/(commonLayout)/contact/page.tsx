@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 import ContactBanner from "@/components/modules/contact/ContactBanner";
 import ContactForm from "@/components/modules/contact/ContactForm";
-
+export const dynamic = "force-static";
 export default function ContactPage() {
   return (
     <div className="min-h-screen flex flex-col lg:flex-row bg-gray-50 dark:bg-slate-950">

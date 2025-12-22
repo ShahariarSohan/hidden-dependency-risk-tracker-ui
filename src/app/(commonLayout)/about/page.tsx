@@ -1,8 +1,6 @@
+export const dynamic = "force-static";
 import { features } from "@/lib/features";
-import {
-  TrendingUp,
-  Eye,
-} from "lucide-react";
+import { TrendingUp, Eye } from "lucide-react";
 
 export default function AboutPage() {
   return (
