@@ -9,6 +9,10 @@ export default function LogoutButton() {
     const handleLogout = async () => {
         await logoutUser()
     }
-  return <Button variant="destructive" onClick={handleLogout}>Logout</Button>
+  return (
+    <Button className="w-fit" variant="destructive" onClick={handleLogout}>
+      Logout
+    </Button>
+  );
   
 }

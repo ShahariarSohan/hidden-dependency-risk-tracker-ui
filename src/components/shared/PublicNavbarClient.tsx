@@ -20,12 +20,13 @@ const PublicNavbarClient = ({
   const hash = searchParams?.get("hash") || "";
 
   /** ✅ Dashboard removed from navItems */
-  const navItems = [
-    { href: "/", label: "Home" },
-    { href: "/#how-it-works", label: "How It Works" },
-    { href: "/about", label: "About" },
-    { href: "/contact", label: "Contact" },
-  ];
+ const navItems = [
+   { href: "/", label: "Home" },
+   { href: "/about", label: "About" },
+   { href: "/contact", label: "Contact" },
+   { href: "/faq", label: "FAQ" },
+   { href: "/policy", label: "Policies" },
+ ];
 
   const isActive = (href: string) =>
     href.startsWith("#")
@@ -132,15 +133,17 @@ const PublicNavbarClient = ({
                 {/* ===== MOBILE ACTION BUTTONS ===== */}
                 {accessToken && (
                   <Link href={dashboardPath}>
-                    <Button className="bg-primary text-white hover:bg-primary-hover shadow-md w-full">
+                    <Button className="bg-primary text-white hover:bg-primary-hover shadow-md">
                       Dashboard
                     </Button>
                   </Link>
                 )}
 
-                {!accessToken && (
+                {accessToken ? (
+                  <LogoutButton />
+                ) : (
                   <Link href="/login">
-                    <Button className="bg-primary text-white hover:bg-primary-hover shadow-md w-full">
+                    <Button className="bg-primary text-white hover:bg-primary-hover shadow-md">
                       Login
                     </Button>
                   </Link>

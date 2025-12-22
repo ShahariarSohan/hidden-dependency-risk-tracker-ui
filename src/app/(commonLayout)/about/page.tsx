@@ -1,12 +1,6 @@
+import { features } from "@/lib/features";
 import {
-  Shield,
   TrendingUp,
-  Users,
-  Bell,
-  BarChart3,
-  Lock,
-  Zap,
-  Target,
   Eye,
 } from "lucide-react";
 
@@ -93,38 +87,7 @@ export default function AboutPage() {
         </div>
 
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {[
-            {
-              icon: BarChart3,
-              title: "Comprehensive Risk Scoring",
-              desc: "HDRT calculates risk scores for employees, teams, and systems using priority and criticality metrics, enabling organizations to quantify hidden dependencies.",
-            },
-            {
-              icon: Bell,
-              title: "Proactive Risk Alerts",
-              desc: "Automatically detect high-risk areas and generate alerts before issues affect operations, helping leadership take preventive measures.",
-            },
-            {
-              icon: Target,
-              title: "Detailed Risk Dashboards",
-              desc: "Visualize risks in real-time with dashboards that highlight employees, teams, or systems with elevated dependency scores.",
-            },
-            {
-              icon: Shield,
-              title: "Filtering & Sorting",
-              desc: "Easily filter and search through employees, tasks, and systems. Sort based on risk level, priority, or criticality for faster decision-making.",
-            },
-            {
-              icon: Zap,
-              title: "Customizable Metrics",
-              desc: "Configure risk calculations based on your organization's unique priorities and critical systems.",
-            },
-            {
-              icon: Lock,
-              title: "Role-Based Access",
-              desc: "Different dashboards for Admins, Managers, and Employees ensure that sensitive data is accessible only to authorized roles.",
-            },
-          ].map((feature, idx) => (
+          {features.map((feature, idx) => (
             <div
               key={idx}
               className="group relative p-6 bg-white dark:bg-slate-900 rounded-2xl border border-gray-200 dark:border-slate-800 hover:border-red-500/30 dark:hover:border-red-500/30 transition-all duration-300 hover:shadow-xl hover:shadow-red-500/10"
