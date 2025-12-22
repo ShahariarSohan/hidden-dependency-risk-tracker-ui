@@ -19,13 +19,13 @@ const PublicNavbarClient = ({
   const searchParams = useSearchParams();
   const hash = searchParams?.get("hash") || "";
 
+  /** ✅ Dashboard removed from navItems */
   const navItems = [
     { href: "/", label: "Home" },
-    accessToken && { href: dashboardPath, label: "Dashboard" },
     { href: "/#how-it-works", label: "How It Works" },
     { href: "/about", label: "About" },
     { href: "/contact", label: "Contact" },
-  ].filter(Boolean) as { href: string; label: string }[];
+  ];
 
   const isActive = (href: string) =>
     href.startsWith("#")
@@ -34,13 +34,12 @@ const PublicNavbarClient = ({
 
   return (
     <header className="sticky top-0 z-50 w-full">
-      {/* ===== SHARED GRADIENT (Same as Hero) ===== */}
+      {/* ===== SHARED GRADIENT ===== */}
       <div
         className="absolute inset-0 -z-10"
         style={{ background: "var(--hero-gradient)" }}
       />
 
-      {/* Subtle border at bottom */}
       <div className="absolute bottom-0 left-0 right-0 h-px bg-(--hero-foreground)/10" />
 
       <div className="container mx-auto flex h-16 items-center px-4">
@@ -78,8 +77,18 @@ const PublicNavbarClient = ({
             ))}
           </nav>
 
+          {/* ===== RIGHT ACTIONS ===== */}
           <div className="flex flex-1 items-center justify-end gap-4">
             <AnimatedThemeToggler />
+
+            {accessToken && (
+              <Link href={dashboardPath}>
+                <Button className="bg-primary text-white hover:bg-primary-hover shadow-md">
+                  Dashboard
+                </Button>
+              </Link>
+            )}
+
             {accessToken ? (
               <LogoutButton />
             ) : (
@@ -95,6 +104,7 @@ const PublicNavbarClient = ({
         {/* ================= MOBILE ================= */}
         <div className="ml-auto flex items-center gap-4 lg:hidden">
           <AnimatedThemeToggler />
+
           <Sheet>
             <SheetTrigger asChild>
               <button className="p-2 hover:bg-white/10 dark:hover:bg-white/5 rounded-lg transition-colors">
@@ -108,7 +118,7 @@ const PublicNavbarClient = ({
             >
               <SheetTitle className="sr-only">Navigation</SheetTitle>
 
-              <nav className="mt-6 flex p-4 flex-col gap-6">
+              <nav className="mt-6 flex flex-col gap-6 p-4">
                 {navItems.map((item) => (
                   <Link
                     key={item.label}
@@ -119,9 +129,20 @@ const PublicNavbarClient = ({
                   </Link>
                 ))}
 
+                {/* ===== MOBILE ACTION BUTTONS ===== */}
+                {accessToken && (
+                  <Link href={dashboardPath}>
+                    <Button className="bg-primary text-white hover:bg-primary-hover shadow-md w-full">
+                      Dashboard
+                    </Button>
+                  </Link>
+                )}
+
                 {!accessToken && (
                   <Link href="/login">
-                    <Button className="text-white">Login</Button>
+                    <Button className="bg-primary text-white hover:bg-primary-hover shadow-md w-full">
+                      Login
+                    </Button>
                   </Link>
                 )}
               </nav>
