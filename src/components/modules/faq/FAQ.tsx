@@ -48,7 +48,7 @@ export default function FAQ() {
       <section className="py-20 px-4 max-w-6xl mx-auto">
         <div className="space-y-16">
           {faqCategories.map((category, categoryIndex) => {
-            const colors = colorClasses[category.color];
+            const colors = colorClasses[category.color as keyof typeof colorClasses];
             const Icon = category.icon;
 
             return (

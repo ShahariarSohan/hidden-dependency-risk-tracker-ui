@@ -40,7 +40,7 @@ export default function Policy() {
         <div className="container mx-auto">
           <div className="flex flex-wrap justify-center gap-4">
             {policies.map((policy, index) => {
-              const colors = colorClasses[policy.color];
+              const colors = colorClasses[policy.color as keyof typeof colorClasses];
               const Icon = policy.icon;
 
               return (
@@ -64,7 +64,7 @@ export default function Policy() {
       <section className="py-20 px-4">
         <div className="container mx-auto space-y-20">
           {policies.map((policy, policyIndex) => {
-            const colors = colorClasses[policy.color];
+            const colors = colorClasses[policy.color as keyof typeof colorClasses];
             const Icon = policy.icon;
 
             return (
