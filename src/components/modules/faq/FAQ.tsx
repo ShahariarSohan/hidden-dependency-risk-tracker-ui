@@ -149,10 +149,10 @@ export default function FAQ() {
                 HDRT.
               </p>
 
-              <Link href="/faq" className="w-full">
+              <Link href="/contact" className="w-full">
                 <Button
                   type="button"
-                  className="bg-primary text-white hover:bg-primary-hover shadow-md w-full"
+                  className="bg-primary text-white hover:bg-primary-hover shadow-md"
                 >
                   Contact Support
                 </Button>

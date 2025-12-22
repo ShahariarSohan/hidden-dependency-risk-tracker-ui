@@ -155,10 +155,10 @@ export default function Policy() {
                 to provide clarification.
               </p>
 
-              <Link href="/faq" className="w-full">
+              <Link href="/contact" className="w-full">
                 <Button
                   type="button"
-                  className="bg-primary text-white hover:bg-primary-hover shadow-md w-full"
+                  className="bg-primary text-white hover:bg-primary-hover shadow-md"
                 >
                   Contact Legal Team
                 </Button>
