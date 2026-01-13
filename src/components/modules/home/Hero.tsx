@@ -15,12 +15,16 @@ export default function Hero({
   buttons = {
     primary: { text: "Learn More" },
   },
-  stats = [
-    { value: "500+", label: "Teams Monitored" },
-    { value: "2000+", label: "Employees Tracked" },
-    { value: "100%", label: "Risk Visibility" },
-  ],
+  stats,
+}: {
+  badge?: any;
+  heading?: any;
+  description?: string[];
+  buttons?: any;
+  stats?: any[];
 }) {
+  // Default stats if none passed
+  const displayStats = stats||[]
   return (
     <section
       className="relative w-full overflow-hidden min-h-[90vh]"
@@ -54,7 +58,7 @@ export default function Hero({
 
             {/* CTA */}
             <div className="animate-slide-up delay-300">
-              <Link href="/learn-more">
+              <Link href="/about">
                 <Button className="bg-primary px-6 py-6 text-white hover:bg-primary-hover shadow-lg">
                   {buttons.primary.text}
                 </Button>
@@ -63,7 +67,7 @@ export default function Hero({
 
             {/* Stats */}
             <div className="grid grid-cols-3 gap-6 pt-6 animate-slide-up delay-500">
-              {stats.map((stat, i) => (
+              {displayStats.map((stat, i) => (
                 <div key={i}>
                   <p className="text-2xl font-bold text-[var(--hero-foreground)]">
                     {stat.value}

@@ -6,7 +6,30 @@ import RiskVisualizer from "@/components/modules/home/RiskVisualizer";
 import WhyRiskMatters from "@/components/modules/home/WhyRiskMatters";
 import Head from "next/head";
 
-export default function Home() {
+export default async function Home() {
+  // Fetch dynamic stats from Backend
+  // Note: In Next.js Server Components, we can fetch directly.
+  let landingStats = null;
+  try {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/public/landing-stats`, {
+      cache: "no-store", // Ensure real-time data
+    });
+    if (res.ok) {
+      const result = await res.json();
+      landingStats = result.data;
+    }
+  } catch (err) {
+    console.error("Failed to fetch landing stats:", err);
+  }
+
+  // Format Hero stats if data exists
+  // If stats exist, map them. If not, pass undefined so Hero uses defaults.
+  const heroStats = landingStats ? [
+    { value: `${landingStats.hero.teams}+`, label: "Teams Monitored" },
+    { value: `${landingStats.hero.employees}+`, label: "Employees Tracked" },
+    { value: `${landingStats.hero.coverage}%`, label: "Risk Visibility" },
+  ] : undefined;
+
   return (
     <>
       <Head>
@@ -39,9 +62,9 @@ export default function Home() {
 
       <main className="min-h-screen  dark:bg-slate-950">
         {/* Hero Section */}
-        <Hero />
+        <Hero stats={heroStats} />
         <WhyRiskMatters></WhyRiskMatters>
-        <BeforeAfterTransformation></BeforeAfterTransformation>
+        <BeforeAfterTransformation stats={landingStats}></BeforeAfterTransformation>
         <RiskVisualizer></RiskVisualizer>
         <HowItWorks></HowItWorks>
       </main>

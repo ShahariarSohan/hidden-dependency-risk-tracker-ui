@@ -13,8 +13,19 @@ import {
   TrendingUp,
 } from "lucide-react";
 
-export default function BeforeAfterTransformation() {
+export default function BeforeAfterTransformation({ stats }: { stats?: any }) {
   const [hoveredCard, setHoveredCard] = useState<null|string>(null);
+
+  // Default values if no API data yet
+  const dynamicStats = {
+    avgResolutionTime: stats?.beforeAfter?.avgResolutionTime || "0 days",
+    preventedLosses: stats?.beforeAfter?.preventedLosses || "$0",
+    protectedProjects: stats?.beforeAfter?.protectedProjects || "0",
+    attritionRate: stats?.beforeAfter?.attritionRate || "0%",
+    crisisReduction: stats?.beforeAfter?.crisisReduction || "0%",
+    visibility: stats?.beforeAfter?.visibility || "100%",
+    earlyWarning: "6 weeks" // Constant for now
+  };
 
   const scenarios = [
     {
@@ -48,9 +59,9 @@ export default function BeforeAfterTransformation() {
           "Zero disruption to operations",
         ],
         metrics: [
-          { label: "Recovery Time", value: "0 days", bad: false },
+          { label: "Recovery Time", value: dynamicStats.avgResolutionTime, bad: false }, // Dynamic
           { label: "Cost Impact", value: "$0", bad: false },
-          { label: "Projects Affected", value: "0", bad: false },
+          { label: "Projects Affected", value: dynamicStats.protectedProjects, bad: false }, // Dynamic
         ],
       },
     },
@@ -122,7 +133,7 @@ export default function BeforeAfterTransformation() {
           "Team satisfaction maintained at healthy levels",
         ],
         metrics: [
-          { label: "Team Attrition", value: "5%", bad: false },
+          { label: "Team Attrition", value: dynamicStats.attritionRate, bad: false }, // Dynamic
           { label: "Delayed Projects", value: "0", bad: false },
           { label: "Morale Score", value: "8.4/10", bad: false },
         ],
@@ -332,7 +343,7 @@ export default function BeforeAfterTransformation() {
           <div className="grid md:grid-cols-4 gap-6">
             <div className="text-center p-6 bg-white dark:bg-gray-900 rounded-2xl">
               <div className="text-4xl font-bold bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent mb-2">
-                $750K+
+                {dynamicStats.preventedLosses}
               </div>
               <div className="text-sm text-gray-600 dark:text-gray-400">
                 Prevented Losses Per Year
@@ -340,7 +351,7 @@ export default function BeforeAfterTransformation() {
             </div>
             <div className="text-center p-6 bg-white dark:bg-gray-900 rounded-2xl">
               <div className="text-4xl font-bold bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent mb-2">
-                85%
+                {dynamicStats.crisisReduction}
               </div>
               <div className="text-sm text-gray-600 dark:text-gray-400">
                 Reduction in Crisis Events
@@ -348,7 +359,7 @@ export default function BeforeAfterTransformation() {
             </div>
             <div className="text-center p-6 bg-white dark:bg-gray-900 rounded-2xl">
               <div className="text-4xl font-bold bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent mb-2">
-                6 weeks
+                {dynamicStats.earlyWarning}
               </div>
               <div className="text-sm text-gray-600 dark:text-gray-400">
                 Average Early Warning Time
@@ -356,7 +367,7 @@ export default function BeforeAfterTransformation() {
             </div>
             <div className="text-center p-6 bg-white dark:bg-gray-900 rounded-2xl">
               <div className="text-4xl font-bold bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent mb-2">
-                100%
+                {dynamicStats.visibility}
               </div>
               <div className="text-sm text-gray-600 dark:text-gray-400">
                 Dependency Visibility
