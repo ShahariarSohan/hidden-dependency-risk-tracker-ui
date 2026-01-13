@@ -13,10 +13,10 @@ export default function ContactPage() {
         <div className="w-full max-w-md dark:bg-gray-900 rounded-lg shadow-lg p-6 ">
           <div className="mb-6">
             <h1 className="text-2xl font-bold text-primary dark:text-(--hero-foreground) mb-2">
-              Contact with us
+              Contact with me
             </h1>
             <p className="text-(--hero-foreground)">
-              Interested in HDRT? Share your details.
+              Interested in HDRT? Send me message.
             </p>
           </div>
           <ContactForm />

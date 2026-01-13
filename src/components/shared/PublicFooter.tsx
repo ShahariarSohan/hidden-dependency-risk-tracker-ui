@@ -43,14 +43,14 @@ export default function PublicFooter() {
           <div>
             <h3 className="font-semibold text-foreground mb-3">Contact</h3>
             <p className="leading-relaxed">
-              Email: support@hdrt.com Phone: +880 1234 567 890 Address:
-              Chattogram, Bangladesh Availability: 24/7 Enterprise Support
+              Email: sohanshahariar4@gmail.com Phone: +8801622143630 Address:
+              Chawkbazar,Chattogram, Bangladesh Availability: 24/7
             </p>
           </div>
         </div>
 
         <div className="mt-12 border-t pt-4 text-center text-sm text-[var(--hero-foreground)]/75">
-          © {new Date().getFullYear()} HDRT. All rights reserved.
+          © {new Date().getFullYear()} ShahariarSohan. All rights reserved.
         </div>
       </div>
     </footer>

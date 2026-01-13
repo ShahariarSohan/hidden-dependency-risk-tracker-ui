@@ -10,15 +10,16 @@ import {
 } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import contactRequestDemo from "@/services/contact/contactRequestDemo";
+import contactRequestDemo from "@/services/contact/contactViaEmail";
 import Link from "next/link";
 import { useActionState, useEffect } from "react";
 import { toast } from "sonner";
 import { Loader2 } from "lucide-react";
+import contactViaEmail from "@/services/contact/contactViaEmail";
 
 export default function ContactForm() {
   const [state, formAction, isPending] = useActionState(
-    contactRequestDemo,
+    contactViaEmail,
     null
   );
 
@@ -36,41 +37,38 @@ export default function ContactForm() {
         <FieldGroup>
           <Field>
             <FieldLabel htmlFor="name">Full Name</FieldLabel>
-            <Input id="name" name="name" placeholder="John Doe" required />
+            <Input id="name" name="name" placeholder="your name or company name" required />
             <InputFieldError field="name" state={state} />
           </Field>
 
           <Field>
-            <FieldLabel htmlFor="email">Work Email</FieldLabel>
+            <FieldLabel htmlFor="email">Your Email</FieldLabel>
             <Input
               id="email"
               type="email"
               name="email"
-              placeholder="john@company.com"
+              placeholder="your@gmail.com"
               required
             />
             <InputFieldError field="email" state={state} />
           </Field>
-
           <Field>
-            <FieldLabel htmlFor="company">Company Name</FieldLabel>
+            <FieldLabel htmlFor="subject">Subject</FieldLabel>
             <Input
-              id="company"
-              name="company"
-              placeholder="Acme Corporation"
+              id="subject"
+              type="text"
+              name="subject"
+              placeholder="Write your subject"
               required
             />
-            <InputFieldError field="company" state={state} />
+            <InputFieldError field="subject" state={state} />
           </Field>
-
-          
-
           <Field>
-            <FieldLabel htmlFor="message">Message (Optional)</FieldLabel>
+            <FieldLabel htmlFor="message">Message</FieldLabel>
             <Textarea
               id="message"
               name="message"
-              placeholder="Tell us about your needs..."
+              placeholder="Write your message..."
               rows={4}
             />
             <InputFieldError field="message" state={state} />
