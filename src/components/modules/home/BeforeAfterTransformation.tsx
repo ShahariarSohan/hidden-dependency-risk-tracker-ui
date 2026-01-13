@@ -24,7 +24,13 @@ export default function BeforeAfterTransformation({ stats }: { stats?: any }) {
     attritionRate: stats?.beforeAfter?.attritionRate || "0%",
     crisisReduction: stats?.beforeAfter?.crisisReduction || "0%",
     visibility: stats?.beforeAfter?.visibility || "100%",
-    earlyWarning: "6 weeks" // Constant for now
+    earlyWarning: stats?.beforeAfter?.earlyWarning || "0 weeks",
+    costImpact: stats?.beforeAfter?.costImpact || "$0",
+    downtime: stats?.beforeAfter?.downtime || "0 mins",
+    systemsAffected: stats?.beforeAfter?.systemsAffected || "0",
+    revenueLoss: stats?.beforeAfter?.revenueLoss || "$0",
+    delayedProjects: stats?.beforeAfter?.delayedProjects || "0",
+    moraleScore: stats?.beforeAfter?.moraleScore || "10/10"
   };
 
   const scenarios = [
@@ -59,9 +65,9 @@ export default function BeforeAfterTransformation({ stats }: { stats?: any }) {
           "Zero disruption to operations",
         ],
         metrics: [
-          { label: "Recovery Time", value: dynamicStats.avgResolutionTime, bad: false }, // Dynamic
-          { label: "Cost Impact", value: "$0", bad: false },
-          { label: "Projects Affected", value: dynamicStats.protectedProjects, bad: false }, // Dynamic
+          { label: "Recovery Time", value: dynamicStats.avgResolutionTime, bad: false },
+          { label: "Cost Impact", value: dynamicStats.costImpact, bad: false },
+          { label: "Projects Affected", value: dynamicStats.protectedProjects, bad: false },
         ],
       },
     },
@@ -96,9 +102,9 @@ export default function BeforeAfterTransformation({ stats }: { stats?: any }) {
           "Operations continue with minimal interruption",
         ],
         metrics: [
-          { label: "Downtime", value: "15 minutes", bad: false },
-          { label: "Systems Affected", value: "0 services", bad: false },
-          { label: "Revenue Loss", value: "$0", bad: false },
+          { label: "Downtime", value: dynamicStats.downtime, bad: false },
+          { label: "Systems Affected", value: dynamicStats.systemsAffected, bad: false },
+          { label: "Revenue Loss", value: dynamicStats.revenueLoss, bad: false },
         ],
       },
     },
@@ -133,9 +139,9 @@ export default function BeforeAfterTransformation({ stats }: { stats?: any }) {
           "Team satisfaction maintained at healthy levels",
         ],
         metrics: [
-          { label: "Team Attrition", value: dynamicStats.attritionRate, bad: false }, // Dynamic
-          { label: "Delayed Projects", value: "0", bad: false },
-          { label: "Morale Score", value: "8.4/10", bad: false },
+          { label: "Team Attrition", value: dynamicStats.attritionRate, bad: false },
+          { label: "Delayed Projects", value: dynamicStats.delayedProjects, bad: false },
+          { label: "Morale Score", value: dynamicStats.moraleScore, bad: false },
         ],
       },
     },
