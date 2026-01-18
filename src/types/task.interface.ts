@@ -11,6 +11,7 @@ export interface ITask {
 
   status: TaskStatus;
   priority: number;
+  workWeight: number;
 
   // Foreign keys
   employeeId: string;

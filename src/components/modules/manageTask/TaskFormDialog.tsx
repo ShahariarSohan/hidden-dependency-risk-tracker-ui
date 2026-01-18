@@ -268,6 +268,26 @@ const TaskFormDialog = ({
                 <InputFieldError field="priority" state={state} />
               </Field>
             )}
+
+            {!isEdit && (
+              <Field>
+                <FieldLabel htmlFor="workWeight">Work Weight (Complexity)</FieldLabel>
+                <select
+                  id="workWeight"
+                  name="workWeight"
+                  className="border rounded-md p-2 w-full bg-card disabled:bg-gray-100 disabled:cursor-not-allowed"
+                  defaultValue={state?.formData?.workWeight || "1"}
+                  disabled={isPending}
+                >
+                  {[...Array(10)].map((_, i) => (
+                    <option key={i + 1} value={i + 1}>
+                      {i + 1} {i === 0 ? "- Trivial" : i === 4 ? "- Moderate" : i === 9 ? "- Complex" : ""}
+                    </option>
+                  ))}
+                </select>
+                <InputFieldError field="workWeight" state={state} />
+              </Field>
+            )}
             {!isEdit && (
               <Field>
                 <FieldLabel>Assign to Employee</FieldLabel>

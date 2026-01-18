@@ -65,7 +65,7 @@ export default async function Home() {
         <Hero stats={heroStats} />
         <WhyRiskMatters></WhyRiskMatters>
         <BeforeAfterTransformation stats={landingStats}></BeforeAfterTransformation>
-        <RiskVisualizer></RiskVisualizer>
+        <RiskVisualizer stats={landingStats?.riskVisuals}></RiskVisualizer>
         <HowItWorks></HowItWorks>
       </main>
     </>

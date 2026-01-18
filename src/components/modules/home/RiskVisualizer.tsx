@@ -20,16 +20,17 @@ import {
   Cell,
 } from "recharts";
 
-export default function RiskVisualizer() {
+export default function RiskVisualizer({ stats }: { stats?: any }) {
   const [activeRisk, setActiveRisk] = useState<string|null>(null);
 
-  const riskData = [
+  // Map Backend Cards to Component Structure
+  const riskCards = stats?.cards || [
     {
       id: "employee",
       title: "Employee Dependencies",
       icon: Users,
       riskLevel: 85,
-      color: "red",
+      color: "red" as const,
       description: "Critical knowledge concentrated in 3 key employees",
       details: {
         affected: "12 Projects",
@@ -42,7 +43,7 @@ export default function RiskVisualizer() {
       title: "System Vulnerabilities",
       icon: Server,
       riskLevel: 72,
-      color: "orange",
+      color: "orange" as const,
       description: "Single point of failure in authentication system",
       details: {
         affected: "8 Services",
@@ -55,7 +56,7 @@ export default function RiskVisualizer() {
       title: "Team Overload",
       icon: AlertTriangle,
       riskLevel: 68,
-      color: "yellow",
+      color: "yellow" as const,
       description: "Engineering team operating at 140% capacity",
       details: {
         affected: "5 Teams",
@@ -63,6 +64,24 @@ export default function RiskVisualizer() {
         trend: "Increasing",
       },
     },
+  ];
+
+  // Re-attach icons to dynamic cards (Backend only sends data keys)
+  const riskData = riskCards.map((card: any) => {
+    let icon = AlertTriangle;
+    if (card.id === "employee") icon = Users;
+    if (card.id === "system") icon = Server;
+    return { ...card, icon };
+  });
+
+  const chartData = stats?.trends || [
+    { day: "Mon", risk: 45, label: "Monday" },
+    { day: "Tue", risk: 52, label: "Tuesday" },
+    { day: "Wed", risk: 48, label: "Wednesday" },
+    { day: "Thu", risk: 65, label: "Thursday" },
+    { day: "Fri", risk: 72, label: "Friday" },
+    { day: "Sat", risk: 68, label: "Saturday" },
+    { day: "Sun", risk: 85, label: "Sunday" },
   ];
  
     const getColorClasses = (
@@ -321,15 +340,7 @@ export default function RiskVisualizer() {
 
                 <ResponsiveContainer width="100%" height={140}>
                   <BarChart
-                    data={[
-                      { day: "Mon", risk: 45, label: "Monday" },
-                      { day: "Tue", risk: 52, label: "Tuesday" },
-                      { day: "Wed", risk: 48, label: "Wednesday" },
-                      { day: "Thu", risk: 65, label: "Thursday" },
-                      { day: "Fri", risk: 72, label: "Friday" },
-                      { day: "Sat", risk: 68, label: "Saturday" },
-                      { day: "Sun", risk: 85, label: "Sunday" },
-                    ]}
+                    data={chartData}
                     margin={{ top: 10, right: 10, left: -20, bottom: 0 }}
                   >
                     <XAxis
