@@ -21,6 +21,15 @@ export const TasksColumns: IColumn<ITask>[] = [
     ),
     sortKey: "priority",
   },
+  {
+    header: "Work Weight",
+    accessor: (task) => (
+      <span className="font-medium text-sm text-blue-600 dark:text-blue-400">
+        {task.workWeight || 1}
+      </span>
+    ),
+    sortKey: "workWeight",
+  },
 
   {
     header: "Status",

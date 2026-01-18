@@ -24,65 +24,18 @@ export default function RiskVisualizer({ stats }: { stats?: any }) {
   const [activeRisk, setActiveRisk] = useState<string|null>(null);
 
   // Map Backend Cards to Component Structure
-  const riskCards = stats?.cards || [
-    {
-      id: "employee",
-      title: "Employee Dependencies",
-      icon: Users,
-      riskLevel: 85,
-      color: "red" as const,
-      description: "Critical knowledge concentrated in 3 key employees",
-      details: {
-        affected: "12 Projects",
-        impact: "High",
-        trend: "Increasing",
-      },
-    },
-    {
-      id: "system",
-      title: "System Vulnerabilities",
-      icon: Server,
-      riskLevel: 72,
-      color: "orange" as const,
-      description: "Single point of failure in authentication system",
-      details: {
-        affected: "8 Services",
-        impact: "Critical",
-        trend: "Stable",
-      },
-    },
-    {
-      id: "team",
-      title: "Team Overload",
-      icon: AlertTriangle,
-      riskLevel: 68,
-      color: "yellow" as const,
-      description: "Engineering team operating at 140% capacity",
-      details: {
-        affected: "5 Teams",
-        impact: "Medium",
-        trend: "Increasing",
-      },
-    },
-  ];
+  const riskCards = stats?.cards || [];
 
   // Re-attach icons to dynamic cards (Backend only sends data keys)
   const riskData = riskCards.map((card: any) => {
     let icon = AlertTriangle;
     if (card.id === "employee") icon = Users;
     if (card.id === "system") icon = Server;
+    if (card.id === "team") icon = Users;
     return { ...card, icon };
   });
 
-  const chartData = stats?.trends || [
-    { day: "Mon", risk: 45, label: "Monday" },
-    { day: "Tue", risk: 52, label: "Tuesday" },
-    { day: "Wed", risk: 48, label: "Wednesday" },
-    { day: "Thu", risk: 65, label: "Thursday" },
-    { day: "Fri", risk: 72, label: "Friday" },
-    { day: "Sat", risk: 68, label: "Saturday" },
-    { day: "Sun", risk: 85, label: "Sunday" },
-  ];
+  const chartData = stats?.trends || [];
  
     const getColorClasses = (
       color: string,
@@ -135,22 +88,13 @@ export default function RiskVisualizer({ stats }: { stats?: any }) {
             real-time, identifying hidden dependencies before they threaten
             operations
           </p>
-
-          {/* Demo Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-50 dark:bg-blue-950/30 rounded-lg border border-blue-200 dark:border-blue-900/50 mt-4">
-            <Shield className="w-4 h-4 text-blue-600 dark:text-blue-400" />
-            <span className="text-sm text-blue-600 dark:text-blue-400">
-              <strong>Interactive Demo:</strong> Sample data from a mid-size
-              tech organization
-            </span>
-          </div>
         </div>
 
         {/* Interactive Risk Dashboard */}
         <div className="grid lg:grid-cols-2 gap-8 mb-12">
           {/* Left: Risk Cards */}
           <div className="space-y-4">
-            {riskData.map((risk) => {
+            {riskData.map((risk: any) => {
               const Icon = risk.icon;
               const isActive = activeRisk === risk.id;
 
@@ -278,7 +222,7 @@ export default function RiskVisualizer({ stats }: { stats?: any }) {
 
               {/* Circular Risk Meters */}
               <div className="grid grid-cols-3 gap-4">
-                {riskData.map((risk) => (
+                {riskData.map((risk: any) => (
                   <div key={risk.id} className="text-center">
                     <div className="relative inline-flex items-center justify-center w-24 h-24 mb-2">
                       {/* Background circle */}
@@ -333,9 +277,6 @@ export default function RiskVisualizer({ stats }: { stats?: any }) {
                   <h4 className="text-sm font-semibold text-gray-700 dark:text-gray-300">
                     Risk Trend (Last 7 Days)
                   </h4>
-                  <span className="text-xs text-gray-500 dark:text-gray-400 italic">
-                    Sample data
-                  </span>
                 </div>
 
                 <ResponsiveContainer width="100%" height={140}>
@@ -377,13 +318,13 @@ export default function RiskVisualizer({ stats }: { stats?: any }) {
                       cursor={{ fill: "rgba(239, 68, 68, 0.1)" }}
                     />
                     <Bar dataKey="risk" radius={[8, 8, 0, 0]} maxBarSize={40}>
-                      {[45, 52, 48, 65, 72, 68, 85].map((value, index) => (
+                      {chartData.map((entry: any, index: number) => (
                         <Cell
                           key={`cell-${index}`}
                           fill={
-                            value > 70
+                            entry.risk > 70
                               ? "#ef4444"
-                              : value > 60
+                              : entry.risk > 60
                               ? "#f97316"
                               : "#fbbf24"
                           }
@@ -397,7 +338,7 @@ export default function RiskVisualizer({ stats }: { stats?: any }) {
                 <div className="mt-3 flex items-center justify-between text-xs text-gray-500 dark:text-gray-400">
                   <span>Lower Risk</span>
                   <span className="font-semibold text-red-500 dark:text-red-400">
-                    ↑ 89% increase this week
+                    Live Data Updated
                   </span>
                 </div>
               </div>
@@ -411,18 +352,16 @@ export default function RiskVisualizer({ stats }: { stats?: any }) {
                   </h4>
                 </div>
                 <ul className="space-y-2">
-                  <li className="text-sm text-gray-600 dark:text-gray-400 flex items-start gap-2">
-                    <span className="text-red-500 mt-0.5">•</span>
-                    Document critical processes held by single employees
-                  </li>
-                  <li className="text-sm text-gray-600 dark:text-gray-400 flex items-start gap-2">
-                    <span className="text-orange-500 mt-0.5">•</span>
-                    Implement redundancy in authentication system
-                  </li>
-                  <li className="text-sm text-gray-600 dark:text-gray-400 flex items-start gap-2">
-                    <span className="text-yellow-600 mt-0.5">•</span>
-                    Redistribute workload across engineering teams
-                  </li>
+                  {(stats?.actionItems || [
+                    "Perform deep review of critical knowledge silos",
+                    "Strengthen redundancy for high-risk systems",
+                    "Balance workload across engineering teams"
+                  ]).map((item: string, i: number) => (
+                    <li key={i} className="text-sm text-gray-600 dark:text-gray-400 flex items-start gap-2">
+                      <span className={`${i === 0 ? "text-red-500" : i === 1 ? "text-orange-500" : "text-yellow-600"} mt-0.5`}>•</span>
+                      {item}
+                    </li>
+                  ))}
                 </ul>
               </div>
             </div>
@@ -441,7 +380,7 @@ export default function RiskVisualizer({ stats }: { stats?: any }) {
           </div>
           <div className="text-center">
             <div className="text-3xl font-bold text-gray-900 dark:text-white">
-              15+
+              {stats?.totalIndicators || "18"}
             </div>
             <div className="text-sm text-gray-600 dark:text-gray-400">
               Risk Indicators Tracked
@@ -449,18 +388,18 @@ export default function RiskVisualizer({ stats }: { stats?: any }) {
           </div>
           <div className="text-center">
             <div className="text-3xl font-bold text-gray-900 dark:text-white">
-              &lt;5min
+              {stats?.avgResolutionTime || "<5min"}
             </div>
             <div className="text-sm text-gray-600 dark:text-gray-400">
-              Alert Response Time
+              Avg Recovery Time
             </div>
           </div>
           <div className="text-center">
             <div className="text-3xl font-bold text-gray-900 dark:text-white">
-              100%
+              {stats?.visibility || "100%"}
             </div>
             <div className="text-sm text-gray-600 dark:text-gray-400">
-              Dependency Visibility
+              Network Visibility
             </div>
           </div>
         </div>
