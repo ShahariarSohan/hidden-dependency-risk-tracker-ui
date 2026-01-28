@@ -23,6 +23,7 @@ export async function createSystem(_prevState: any, formData: FormData) {
     criticality: formData.get("criticality")
       ? Number(formData.get("criticality"))
       : 1,
+    teamId: formData.get("teamId") as string,
   };
 
   const validation = zodValidator(payload, createSystemZodSchema);

@@ -40,17 +40,15 @@ const SystemFormDialog = ({
 
   const [teams, setTeams] = useState<ITeam[]>([]);
 
-  // Load teams only in edit mode
+  // Load teams always (needed for both Create and Edit)
   useEffect(() => {
-    if (!isEdit) return;
-
     const loadTeams = async () => {
       const res = await getTeams();
       if (res?.data) setTeams(res.data);
     };
 
     loadTeams();
-  }, [isEdit]);
+  }, []);
 
   const [state, formAction, isPending] = useActionState(
     isEdit ? updateSystem.bind(null, system?.id as string) : createSystem,
@@ -134,26 +132,25 @@ const SystemFormDialog = ({
               </Field>
             )}
 
-            {/* Team Selection (ONLY IN EDIT MODE) */}
-            {isEdit && (
-              <Field>
-                <FieldLabel htmlFor="teamId">Assign to Team</FieldLabel>
-                <select
-                  id="teamId"
-                  name="teamId"
-                  className="border rounded-md p-2 w-full bg-card"
-                  defaultValue={system?.teamId || ""}
-                >
-                  <option value="">No Team</option>
-                  {teams.map((team) => (
-                    <option key={team.id} value={team.id}>
-                      {team.name}
-                    </option>
-                  ))}
-                </select>
-                <InputFieldError field="teamId" state={state} />
-              </Field>
-            )}
+            {/* Team Selection (Mandatory) */}
+            <Field>
+              <FieldLabel htmlFor="teamId">Assign to Team</FieldLabel>
+              <select
+                id="teamId"
+                name="teamId"
+                className="border rounded-md p-2 w-full bg-card"
+                defaultValue={system?.teamId || ""}
+                required
+              >
+                <option value="" disabled>Select a Team</option>
+                {teams.map((team) => (
+                  <option key={team.id} value={team.id}>
+                    {team.name}
+                  </option>
+                ))}
+              </select>
+              <InputFieldError field="teamId" state={state} />
+            </Field>
           </div>
 
           {/* Actions */}

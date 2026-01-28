@@ -15,6 +15,7 @@ export const createSystemZodSchema = z.object({
     .min(1, "Criticality must be between 1 and 5")
     .max(5, "Criticality must be between 1 and 5")
     .optional(),
+  teamId: z.string().min(3, "Team is required"),
 });
 export const updateSystemSchema = z.object({
   name: z
