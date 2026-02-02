@@ -162,15 +162,21 @@ export async function updateSystem(
     payload = {
       name: formData.get("name") as string,
       description: formData.get("description") as string,
+      criticality: formData.get("criticality")
+      ? Number(formData.get("criticality"))
+      : 1,
     };
   } else {
     payload = {
       name: formData.get("name") as string,
       description: formData.get("description") as string,
       teamId: formData.get("teamId") as string,
+      criticality: formData.get("criticality")
+      ? Number(formData.get("criticality"))
+      : 1,
     };
   }
-
+ console.log(payload)
   const validation = zodValidator(payload, updateSystemSchema);
 
   if (!validation.success && validation.errors) {

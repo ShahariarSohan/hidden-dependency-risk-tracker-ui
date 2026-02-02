@@ -112,15 +112,15 @@ const SystemFormDialog = ({
               <InputFieldError field="description" state={state} />
             </Field>
 
-            {/* Criticality (ONLY IN CREATE MODE) */}
-            {!isEdit && (
+            
+            {
               <Field>
                 <FieldLabel htmlFor="criticality">Criticality (1–5)</FieldLabel>
                 <select
                   id="criticality"
                   name="criticality"
                   className="border rounded-md p-2 w-full bg-card"
-                  defaultValue={state?.formData?.criticality || "1"}
+                  defaultValue={system?.criticality || "1"}
                 >
                   {[1, 2, 3, 4, 5].map((lvl) => (
                     <option key={lvl} value={lvl}>
@@ -130,7 +130,7 @@ const SystemFormDialog = ({
                 </select>
                 <InputFieldError field="criticality" state={state} />
               </Field>
-            )}
+            }
 
             {/* Team Selection (Mandatory) */}
             <Field>
