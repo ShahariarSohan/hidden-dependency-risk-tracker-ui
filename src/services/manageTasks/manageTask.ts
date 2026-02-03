@@ -10,11 +10,7 @@ import {
   updateTaskZodSchema,
 } from "@/zod/task.validation";
 
-/**
- * CREATE TASK
- * API: POST /task
- * Fields: title, description?, priority?, employeeId, systemId, dueDate?
- */
+
 export async function createTask(_prevState: any, formData: FormData) {
   const payload = {
     title: formData.get("title") as string,
@@ -67,10 +63,7 @@ console.log(payload)
   }
 }
 
-/**
- * GET TASKS
- * API: GET /task?query
- */
+
 export async function getTasks(queryString?: string) {
   try {
     const response = await serverFetch.get(
@@ -106,10 +99,6 @@ export async function getMyTasks(queryString?: string) {
   }
 }
 
-/**
- * GET TASK BY ID
- * API: GET /task/:id
- */
 export async function getTaskById(id: string) {
   try {
     const response = await serverFetch.get(`/task/${id}`);
@@ -126,11 +115,7 @@ export async function getTaskById(id: string) {
   }
 }
 
-/**
- * UPDATE TASK
- * API: PATCH /task/:id
- * Editable fields: title, description, priority, employeeId, systemId, dueDate
- */
+
 export async function updateTask(
   id: string,
   _prevState: any,
@@ -139,11 +124,13 @@ export async function updateTask(
   const payload: any = {
     title: formData.get("title") as string,
     description: formData.get("description") as string,
+    priority: formData.get("priority") ? Number(formData.get("priority")) : 1,
+    workWeight: formData.get("workWeight") ? Number(formData.get("workWeight")) : 1,
     dueDate: formData.get("dueDate")
       ? String(formData.get("dueDate"))
       : undefined,
   };
-
+  console.log(payload)
   const validation = zodValidator(payload, updateTaskZodSchema);
 
   if (!validation.success && validation.errors) {

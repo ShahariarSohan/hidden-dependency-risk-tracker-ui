@@ -45,6 +45,18 @@ export const updateTaskStatusZodSchema = z.object({
 export const updateTaskZodSchema = z.object({
   title: z.string().min(1, "Title is required"),
   description: z.string().optional(),
+    priority: z
+    .number()
+    .int("Priority must be an integer")
+    .min(1, "Priority must be between 1 and 5")
+    .max(5, "Priority must be between 1 and 5")
+    .optional(),
+  workWeight: z
+    .number()
+    .int("Work weight must be an integer")
+    .min(1, "Work weight must be between 1 and 10")
+    .max(10, "Work weight must be between 1 and 10")
+    .optional(),
   dueDate: z
     .string()
     .optional()

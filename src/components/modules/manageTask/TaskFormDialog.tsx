@@ -248,15 +248,15 @@ const TaskFormDialog = ({
               <InputFieldError field="description" state={state} />
             </Field>
 
-            {/* Priority (Create Mode Only) */}
-            {!isEdit && (
+            
+            {
               <Field>
                 <FieldLabel htmlFor="priority">Priority Level</FieldLabel>
                 <select
                   id="priority"
                   name="priority"
                   className="border rounded-md p-2 w-full bg-card disabled:bg-gray-100 disabled:cursor-not-allowed"
-                  defaultValue={state?.formData?.priority || "3"}
+                  defaultValue={task?.priority || "1"}
                   disabled={isPending}
                 >
                   <option value="1">1 - Lowest</option>
@@ -267,16 +267,16 @@ const TaskFormDialog = ({
                 </select>
                 <InputFieldError field="priority" state={state} />
               </Field>
-            )}
+            }
 
-            {!isEdit && (
+            {
               <Field>
                 <FieldLabel htmlFor="workWeight">Work Weight (Complexity)</FieldLabel>
                 <select
                   id="workWeight"
                   name="workWeight"
                   className="border rounded-md p-2 w-full bg-card disabled:bg-gray-100 disabled:cursor-not-allowed"
-                  defaultValue={state?.formData?.workWeight || "1"}
+                  defaultValue={task?.workWeight || "1"}
                   disabled={isPending}
                 >
                   {[...Array(10)].map((_, i) => (
@@ -287,7 +287,7 @@ const TaskFormDialog = ({
                 </select>
                 <InputFieldError field="workWeight" state={state} />
               </Field>
-            )}
+            }
             {!isEdit && (
               <Field>
                 <FieldLabel>Assign to Employee</FieldLabel>
