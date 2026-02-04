@@ -243,7 +243,7 @@ const TaskFormDialog = ({
                 }
                 disabled={isPending}
                 rows={3}
-                className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:bg-gray-100 disabled:cursor-not-allowed resize-none"
+                className="bg-card w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:cursor-not-allowed resize-none"
               />
               <InputFieldError field="description" state={state} />
             </Field>
@@ -255,7 +255,7 @@ const TaskFormDialog = ({
                 <select
                   id="priority"
                   name="priority"
-                  className="border rounded-md p-2 w-full bg-card disabled:bg-gray-100 disabled:cursor-not-allowed"
+                  className="border rounded-md p-2 w-full bg-card disabled:cursor-not-allowed"
                   defaultValue={task?.priority || "1"}
                   disabled={isPending}
                 >
@@ -275,7 +275,7 @@ const TaskFormDialog = ({
                 <select
                   id="workWeight"
                   name="workWeight"
-                  className="border rounded-md p-2 w-full bg-card disabled:bg-gray-100 disabled:cursor-not-allowed"
+                  className="border rounded-md p-2 w-full bg-card disabled:cursor-not-allowed"
                   defaultValue={task?.workWeight || "1"}
                   disabled={isPending}
                 >
