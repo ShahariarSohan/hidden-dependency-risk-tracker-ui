@@ -156,7 +156,7 @@ const ManagerFormDialog = ({
                   className="border rounded-md p-2 w-full bg-card"
                   defaultValue={manager?.teamId || ""}
                 >
-                  <option value="">No Team</option>
+                  <option value="">Select Team</option>
                   {teams.map((team) => (
                     <option key={team.id} value={team.id}>
                       {team.name}
