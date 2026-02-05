@@ -19,11 +19,7 @@ export async function createTask(_prevState: any, formData: FormData) {
     workWeight: formData.get("workWeight") ? Number(formData.get("workWeight")) : 1,
     employeeId: formData.get("employeeId") as string,
     systemId: formData.get("systemId") as string,
-    dueDate: formData.get("dueDate")
-      ? String(formData.get("dueDate"))
-      : undefined,
   };
-console.log(payload)
   const validation = zodValidator(payload, createTaskZodSchema);
 
   if (!validation.success && validation.errors) {

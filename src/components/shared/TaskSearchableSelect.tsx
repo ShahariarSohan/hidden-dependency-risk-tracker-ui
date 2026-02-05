@@ -34,12 +34,12 @@ export default function TaskSearchableSelect<T extends { id: string }>({
 }: SearchableSelectProps<T>) {
   const colorClasses = {
     blue: {
-      bg: "bg-blue-50",
+      bg: "bg-card",
       border: "border-blue-200",
       icon: "bg-blue-100 text-blue-600",
     },
     green: {
-      bg: "bg-green-50",
+      bg: "bg-card",
       border: "border-green-200",
       icon: "bg-green-100 text-green-600",
     },
@@ -57,7 +57,7 @@ export default function TaskSearchableSelect<T extends { id: string }>({
           placeholder={placeholder}
           value={searchTerm}
           onChange={(e) => onSearchChange(e.target.value)}
-          className="w-full pl-10 pr-10 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:bg-gray-100 disabled:cursor-not-allowed"
+          className="w-full pl-10 pr-10 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 bg-card disabled:cursor-not-allowed"
           disabled={disabled}
         />
         {searchTerm && (
