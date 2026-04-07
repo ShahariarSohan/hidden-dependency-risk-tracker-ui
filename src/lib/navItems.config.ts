@@ -119,6 +119,17 @@ export const adminNavItems: INavSection[] = [
     ],
   },
   {
+    title: "System",
+    items: [
+      {
+        title: "Audit Logs",
+        href: "/admin/dashboard/audit-logs",
+        icon: "History",
+        roles: [UserRole.ADMIN],
+      },
+    ],
+  },
+  {
     title: "Profile",
     items: [
       {
@@ -129,6 +140,7 @@ export const adminNavItems: INavSection[] = [
       },
     ],
   },
+  
 ];
 
 export const managerNavItems: INavSection[] = [
